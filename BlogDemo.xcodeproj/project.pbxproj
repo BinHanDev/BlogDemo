@@ -151,6 +151,7 @@
 			children = (
 				34391C6C1CE421D900970573 /* Category */,
 				34391C651CE421B800970573 /* Tools */,
+				34391D081CE4956A00970573 /* Custom */,
 				34391C701CE421F200970573 /* NetWork */,
 				34391C771CE4222400970573 /* Controller */,
 				34391C4F1CE4212100970573 /* AppDelegate.h */,
@@ -209,7 +210,6 @@
 			isa = PBXGroup;
 			children = (
 				34391C781CE4223600970573 /* Base */,
-				34391D041CE491BB00970573 /* Nav */,
 				34391C7F1CE4225200970573 /* CycleUIScrollView */,
 				34391C861CE4227E00970573 /* UIBezierPath */,
 				34391C901CE422A900970573 /* CellRandomSubView */,
@@ -330,6 +330,14 @@
 				34391D061CE491E100970573 /* BHNavigationController.m */,
 			);
 			name = Nav;
+			sourceTree = "<group>";
+		};
+		34391D081CE4956A00970573 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				34391D041CE491BB00970573 /* Nav */,
+			);
+			name = Custom;
 			sourceTree = "<group>";
 		};
 		42EA6A9A548F31CDF693CA1B /* Frameworks */ = {

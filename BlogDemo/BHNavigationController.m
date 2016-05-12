@@ -2,7 +2,7 @@
 //  BHNavigationController.m
 //  BlogDemo
 //
-//  Created by HanBin on 16/5/12.
+//  Created by HanBin on 15/5/12.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
@@ -14,9 +14,9 @@
 
 @implementation BHNavigationController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 /**
