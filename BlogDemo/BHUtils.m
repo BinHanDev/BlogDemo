@@ -8,6 +8,8 @@
 #import "AppDelegate.h"
 #import "MBProgressHUD.h"
 
+double const kNavBarHeight = 64.f;
+
 @implementation BHUtils
 
 + (UIColor *)hexStringToColor:(NSString *)stringToConvert

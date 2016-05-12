@@ -10,7 +10,7 @@
 #import <GPUImage/GPUImage.h>
 #import <AssetsLibrary/ALAsset.h>
 /**
- *  滤镜名称label的宽度
+ *  滤镜名称label的宽度  苹果已不建议使用宏来定义
  */
 const CGFloat lableWidth = 100.f;
 

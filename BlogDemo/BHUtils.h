@@ -12,6 +12,9 @@
     #define BHLog(...)
 #endif
 
+/**
+ *  不需要缓存的时候不建议使用
+ */
 #define BHIMG(str) [UIImage imageNamed:(str)]
 
 #define IOS_VERSION_ABOVE(x) ([[UIDevice currentDevice].systemVersion doubleValue] >= x) // 判断系统
@@ -39,8 +42,10 @@
 
 #define iPhone ((int)[[UIScreen mainScreen] bounds].size.width==320)
 
-
-#define kNavBarHeight 64.0f
+/**
+ *  navigationBar的高度
+ */
+FOUNDATION_EXTERN double const kNavBarHeight;
 
 @interface BHUtils : NSObject
 
