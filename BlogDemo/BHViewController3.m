@@ -11,13 +11,21 @@
 
 @interface BHViewController3 ()<UIScrollViewDelegate>
 
-/**图片名称数组**/
+/**
+ *  图片名称数组
+ */
 @property (nonatomic, strong) NSArray *imagesArr;
-/**当前在展示的imageview喜好**/
+/**
+ *  当前在展示的imageview序号
+ */
 @property (nonatomic, assign) NSInteger middlePosition;
-/**用与横向滚动的scrollView**/
+/**
+ *  用与横向滚动的scrollView
+ */
 @property (nonatomic, weak) UIScrollView *scrollView;
-/**将所有的imageview的数组**/
+/**
+ *  将所有的imageview的数组
+ */
 @property (nonatomic, strong) NSMutableArray *imageViewArr;
 @property (nonatomic, assign) CGFloat startOffsetX;
 @property (nonatomic, assign) CGFloat endOffsetX;

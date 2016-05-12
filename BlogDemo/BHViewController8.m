@@ -16,29 +16,51 @@ const CGFloat lableWidth = 100.f;
 
 @interface BHViewController8 ()
 
-/**滤镜名称数组**/
+/**
+ * 滤镜名称数组
+ **/
 @property (nonatomic, strong) NSArray *filterArray;
-/**当前所选则的滤镜序号**/
+/**
+ * 当前所选则的滤镜序号
+ **/
 @property (nonatomic, assign) NSInteger currentFiterIndex;
-/**当前所选则的滤镜**/
+/**
+ * 当前所选则的滤镜
+ **/
 @property (nonatomic, strong) GPUImageFilter *currentFilter;
-/**摄像机**/
+/**
+ * 摄像机
+ **/
 @property (nonatomic, strong) GPUImageVideoCamera *videoCamera;
 @property (nonatomic, weak) GPUImageView *filterView;
-/**滤镜label的scorllview**/
+/**
+ * 滤镜label的scorllview
+ **/
 @property (nonatomic, weak) UIScrollView *controlFilterView;
 @property (nonatomic, weak) UIButton *recordBtn;
-/**录制视频**/
+/**
+ * 录制视频
+ **/
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
-/**录制视频文件地址**/
+/**
+ * 录制视频文件地址
+ **/
 @property (nonatomic, copy) NSString *pathToMovie;
-/**开始触摸的point**/
+/**
+ * 开始触摸的point
+ **/
 @property (nonatomic, assign) CGPoint toucheBeganPoint;
-/**结束触摸的point**/
+/**
+ * 结束触摸的point
+ **/
 @property (nonatomic, assign) CGPoint toucheEndPoint;
-/**是否在录制视频**/
+/**
+ * 是否在录制视频
+ **/
 @property (nonatomic, assign) BOOL isrecording;
-/**是否在执行动画**/
+/**
+ * 是否在执行动画
+ **/
 @property (nonatomic, assign) BOOL isAnimating;
 
 @end

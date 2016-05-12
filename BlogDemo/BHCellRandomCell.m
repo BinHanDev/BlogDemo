@@ -12,7 +12,9 @@ static NSString *CollectionViewIdentifier = @"CollectionViewIdentifier";
 
 @interface BHCellRandomCell()<UICollectionViewDataSource, UICollectionViewDelegate>
 
-/**将不定数量的view在collectionView中展示**/
+/**
+ * 将不定数量的view在collectionView中展示
+ **/
 @property (nonatomic, weak) UICollectionView *collectionView;
 
 @end

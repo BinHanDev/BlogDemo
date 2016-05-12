@@ -13,9 +13,13 @@
 
 @interface BHViewController5()
 
-/**底图**/
+/**
+ * 底图
+ **/
 @property (nonatomic, weak) UIImageView *bgImageView;
-/**毛玻璃遮罩view**/
+/**
+ * 毛玻璃遮罩view
+ **/
 @property (nonatomic, weak) UIVisualEffectView *visualEffectView;
 
 @end

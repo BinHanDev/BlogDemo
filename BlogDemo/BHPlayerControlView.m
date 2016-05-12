@@ -10,9 +10,13 @@
 
 @interface BHPlayerControlView()
 
-/** bottomView*/
+/** 
+ * bottomView
+ */
 @property (nonatomic, weak) UIImageView *bottomImageView;
-/** topView */
+/**
+ * topView 
+ */
 @property (nonatomic, weak) UIImageView *topImageView;
 
 @end

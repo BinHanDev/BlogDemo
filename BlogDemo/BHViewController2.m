@@ -11,7 +11,9 @@
 
 @interface BHViewController2 ()<BHCellRandomCellDelegate>
 
-/**数据源**/
+/**
+  *  数据源
+ **/
 @property (nonatomic, strong) NSArray *dataArray;
 
 @end

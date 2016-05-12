@@ -32,37 +32,68 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
 
 @interface BHPlayer() <UIGestureRecognizerDelegate>
 
-/** 播放属性 */
+/** 
+ * 播放属性 
+ */
 @property (nonatomic, strong) AVPlayer *player;
-/** 播放属性 */
+/**
+ * 播放属性 
+ */
 @property (nonatomic, strong) AVPlayerItem *playerItem;
-/** playerLayer */
+/**
+ * playerLayer 
+ */
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
-/** 控制层View */
+/**
+ * 控制层View 
+ */
 @property (nonatomic, weak) BHPlayerControlView *controlView;
-/** 播放完了*/
+/**
+ * 播放完了
+ */
 @property (nonatomic, assign) BOOL playDidEnd;
-/** 进入后台*/
+/**
+ * 进入后台
+ */
 @property (nonatomic, assign) BOOL didEnterBackground;
-/** 用来保存快进的总时长 */
+/**
+ * 用来保存快进的总时长 
+ */
 @property (nonatomic, assign) CGFloat sumTime;
-/** 播发器的几种状态 */
+/**
+ * 播发器的几种状态 
+ */
 @property (nonatomic, assign) BHPlayerState state;
-/** 是否为全屏 */
+/**
+ * 是否为全屏 
+ */
 @property (nonatomic, assign) BOOL isFullScreen;
-/** 是否显示controlView*/
+/**
+ * 是否显示controlView
+ */
 @property (nonatomic, assign) BOOL isMaskShowing;
-/** 是否被用户暂停 */
+/**
+ * 是否被用户暂停 
+ */
 @property (nonatomic, assign) BOOL isPauseByUser;
-/** 计时器 */
+/**
+ * 计时器 */
 @property (nonatomic, strong) NSTimer *timer;
-/** slider上次的值 */
+/**
+ * slider上次的值 
+ */
 @property (nonatomic, assign) CGFloat sliderLastValue;
-/** 定义一个实例变量，保存枚举值 */
+/**
+ * 定义一个实例变量，保存枚举值 
+ */
 @property (nonatomic, assign) BHPanDirection panDirection;
-/** 是否在调节音量*/
+/**
+ * 是否在调节音量
+ */
 @property (nonatomic, assign) BOOL isVolume;
-/** 滑杆 */
+/**
+ * 滑杆 
+ */
 @property (nonatomic, strong) UISlider *volumeViewSlider;
 @end
 

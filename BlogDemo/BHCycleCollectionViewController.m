@@ -40,7 +40,9 @@
 
 @interface BHCycleCollectionViewController ()
 
-/**图片名称数组**/
+/**
+ *   图片名称数组
+ */
 @property(nonatomic, strong) NSMutableArray *imagesArr;
 
 @end

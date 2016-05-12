@@ -12,23 +12,41 @@ typedef void(^BHSliderTapBlock)(CGFloat value);
 
 @interface BHPlayerControlView : UIView
 
-/** 开始播放按钮 */
+/** 
+ * 开始播放按钮 
+ */
 @property (nonatomic, weak) UIButton *startBtn;
-/** 当前播放时长label */
+/**
+ * 当前播放时长label 
+ */
 @property (nonatomic, weak) UILabel *currentTimeLabel;
-/** 视频总时长label */
+/**
+ * 视频总时长label 
+ */
 @property (nonatomic, weak) UILabel *totalTimeLabel;
-/** 缓冲进度条 */
+/**
+ * 缓冲进度条 
+ */
 @property (nonatomic, weak) UIProgressView *progressView;
-/** 滑杆 */
+/**
+ * 滑杆 
+ */
 @property (nonatomic, weak) UISlider  *videoSlider;
-/** 全屏按钮 */
+/**
+ * 全屏按钮 
+ */
 @property (nonatomic, weak) UIButton *fullScreenBtn;
-/** 快进快退指示器label */
+/**
+ * 快进快退指示器label 
+ */
 @property (nonatomic, strong) UILabel *progressIndicatorLabel;
-/** 返回按钮*/
+/**
+ * 返回按钮
+ */
 @property (nonatomic, strong) UIButton *backBtn;
-/** 系统菊花 */
+/**
+ * 系统菊花 
+ */
 @property (nonatomic, strong) UIActivityIndicatorView *activity;
 
 @property (nonatomic, copy) BHSliderTapBlock sliderTapBlock;
