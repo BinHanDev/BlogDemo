@@ -35,7 +35,8 @@
 }
 
 /**
- *  无限循环放大的圆
+ *  无限循环放大的圆  这种动画在按home键跳出用后，再次进入应用动画会没有效果，因为跳出应用后，
+ *  所有的view将执行removeAllAnimations 如果需要动画继续需在application中发送通知
  */
 -(void)loopCircle:(UIButton *)btn
 {
