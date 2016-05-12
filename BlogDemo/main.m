@@ -6,7 +6,6 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 
 int main(int argc, char * argv[]) {

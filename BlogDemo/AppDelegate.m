@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    UINavigationController *controller = [[UINavigationController alloc] initWithRootViewController:[[BHMainViewController alloc] init]];
+    BHNavigationController *controller = [[BHNavigationController alloc] initWithRootViewController:[[BHMainViewController alloc] init]];
     self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:23/255.0 green:180/255.0 blue:237/255.0 alpha:1]];

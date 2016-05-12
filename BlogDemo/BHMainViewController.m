@@ -19,7 +19,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [super initTableView:self.view.frame style:UITableViewStylePlain];
+    [super initTableViewWithStyle:UITableViewStylePlain];
     self.title      =   @"BlogDemo";
     _titleArr       =   @[@"UIBezierPath配合CAShapeLayer画一些有趣的图形",
                           @"微信下拉小视频加载动画",

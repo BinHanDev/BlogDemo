@@ -20,7 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [super initTableView:self.view.frame style:UITableViewStylePlain];
+    [super initTableViewWithStyle:UITableViewStylePlain];
     super.tableView.backgroundColor = [UIColor blackColor];
     WXPullView *pullView = [[WXPullView alloc] initWithFrame:CGRectMake((CGRectGetWidth(self.view.frame) / 2) - 25, -kNavBarHeight, 50, 30)];
     [super.tableView addSubview:(self.pullView = pullView)];

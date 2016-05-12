@@ -23,7 +23,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [super initTableView:self.view.frame style:UITableViewStylePlain];
+    [super initTableViewWithStyle:UITableViewStylePlain];
     self.dataArray = @[@[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)]];
 }
 

@@ -11,7 +11,7 @@
 #define BHPushVC(ViewController) [[UIApplication sharedApplication].currentController.navigationController pushViewController:ViewController animated:YES]
 
 #define BHPresentVC(ViewController)\
-UINavigationController *nv=[[UINavigationController alloc]initWithRootViewController:ViewController];\
+BHNavigationController *nv=[[BHNavigationController alloc]initWithRootViewController:ViewController];\
 [[UIApplication sharedApplication].currentController presentViewController:nv animated:YES completion:nil]
 
 @interface UIApplication (BHApplication)

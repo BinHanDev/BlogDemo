@@ -37,6 +37,7 @@
 		34391CBD1CE4261C00970573 /* BHPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391CBA1CE4261C00970573 /* BHPlayer.m */; };
 		34391CBE1CE4261C00970573 /* BHPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391CBC1CE4261C00970573 /* BHPlayerControlView.m */; };
 		34391CC01CE4262300970573 /* BHPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 34391CBF1CE4262300970573 /* BHPlayer.bundle */; };
+		34391D071CE491E100970573 /* BHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391D061CE491E100970573 /* BHNavigationController.m */; };
 		5543EC20860BCB06DC7E08E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BE2AB1BADCCB1D166B4B27 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +101,9 @@
 		34391CBB1CE4261C00970573 /* BHPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHPlayerControlView.h; sourceTree = "<group>"; };
 		34391CBC1CE4261C00970573 /* BHPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHPlayerControlView.m; sourceTree = "<group>"; };
 		34391CBF1CE4262300970573 /* BHPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BHPlayer.bundle; sourceTree = "<group>"; };
+		34391CC81CE486E500970573 /* 1213123.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1213123.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34391D051CE491E100970573 /* BHNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHNavigationController.h; sourceTree = "<group>"; };
+		34391D061CE491E100970573 /* BHNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHNavigationController.m; sourceTree = "<group>"; };
 		B8BE2AB1BADCCB1D166B4B27 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22544934ADB34D7C21A2496 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +114,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5543EC20860BCB06DC7E08E7 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34391CC51CE486E500970573 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				34391C491CE4212100970573 /* BlogDemo.app */,
+				34391CC81CE486E500970573 /* 1213123.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				34391C781CE4223600970573 /* Base */,
+				34391D041CE491BB00970573 /* Nav */,
 				34391C7F1CE4225200970573 /* CycleUIScrollView */,
 				34391C861CE4227E00970573 /* UIBezierPath */,
 				34391C901CE422A900970573 /* CellRandomSubView */,
@@ -310,6 +323,15 @@
 			name = GPUImage;
 			sourceTree = "<group>";
 		};
+		34391D041CE491BB00970573 /* Nav */ = {
+			isa = PBXGroup;
+			children = (
+				34391D051CE491E100970573 /* BHNavigationController.h */,
+				34391D061CE491E100970573 /* BHNavigationController.m */,
+			);
+			name = Nav;
+			sourceTree = "<group>";
+		};
 		42EA6A9A548F31CDF693CA1B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +372,23 @@
 			productReference = 34391C491CE4212100970573 /* BlogDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		34391CC71CE486E500970573 /* 1213123 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34391CDC1CE486E500970573 /* Build configuration list for PBXNativeTarget "1213123" */;
+			buildPhases = (
+				34391CC41CE486E500970573 /* Sources */,
+				34391CC51CE486E500970573 /* Frameworks */,
+				34391CC61CE486E500970573 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = 1213123;
+			productName = 1213123;
+			productReference = 34391CC81CE486E500970573 /* 1213123.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -361,6 +400,9 @@
 				ORGANIZATIONNAME = BinHan;
 				TargetAttributes = {
 					34391C481CE4212100970573 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					34391CC71CE486E500970573 = {
 						CreatedOnToolsVersion = 7.2;
 					};
 				};
@@ -379,6 +421,7 @@
 			projectRoot = "";
 			targets = (
 				34391C481CE4212100970573 /* BlogDemo */,
+				34391CC71CE486E500970573 /* 1213123 */,
 			);
 		};
 /* End PBXProject section */
@@ -392,6 +435,13 @@
 				34391C591CE4212100970573 /* Assets.xcassets in Resources */,
 				34391CC01CE4262300970573 /* BHPlayer.bundle in Resources */,
 				34391C641CE4217800970573 /* snow.mp4 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34391CC61CE486E500970573 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,11 +521,19 @@
 				34391C681CE421CB00970573 /* BHHookUtility.m in Sources */,
 				34391C511CE4212100970573 /* AppDelegate.m in Sources */,
 				34391C4E1CE4212100970573 /* main.m in Sources */,
+				34391D071CE491E100970573 /* BHNavigationController.m in Sources */,
 				34391C6F1CE421E400970573 /* UIApplication+BHApplication.m in Sources */,
 				34391C851CE4227500970573 /* BHCycleCollectionViewController.m in Sources */,
 				34391CBE1CE4261C00970573 /* BHPlayerControlView.m in Sources */,
 				34391CB11CE4238F00970573 /* BHViewController7.m in Sources */,
 				34391C9E1CE4231A00970573 /* BHViewController5.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34391CC41CE486E500970573 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,6 +661,28 @@
 			};
 			name = Release;
 		};
+		34391CDD1CE486E500970573 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = 1213123/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.BinHan.BlogDemo.-213123";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		34391CDE1CE486E500970573 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = 1213123/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.BinHan.BlogDemo.-213123";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -623,6 +703,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		34391CDC1CE486E500970573 /* Build configuration list for PBXNativeTarget "1213123" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34391CDD1CE486E500970573 /* Debug */,
+				34391CDE1CE486E500970573 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

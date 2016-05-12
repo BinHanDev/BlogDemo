@@ -12,12 +12,15 @@
 
 @implementation BHBaseTableController
 
--(void)initTableView:(CGRect)frame style:(UITableViewStyle) style
+-(void)initTableViewWithStyle:(UITableViewStyle) style
 {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:frame style:style];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:style];
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:(self.tableView = tableView)];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

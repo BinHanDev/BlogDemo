@@ -144,20 +144,20 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     if([self.sourceUrl rangeOfString:@"http"].location != NSNotFound)
     {
         self.playerItem = [AVPlayerItem playerItemWithURL:[NSURL URLWithString:[self.sourceUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
-        //网络视频添加kvo监听
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:_playerItem];
-        [self.playerItem removeObserver:self forKeyPath:@"status"];
-        [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
-        // 缓冲区空了，需要等待数据
-        [self.playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
-        // 缓冲区有足够数据可以播放了
-        [self.playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
     }
     else
     {
         AVAsset *movieAsset = [[AVURLAsset alloc]initWithURL:[NSURL fileURLWithPath:self.sourceUrl] options:nil];
         self.playerItem = [AVPlayerItem playerItemWithAsset:movieAsset];
     }
+    //视频添加kvo监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playerItem];
+    [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
+    // 缓冲区空了，需要等待数据
+    [self.playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
+    // 缓冲区有足够数据可以播放了
+    [self.playerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
     // 每次都重新创建Player，替换replaceCurrentItemWithPlayerItem:，该方法阻塞线程
     self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
     // 初始化playerLayer
@@ -395,7 +395,21 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     if (!success) { /* handle the error in setCategoryError */ }
 }
 
-
+/**
+ *  播放完了
+ *
+ *  @param notification 通知
+ */
+- (void)moviePlayDidEnd:(NSNotification *)notification
+{
+    self.state = BHPlayerStateStopped;
+//        self.controlView.backgroundColor  = RGBA(0, 0, 0, .6);
+    self.playDidEnd = YES;
+    // 初始化显示controlView为YES
+    self.isMaskShowing = NO;
+    // 延迟隐藏controlView
+    [self animateShow];
+}
 
 /**
  *  添加观察者、通知

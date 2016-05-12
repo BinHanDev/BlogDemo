@@ -19,6 +19,6 @@
  *  @param frame frame
  *  @param style style
  */
--(void)initTableView:(CGRect)frame style:(UITableViewStyle) style;
+-(void)initTableViewWithStyle:(UITableViewStyle) style;
 
 @end
