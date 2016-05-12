@@ -53,8 +53,11 @@
         visualEffectView.frame = self.view.bounds;
         //低于1.0会导致离屏渲染
         visualEffectView.alpha = 1.0;
-        visualEffectView.frame = CGRectMake(0, 0, SCREEN_WIDTH / 2.F, SCREEN_HEIGHT / 2.f);
         [self.view addSubview:(self.visualEffectView = visualEffectView)];
+        [self.visualEffectView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.height.mas_equalTo(SCREEN_HEIGHT / 2.f);
+            make.center.equalTo(self.view);
+        }];
     }
     else
     {
