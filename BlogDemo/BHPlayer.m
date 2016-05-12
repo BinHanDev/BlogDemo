@@ -855,7 +855,6 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     return [NSString stringWithFormat:@"%@:%@", min, sec];
 }
 
-
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
