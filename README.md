@@ -4,7 +4,7 @@
 http://binhan666.github.io/
 
 ### XCode插件
-**[CocoaPods](https://github.com/CocoaPods/CocoaPods)**需要翻墙
+**[CocoaPods](https://github.com/CocoaPods/CocoaPods)**
 
 **[Alcatraz](https://github.com/alcatraz/Alcatraz)**
 
