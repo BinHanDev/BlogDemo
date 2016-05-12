@@ -25,7 +25,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addBlurMask:)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"AddBlue" style:UIBarButtonItemStylePlain target:self action:@selector(addBlurMask:)];
     [self bgImageView];
 }
 
@@ -53,7 +53,7 @@
         visualEffectView.frame = self.view.bounds;
         //低于1.0会导致离屏渲染
         visualEffectView.alpha = 1.0;
-        visualEffectView.frame = CGRectMake(0, 0, 200, 300);
+        visualEffectView.frame = CGRectMake(0, 0, SCREEN_WIDTH / 2.F, SCREEN_HEIGHT / 2.f);
         [self.view addSubview:(self.visualEffectView = visualEffectView)];
     }
     else

@@ -793,7 +793,7 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     // 每次滑动需要叠加时间
     self.sumTime += value / 200;
     // 需要限定sumTime的范围
-    CMTime totalTime           = self.playerItem.duration;
+    CMTime totalTime = self.playerItem.duration;
     CGFloat totalMovieDuration = (CGFloat)totalTime.value/totalTime.timescale;
     if (self.sumTime > totalMovieDuration) { self.sumTime = totalMovieDuration;}
     if (self.sumTime < 0)
