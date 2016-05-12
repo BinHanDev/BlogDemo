@@ -37,9 +37,9 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     };
     //网络视频
-//    NSString *videoUrl = [@"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *videoUrl = [@"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     //本地视频
-    NSString *videoUrl = [[NSBundle mainBundle] pathForResource:@"snow" ofType:@"mp4"];
+//    NSString *videoUrl = [[NSBundle mainBundle] pathForResource:@"snow" ofType:@"mp4"];
     self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
     self.playerView.sourceUrl = videoUrl;
 }
@@ -55,6 +55,24 @@
 {
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarHidden = NO;
+}
+
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (toInterfaceOrientation == UIInterfaceOrientationPortrait)
+    {
+        self.view.backgroundColor = [UIColor whiteColor];
+         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
+             make.top.equalTo(self.view).offset(20);
+         }];
+    }
+    else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight || toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft)
+    {
+        self.view.backgroundColor = [UIColor blackColor];
+         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
+             make.top.equalTo(self.view).offset(0);
+         }];
+    }
 }
 
 @end

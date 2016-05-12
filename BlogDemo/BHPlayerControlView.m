@@ -48,7 +48,7 @@
 }
 
 /**
- *  设置子空间约束
+ *  设置子空间约束，采用Masonry设置约束，不需要重写layoutSubviews方法
  */
 - (void)makeSubViewsConstraints
 {

@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-static const CGFloat BHPlayerAnimationTimeInterval             = 2.0f;
+static const CGFloat BHPlayerAnimationTimeInterval = 5.0f;
 static const CGFloat BHPlayerControlBarAutoFadeOutTimeInterval = 0.5f;
 
 // 枚举值，包含水平移动方向和垂直移动方向
@@ -95,6 +95,7 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
  * 滑杆 
  */
 @property (nonatomic, strong) UISlider *volumeViewSlider;
+
 @end
 
 @implementation BHPlayer
@@ -179,7 +180,7 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     self.state = BHPlayerStateBuffering;
     // 开始播放
     [self play];
-//    self.controlView.startBtn.selected = YES;
+    self.controlView.startBtn.selected = YES;
     self.isPauseByUser = NO;
     // 强制让系统调用layoutSubviews 两个方法必须同时写
     [self setNeedsLayout]; //是标记 异步刷新 会调但是慢
@@ -190,11 +191,10 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
 {
     [super layoutSubviews];
     self.playerLayer.frame = self.bounds;
-//    [UIApplication sharedApplication].statusBarHidden = NO;
+    [UIApplication sharedApplication].statusBarHidden = NO;
     // 只要屏幕旋转就显示控制层
-//    self.isMaskShowing = NO;
-    // 延迟隐藏controlView
-//    [self animateShow];
+    self.isMaskShowing = NO;
+    [self animateShow];
     // fix iOS7 crash bug
 //    [self layoutIfNeeded];
 }
@@ -256,12 +256,9 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
             {
                 self.state = BHPlayerStatePlaying;
             }
-            
         }
     }
 }
-
-
 
 - (void)autoFadeOutControlBar
 {
@@ -433,21 +430,56 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     // 全屏按钮点击事件
 //    [self.controlView.fullScreenBtn addTarget:self action:@selector(fullScreenAction:) forControlEvents:UIControlEventTouchUpInside];
     // 监测设备方向
-//    [self listeningRotating];
+    [self listeningRotating];
 }
 
 /**
  *  监听设备旋转通知
  */
-//- (void)listeningRotating
-//{
-//    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(onDeviceOrientationChange)
-//                                                 name:UIDeviceOrientationDidChangeNotification
-//                                               object:nil
-//     ];
-//}
+- (void)listeningRotating
+{
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onDeviceOrientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
+/**
+ *  屏幕方向发生变化会调用这里
+ */
+- (void)onDeviceOrientationChange
+{
+    UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
+    UIInterfaceOrientation interfaceOrientation = (UIInterfaceOrientation)orientation;
+    switch (interfaceOrientation)
+    {
+        case UIInterfaceOrientationPortraitUpsideDown:
+        {
+            self.controlView.fullScreenBtn.selected = YES;
+            self.isFullScreen = YES;
+            break;
+        }
+        case UIInterfaceOrientationPortrait:
+        {
+            self.isFullScreen = !self.isFullScreen;
+            self.controlView.fullScreenBtn.selected = NO;
+            self.isFullScreen = NO;
+            break;
+        }
+        case UIInterfaceOrientationLandscapeLeft:
+        {
+            self.controlView.fullScreenBtn.selected = YES;
+            self.isFullScreen = YES;
+            break;
+        }
+        case UIInterfaceOrientationLandscapeRight:
+        {
+            self.controlView.fullScreenBtn.selected = YES;
+            self.isFullScreen = YES;
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 
 /**
@@ -469,7 +501,7 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     self.didEnterBackground = NO;
     self.isMaskShowing = NO;
     // 延迟隐藏controlView
-//    [self animateShow];
+    [self animateShow];
     [self createTimer];
     if (!self.isPauseByUser)
     {
@@ -659,7 +691,27 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     }
     else
     {
-//        [self interfaceOrientation:UIInterfaceOrientationPortrait];
+        [self interfaceOrientation:UIInterfaceOrientationPortrait];
+    }
+}
+
+/**
+ *  强制屏幕转屏
+ *
+ *  @param orientation 屏幕方向
+ */
+- (void)interfaceOrientation:(UIInterfaceOrientation)orientation
+{
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)])
+    {
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val = orientation;
+        // 从2开始是因为0 1 两个参数已经被selector和target占用
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
     }
 }
 
@@ -785,15 +837,13 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
                     // 继续播放
                     [self play];
                     [self.timer setFireDate:[NSDate date]];
-                    
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         // 隐藏视图
                         self.controlView.progressIndicatorLabel.hidden = YES;
                     });
                     // 快进、快退时候把开始播放按钮改为播放状态
                     self.controlView.startBtn.selected = YES;
-                    self.isPauseByUser                 = NO;
-                    
+                    self.isPauseByUser = NO;
                     [self seekToTime:self.sumTime completionHandler:nil];
                     // 把sumTime滞空，不然会越加越多
                     self.sumTime = 0;
