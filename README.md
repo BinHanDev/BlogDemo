@@ -4,7 +4,9 @@
 http://binhan666.github.io/
 
 ### XCode插件
-**[CocoaPods](https://github.com/CocoaPods/CocoaPods)  [Alcatraz](https://github.com/alcatraz/Alcatraz)**
+**[CocoaPods](https://github.com/CocoaPods/CocoaPods)**需要翻墙
+
+**[Alcatraz](https://github.com/alcatraz/Alcatraz)**
 
 **[VVDocumenter-Xcode](https://github.com/onevcat/VVDocumenter-Xcode)**
 
