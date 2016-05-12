@@ -360,6 +360,7 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     }
 }
 
+
 /**
  *  双击显示控制层 播放/暂停
  *
@@ -370,6 +371,46 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     [self animateShow];
     [self startAction:self.controlView.startBtn];
 }
+
+/**
+ *  全屏按钮事件
+ *
+ *  @param sender 全屏Button
+ */
+- (void)fullScreenAction:(UIButton *)sender
+{
+    UIDeviceOrientation orientation  = [UIDevice currentDevice].orientation;
+    UIInterfaceOrientation interfaceOrientation = (UIInterfaceOrientation)orientation;
+    switch (interfaceOrientation)
+    {
+        case UIInterfaceOrientationPortraitUpsideDown:
+        {
+            [self interfaceOrientation:UIInterfaceOrientationPortrait];
+            break;
+        }
+        case UIInterfaceOrientationPortrait:
+        {
+            [self interfaceOrientation:UIInterfaceOrientationLandscapeRight];
+            break;
+        }
+        case UIInterfaceOrientationLandscapeLeft:
+        {
+            [self interfaceOrientation:UIInterfaceOrientationPortrait];
+            break;
+        }
+        case UIInterfaceOrientationLandscapeRight:
+        {
+            [self interfaceOrientation:UIInterfaceOrientationPortrait];
+             break;
+        }
+        default:
+        {
+            [self interfaceOrientation:UIInterfaceOrientationPortrait];
+            break;
+        }
+    }
+}
+
 
 /**
  *  获取系统音量
@@ -428,7 +469,7 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     // 返回按钮点击事件
     [self.controlView.backBtn addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
     // 全屏按钮点击事件
-//    [self.controlView.fullScreenBtn addTarget:self action:@selector(fullScreenAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.controlView.fullScreenBtn addTarget:self action:@selector(fullScreenAction:) forControlEvents:UIControlEventTouchUpInside];
     // 监测设备方向
     [self listeningRotating];
 }
