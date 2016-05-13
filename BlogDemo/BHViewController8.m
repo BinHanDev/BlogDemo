@@ -276,7 +276,6 @@ const CGFloat lableWidth = 100.f;
     label.textColor = color;
 }
 
-
 /**
  *  设置录制时候时的按钮动画，循环旋转是一个递归函数
  *

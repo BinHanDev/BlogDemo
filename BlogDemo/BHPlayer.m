@@ -650,7 +650,8 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
  */
 - (void)seekToTime:(NSInteger)dragedSeconds completionHandler:(void (^)(BOOL finished))completionHandler
 {
-    if (self.player.currentItem.status == AVPlayerItemStatusReadyToPlay) {
+    if (self.player.currentItem.status == AVPlayerItemStatusReadyToPlay)
+    {
         // seekTime:completionHandler:不能精确定位
         // 如果需要精确定位，可以使用seekToTime:toleranceBefore:toleranceAfter:completionHandler:
         // 转换成CMTime才能给player来控制播放进度

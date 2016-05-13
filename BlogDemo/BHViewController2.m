@@ -38,7 +38,8 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     BHCellRandomCell *cell = [tableView dequeueReusableCellWithIdentifier:[BHCellRandomCell identifier]];
     if (!cell)
     {

@@ -15,7 +15,8 @@
 
 @implementation BHViewController4
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     UILabel *lable = [UILabel new];
