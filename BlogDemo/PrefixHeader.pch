@@ -20,9 +20,13 @@
 #import "UIApplication+BHApplication.h"
 #import "MJRefresh.h"
 #import "Masonry.h"
+
 #import "BHBaseController.h"
 #import "BHBaseTableController.h"
+#import "BHBaseModel.h"
+
 #import "BHUtils.h"
 #import "BHNetReqManager.h"
+
 
 #endif /* PrefixHeader_pch */

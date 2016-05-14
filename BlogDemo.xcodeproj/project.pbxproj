@@ -38,6 +38,7 @@
 		34391CBE1CE4261C00970573 /* BHPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391CBC1CE4261C00970573 /* BHPlayerControlView.m */; };
 		34391CC01CE4262300970573 /* BHPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 34391CBF1CE4262300970573 /* BHPlayer.bundle */; };
 		34391D071CE491E100970573 /* BHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391D061CE491E100970573 /* BHNavigationController.m */; };
+		34E2294A1CE76945007B8098 /* BHBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E229491CE76945007B8098 /* BHBaseModel.m */; };
 		5543EC20860BCB06DC7E08E7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8BE2AB1BADCCB1D166B4B27 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,8 @@
 		34391CC81CE486E500970573 /* 1213123.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1213123.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34391D051CE491E100970573 /* BHNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHNavigationController.h; sourceTree = "<group>"; };
 		34391D061CE491E100970573 /* BHNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHNavigationController.m; sourceTree = "<group>"; };
+		34E229481CE76945007B8098 /* BHBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHBaseModel.h; sourceTree = "<group>"; };
+		34E229491CE76945007B8098 /* BHBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHBaseModel.m; sourceTree = "<group>"; };
 		B8BE2AB1BADCCB1D166B4B27 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22544934ADB34D7C21A2496 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +156,7 @@
 				34391C651CE421B800970573 /* Tools */,
 				34391D081CE4956A00970573 /* Custom */,
 				34391C701CE421F200970573 /* NetWork */,
+				34E229471CE76929007B8098 /* Model */,
 				34391C771CE4222400970573 /* Controller */,
 				34391C4F1CE4212100970573 /* AppDelegate.h */,
 				34391C501CE4212100970573 /* AppDelegate.m */,
@@ -340,6 +344,15 @@
 			name = Custom;
 			sourceTree = "<group>";
 		};
+		34E229471CE76929007B8098 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				34E229481CE76945007B8098 /* BHBaseModel.h */,
+				34E229491CE76945007B8098 /* BHBaseModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		42EA6A9A548F31CDF693CA1B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,6 +523,7 @@
 			files = (
 				34391C8C1CE4229600970573 /* BHViewController1.m in Sources */,
 				34391CAB1CE4237E00970573 /* BHViewController8.m in Sources */,
+				34E2294A1CE76945007B8098 /* BHBaseModel.m in Sources */,
 				34391C9A1CE422EC00970573 /* BHViewController4.m in Sources */,
 				34391C7D1CE4224600970573 /* BHBaseController.m in Sources */,
 				34391C6B1CE421D100970573 /* BHUtils.m in Sources */,
@@ -719,6 +733,7 @@
 				34391CDE1CE486E500970573 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
