@@ -12,6 +12,7 @@
 @interface BHViewController1 ()
 
 @property (nonatomic, weak) WXPullView *pullView;
+@property (nonatomic, weak) UILabel *footerView;
 
 @end
 
@@ -50,8 +51,10 @@
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    BHLog(@"contentOffset y = %0.f", scrollView.contentOffset.y);
+    BHLog(@"contentInset y = %0.f", scrollView.contentInset.top);
     [self.pullView animationWith:scrollView.contentOffset.y];
-    if(scrollView.contentOffset.y < -250.f)
+    if(scrollView.contentOffset.y < -200.f)
     {
         UIViewController *controller = [[UIViewController alloc] init];
         controller.title = @"录制视频";

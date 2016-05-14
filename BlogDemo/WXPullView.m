@@ -149,7 +149,7 @@
 
 - (void)animationWith:(CGFloat)y
 {
-    CGFloat flag = self.frame.origin.y * 2.f - 20.f;
+    CGFloat flag = self.frame.origin.y * 2.f - 10.f;
     if (y < flag)
     {
         if (self.eyeFirstLightLayer.lineWidth < 5.f)
@@ -159,7 +159,7 @@
         }
     }
     
-    if(y < flag - 20)
+    if(y < flag - 10)
     {
         if (self.eyeballLayer.opacity <= 1.0f)
         {
@@ -167,7 +167,7 @@
         }
     }
     
-    if (y < flag - 40)
+    if (y < flag - 20)
     {
         if (self.topEyesocketLayer.strokeEnd < 1.f && self.topEyesocketLayer.strokeStart > 0.f)
         {
@@ -178,7 +178,7 @@
         }
     }
     
-    if (y > flag - 40)
+    if (y > flag - 20)
     {
         if (self.topEyesocketLayer.strokeEnd > 0.5f && self.topEyesocketLayer.strokeStart < 0.5f)
         {
@@ -189,7 +189,7 @@
         }
     }
     
-    if (y > flag - 20)
+    if (y > flag - 10)
     {
         if (self.eyeballLayer.opacity >= 0.0f)
         {

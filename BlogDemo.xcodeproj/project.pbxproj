@@ -160,8 +160,6 @@
 				34391C771CE4222400970573 /* Controller */,
 				34391C4F1CE4212100970573 /* AppDelegate.h */,
 				34391C501CE4212100970573 /* AppDelegate.m */,
-				34391CB21CE423DD00970573 /* BHMainViewController.h */,
-				34391CB31CE423DD00970573 /* BHMainViewController.m */,
 				34391C581CE4212100970573 /* Assets.xcassets */,
 				34391C5A1CE4212100970573 /* LaunchScreen.storyboard */,
 				34391C5D1CE4212100970573 /* Info.plist */,
@@ -222,6 +220,8 @@
 				34391CA31CE4233600970573 /* NetTest */,
 				34391CA71CE4235C00970573 /* AVPlayer */,
 				34391CA81CE4236900970573 /* GPUImage */,
+				34391CB21CE423DD00970573 /* BHMainViewController.h */,
+				34391CB31CE423DD00970573 /* BHMainViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
