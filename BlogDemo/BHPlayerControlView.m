@@ -34,6 +34,7 @@
         //底部bottomImageView 将开始/时间/进度条/全屏添加在bottomImageView
         [self bottomImageView];
         [self startBtn];
+        [self repeatBtn];
         [self currentTimeLabel];
         [self totalTimeLabel];
         [self progressView];
@@ -43,6 +44,9 @@
         [self activity];
         //由于进度条及拖动slider与时间lable未知有关，所以注意先后顺序
         [self makeSubViewsConstraints];
+        [self.activity stopAnimating];
+        // 初始化时重置controlView
+        [self resetControlView];
     }
     return self;
 }
@@ -102,6 +106,9 @@
         make.center.equalTo(self);
     }];
     [self.activity mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self);
+    }];
+    [self.repeatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self);
     }];
 }
@@ -241,6 +248,17 @@
     return _activity;
 }
 
+
+- (UIButton *)repeatBtn
+{
+    if (!_repeatBtn)
+    {
+        UIButton *repeatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [repeatBtn setImage:BHIMG(BHPlayerSrcName(@"repeat_video")) forState:UIControlStateNormal];
+        [self addSubview:(_repeatBtn = repeatBtn)];
+    }
+    return _repeatBtn;
+}
 - (void)showControlView
 {
     self.topImageView.alpha = 1;
@@ -253,6 +271,17 @@
     self.topImageView.alpha = 0;
     self.bottomImageView.alpha = 0;
     self.backBtn.alpha = 0;
+}
+
+- (void)resetControlView
+{
+    self.videoSlider.value = 0;
+    self.progressView.progress = 0;
+    self.currentTimeLabel.text = @"00:00";
+    self.totalTimeLabel.text = @"00:00";
+    self.progressIndicatorLabel.hidden = YES;
+    self.repeatBtn.hidden = YES;
+    self.backgroundColor = [UIColor clearColor];
 }
 
 /*

@@ -13,12 +13,7 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Test" style:UIBarButtonItemStylePlain target:self action:@selector(request:)];
-}
-
--(void)request:(UIBarButtonItem *)sender
-{
-    //IOS9下需针对HTTP请求进行适配
+    //直接请求  IOS9下需针对HTTP请求进行适配
     [[BHNetReqManager sharedManager].bh_requestUrl(@"http://binhan666.github.io/").bh_requestType(GET).bh_responseSerializer(HTTPResponseSerializer).bh_parameters(nil) startRequestWithCompleteHandler:^(id response, NSError *error) {
         if (response)
         {
@@ -36,6 +31,6 @@
             [BHUtils showMessage:error.localizedDescription];
         }
     }];
-    
 }
+
 @end

@@ -10,7 +10,7 @@
 
 -(void)setCurrentController:(UIViewController *)currentController
 {
-     objc_setAssociatedObject(self, @selector(currentController), currentController, OBJC_ASSOCIATION_ASSIGN);
+     objc_setAssociatedObject(self, @selector(currentController), currentController, OBJC_ASSOCIATION_RETAIN);
 }
 
 -(UIViewController *)currentController

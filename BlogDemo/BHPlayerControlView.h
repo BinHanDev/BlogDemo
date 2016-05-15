@@ -48,6 +48,10 @@ typedef void(^BHSliderTapBlock)(CGFloat value);
  * 系统菊花 
  */
 @property (nonatomic, strong) UIActivityIndicatorView *activity;
+/**
+ * 重播按钮
+ */
+@property (nonatomic, weak) UIButton *repeatBtn;
 
 @property (nonatomic, copy) BHSliderTapBlock sliderTapBlock;
 
@@ -60,5 +64,10 @@ typedef void(^BHSliderTapBlock)(CGFloat value);
  *  隐藏控制器
  */
 - (void)hideControlView;
+
+/** 
+ * 重置ControlView 
+ */
+- (void)resetControlView;
 
 @end

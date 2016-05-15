@@ -52,6 +52,10 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
  * 播放完了
  */
 @property (nonatomic, assign) BOOL playDidEnd;
+/** 
+ * 是否再次设置URL播放视频 
+ */
+@property (nonatomic, assign) BOOL repeatToPlay;
 /**
  * 进入后台
  */
@@ -132,8 +136,34 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
 {
     NSAssert(sourceUrl != nil, @"必须先传入视频sourceUrl！！！");
     _sourceUrl = sourceUrl;
+    // 播放开始之前（加载中）设置站位图
+    UIImage *image = BHIMG(BHPlayerSrcName(@"splash_bg.jpg"));
+    self.layer.contents = (id) image.CGImage;
+    // 每次加载视频URL都设置重播为NO
+    self.repeatToPlay = NO;
+    self.playDidEnd   = NO;
+    // 根据屏幕的方向设置相关UI
+    [self onDeviceOrientationChange];
     [self addNotifications];
     [self configBHPlayer];
+}
+
+/**
+ *  设置播放的状态
+ *
+ *  @param state ZFPlayerState
+ */
+- (void)setState:(BHPlayerState)state
+{
+    _state = state;
+    if (state == BHPlayerStatePlaying)
+    {
+        // 改为黑色的背景，不然站位图会显示
+        UIImage *image = [BHUtils imageWithColor:[UIColor blackColor] size:self.mj_size];
+        self.layer.contents = (id) image.CGImage;
+    }
+    // 控制菊花显示、隐藏
+    state == BHPlayerStateBuffering ? ([self.controlView.activity startAnimating]) : ([self.controlView.activity stopAnimating]);
 }
 
 /**
@@ -153,7 +183,9 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     }
     //视频添加kvo监听
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playerItem];
+    // 视频资源的加载状态
     [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+    // 获取缓冲区
     [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
     // 缓冲区空了，需要等待数据
     [self.playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
@@ -411,6 +443,24 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     }
 }
 
+/**
+ *  重播点击事件
+ *
+ *  @param sender sender
+ */
+- (void)repeatPlay:(UIButton *)sender
+{
+    // 没有播放完
+    self.playDidEnd = NO;
+    // 重播改为NO
+    self.repeatToPlay = NO;
+    // 准备显示控制层
+    self.isMaskShowing = NO;
+    [self animateShow];
+    // 重置控制层View
+    [self.controlView resetControlView];
+    [self seekToTime:0 completionHandler:nil];
+}
 
 /**
  *  获取系统音量
@@ -441,8 +491,8 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
 - (void)moviePlayDidEnd:(NSNotification *)notification
 {
     self.state = BHPlayerStateStopped;
-//        self.controlView.backgroundColor  = RGBA(0, 0, 0, .6);
     self.playDidEnd = YES;
+    self.controlView.repeatBtn.hidden = NO;
     // 初始化显示controlView为YES
     self.isMaskShowing = NO;
     // 延迟隐藏controlView
@@ -470,6 +520,8 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     [self.controlView.backBtn addTarget:self action:@selector(backButtonAction) forControlEvents:UIControlEventTouchUpInside];
     // 全屏按钮点击事件
     [self.controlView.fullScreenBtn addTarget:self action:@selector(fullScreenAction:) forControlEvents:UIControlEventTouchUpInside];
+    // 重播
+    [self.controlView.repeatBtn addTarget:self action:@selector(repeatPlay:) forControlEvents:UIControlEventTouchUpInside];
     // 监测设备方向
     [self listeningRotating];
 }
@@ -531,7 +583,7 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     self.didEnterBackground = YES;
     [self pause];
     self.state = BHPlayerStatePause;
-//    [self cancelAutoFadeOutControlBar];
+    [self cancelAutoFadeOutControlBar];
 }
 
 /**
@@ -551,6 +603,15 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
         self.isPauseByUser  = NO;
         [self play];
     }
+}
+
+/**
+ *  取消延时隐藏controlView的方法
+ */
+- (void)cancelAutoFadeOutControlBar
+{
+    [self.timer invalidate];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 #pragma mark - slider事件
@@ -959,6 +1020,13 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     // 获取秒数
     NSString *sec = [NSString stringWithFormat:@"%02d",time % 60];
     return [NSString stringWithFormat:@"%@:%@", min, sec];
+}
+
+- (void)dealloc
+{
+    self.playerItem = nil;
+    // 移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /*
