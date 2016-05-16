@@ -181,16 +181,6 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
         AVAsset *movieAsset = [[AVURLAsset alloc]initWithURL:[NSURL fileURLWithPath:self.sourceUrl] options:nil];
         self.playerItem = [AVPlayerItem playerItemWithAsset:movieAsset];
     }
-    //视频添加kvo监听
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playerItem];
-    // 视频资源的加载状态
-    [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-    // 获取缓冲区
-    [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
-    // 缓冲区空了，需要等待数据
-    [self.playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
-    // 缓冲区有足够数据可以播放了
-    [self.playerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
     // 每次都重新创建Player，替换replaceCurrentItemWithPlayerItem:，该方法阻塞线程
     self.player = [AVPlayer playerWithPlayerItem:self.playerItem];
     // 初始化playerLayer
@@ -218,6 +208,40 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     [self setNeedsLayout]; //是标记 异步刷新 会调但是慢
     [self layoutIfNeeded]; //加上此代码立刻刷新
 }
+
+/**
+ *  根据playerItem，来添加移除观察者
+ *
+ *  @param playerItem playerItem
+ */
+- (void)setPlayerItem:(AVPlayerItem *)playerItem
+{
+    if (_playerItem == playerItem) return;
+    if (_playerItem)
+    {
+        //移除监听
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:_playerItem];
+        [_playerItem removeObserver:self forKeyPath:@"status"];
+        [_playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
+        [_playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+        [_playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+    }
+    _playerItem = playerItem;
+    if (playerItem)
+    {
+        //视频添加kvo监听
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moviePlayDidEnd:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.playerItem];
+        // 视频资源的加载状态
+        [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+        // 获取缓冲区
+        [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
+        // 缓冲区空了，需要等待数据
+        [self.playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
+        // 缓冲区有足够数据可以播放了
+        [self.playerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
+    }
+}
+
 
 - (void)layoutSubviews
 {
@@ -1024,9 +1048,9 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
 
 - (void)dealloc
 {
-    self.playerItem = nil;
     // 移除通知
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.playerItem = nil;
 }
 
 /*
