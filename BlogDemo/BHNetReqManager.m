@@ -175,27 +175,13 @@
 -(void)startRequestWithCompleteHandler:(void (^)(id response, NSError *error))handler
 {
     AFHTTPSessionManager *manager = [self setupAFHTTPSessionManager];
+
     [self setupRequestSerializerWithManager:manager];
     [self setupResponseSerializerWithManager:manager];
     switch (self.requestType)
     {
         case GET:
         {
-//            注释掉的是缓存代码
-//            NSURLSessionDataTask *a =  [manager GET:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//                handler(responseObject, nil);
-//                NSData *data = [NSJSONSerialization dataWithJSONObject:responseObject options:0 error:nil];
-//                NSCachedURLResponse *r = [[NSCachedURLResponse alloc] initWithResponse:task.response data:data];
-//                [[BHCustomURLCache standardURLCache] storeCachedResponse:r forRequest:a.originalRequest];
-//            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//                handler(nil, error);
-//            }];
-//            NSCachedURLResponse *reaponse = [[BHCustomURLCache standardURLCache] cachedResponseForRequest:a.originalRequest];
-//            if (reaponse)
-//            {
-//                handler(reaponse.data, nil);
-//                [a cancel];
-//            }
             [manager GET:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 handler(responseObject, nil);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -243,6 +229,21 @@
             break;
     }
     [self resetConfigWithManager];
+    //            注释掉的是缓存代码
+    //            NSURLSessionDataTask *task =  [manager GET:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    //                handler(responseObject, nil);
+    //                NSData *data = [NSJSONSerialization dataWithJSONObject:responseObject options:0 error:nil];
+    //                NSCachedURLResponse *cachedResponse = [[NSCachedURLResponse alloc] initWithResponse:task.response data:data];
+    //                [[BHCustomURLCache standardURLCache] storeCachedResponse:cachedResponse forRequest:task.originalRequest];
+    //            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    //                handler(nil, error);
+    //            }];
+    //            NSCachedURLResponse *reaponse = [[BHCustomURLCache standardURLCache] cachedResponseForRequest:task.originalRequest];
+    //            if (reaponse)
+    //            {
+    //                handler(reaponse.data, nil);
+    //                [task cancel];
+    //            }
 }
 
 /**
