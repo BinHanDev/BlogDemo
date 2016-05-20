@@ -18,6 +18,7 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:(self.tableView = tableView)];
+    //添加约束的方法则不论在任何版本都会让视图显示正确的大小
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];

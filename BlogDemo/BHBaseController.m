@@ -14,16 +14,18 @@
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
+#pragma mark 
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].currentController = self;
-     NSLog(@"进入控制器：%@", [[self class] description]);
+     NSLog(@"%s ：%@",  __PRETTY_FUNCTION__, [[self class] description]);
 }
 
 - (void)dealloc
 {
-    NSLog(@"控制器被dealloc: %@", [[self class] description]);
+    NSLog(@"%s : %@", __PRETTY_FUNCTION__, [[self class] description]);
 }
 
 @end
