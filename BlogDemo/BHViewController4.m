@@ -24,7 +24,7 @@
     [lable mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self.view);
     }];
-    if(IOS_VERSION_ABOVE(9.0))
+    if(iOS_VERSION_ABOVE(9.0))
     {
         lable.text = @"在Spotlight搜索关键词索引Test";
         CSSearchableItemAttributeSet *attributeSet = [[CSSearchableItemAttributeSet alloc] initWithItemContentType:@"com.mobile.BlogDemo"];

@@ -51,7 +51,7 @@
 
 -(void)addBlurMask:(UIBarButtonItem *)sender
 {
-    if (IOS_VERSION_ABOVE(8.0))
+    if (iOS_VERSION_ABOVE(8.0))
     {
         UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
         visualEffectView.frame = self.view.bounds;

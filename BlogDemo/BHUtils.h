@@ -17,7 +17,7 @@
  */
 #define BHIMG(str) [UIImage imageNamed:(str)]
 
-#define IOS_VERSION_ABOVE(x) ([[UIDevice currentDevice].systemVersion doubleValue] >= x) // 判断系统
+#define iOS_VERSION_ABOVE(x) ([[UIDevice currentDevice].systemVersion doubleValue] >= x) // 判断系统
 
 #define YES_OBJ		@1.0
 #define NO_OBJ		nil
