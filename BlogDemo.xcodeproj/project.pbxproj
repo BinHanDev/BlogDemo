@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3410C4EE1CFB2CCA0046A208 /* BHViewController9.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4ED1CFB2CCA0046A208 /* BHViewController9.m */; };
 		3410C4F11CFB55390046A208 /* UIScrollView+BHRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4F01CFB55390046A208 /* UIScrollView+BHRefresh.m */; };
-		3410C4F41CFB55670046A208 /* BHHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4F31CFB55670046A208 /* BHHeaderView.m */; };
+		3410C4F41CFB55670046A208 /* BHRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4F31CFB55670046A208 /* BHRefreshHeader.m */; };
 		34391C4E1CE4212100970573 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C4D1CE4212100970573 /* main.m */; };
 		34391C511CE4212100970573 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C501CE4212100970573 /* AppDelegate.m */; };
 		34391C591CE4212100970573 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34391C581CE4212100970573 /* Assets.xcassets */; };
@@ -51,8 +51,8 @@
 		3410C4ED1CFB2CCA0046A208 /* BHViewController9.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController9.m; sourceTree = "<group>"; };
 		3410C4EF1CFB55390046A208 /* UIScrollView+BHRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+BHRefresh.h"; sourceTree = "<group>"; };
 		3410C4F01CFB55390046A208 /* UIScrollView+BHRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+BHRefresh.m"; sourceTree = "<group>"; };
-		3410C4F21CFB55670046A208 /* BHHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHHeaderView.h; sourceTree = "<group>"; };
-		3410C4F31CFB55670046A208 /* BHHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHHeaderView.m; sourceTree = "<group>"; };
+		3410C4F21CFB55670046A208 /* BHRefreshHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHRefreshHeader.h; sourceTree = "<group>"; };
+		3410C4F31CFB55670046A208 /* BHRefreshHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHRefreshHeader.m; sourceTree = "<group>"; };
 		34391C491CE4212100970573 /* BlogDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlogDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34391C4D1CE4212100970573 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		34391C4F1CE4212100970573 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -138,8 +138,8 @@
 				3410C4ED1CFB2CCA0046A208 /* BHViewController9.m */,
 				3410C4EF1CFB55390046A208 /* UIScrollView+BHRefresh.h */,
 				3410C4F01CFB55390046A208 /* UIScrollView+BHRefresh.m */,
-				3410C4F21CFB55670046A208 /* BHHeaderView.h */,
-				3410C4F31CFB55670046A208 /* BHHeaderView.m */,
+				3410C4F21CFB55670046A208 /* BHRefreshHeader.h */,
+				3410C4F31CFB55670046A208 /* BHRefreshHeader.m */,
 			);
 			name = Refresh;
 			sourceTree = "<group>";
@@ -507,7 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3410C4F41CFB55670046A208 /* BHHeaderView.m in Sources */,
+				3410C4F41CFB55670046A208 /* BHRefreshHeader.m in Sources */,
 				34391C8C1CE4229600970573 /* BHViewController1.m in Sources */,
 				34391CAB1CE4237E00970573 /* BHViewController8.m in Sources */,
 				34E2294A1CE76945007B8098 /* BHBaseModel.m in Sources */,

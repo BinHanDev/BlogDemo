@@ -6,7 +6,10 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
+#import "BHRefreshHeader.h"
 
 @interface UIScrollView (BHRefresh)
+
+@property (strong, nonatomic) BHRefreshHeader *bh_header;
 
 @end

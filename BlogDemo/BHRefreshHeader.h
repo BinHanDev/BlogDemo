@@ -6,8 +6,8 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
-@interface BHHeaderView : UIView
+@interface BHRefreshHeader : UIView
 
-
+@property (nonatomic, weak) UIImageView *imageView;
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
-#import "BHHeaderView.h"
+#import "BHRefreshHeader.h"
 
-@implementation BHHeaderView
+@implementation BHRefreshHeader
 
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -18,6 +18,15 @@
         
     }
     return self;
+}
+
+-(void)imageView
+{
+    if (!self.imageView)
+    {
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(100, 0, 100, 0)];
+        
+    }
 }
 
 @end
