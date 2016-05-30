@@ -7,6 +7,8 @@
 //
 
 #import "BHViewController9.h"
+#import "UIScrollView+BHRefresh.h"
+
 
 @interface BHViewController9()
 {
@@ -21,7 +23,7 @@
     [super viewDidLoad];
     [super initTableViewWithStyle:UITableViewStylePlain];
     [self dataArr];
-
+     super.tableView.bh_header = [BHRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
