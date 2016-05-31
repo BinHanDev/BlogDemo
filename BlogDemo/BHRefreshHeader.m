@@ -187,10 +187,13 @@ const CGFloat herderHeight = 100.f;
         _scrollView.contentInset = UIEdgeInsetsMake(herderHeight + kNavBarHeight, 0, 0, 0);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
              self.state = MJRefreshStateIdle;
-            _scrollView.contentInset = UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0);
-            [self.imageView stopAnimating];
-            self.imageView.image = BHIMG(@"icon_pull_animation_1");
-            [self endRefreshing];
+            [UIView animateWithDuration:1.f animations:^{
+                _scrollView.contentInset = UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0);
+                [self.imageView stopAnimating];
+                self.imageView.image = BHIMG(@"icon_pull_animation_1");
+            } completion:^(BOOL finished) {
+                [self endRefreshing];
+            }];
         });
     }
 }

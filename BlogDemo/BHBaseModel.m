@@ -6,7 +6,18 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
+@interface BHBaseModel()
+//{
+//    NSString *_name;
+//}
+
+@property (nonatomic, copy) NSString *name;
+
+@end
+
 @implementation BHBaseModel
+
+//@dynamic name = name;
 
 - (NSString *)description
 {
@@ -29,6 +40,5 @@
 {
     return [self description];
 }
-
 
 @end
