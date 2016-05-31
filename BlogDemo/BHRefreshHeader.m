@@ -56,7 +56,6 @@ const CGFloat herderHeight = 100.f;
             [_magesArray addObject:BHIMG(imageName)];
         }
     }
-    self
     return self;
 }
 
@@ -155,6 +154,7 @@ const CGFloat herderHeight = 100.f;
     CGFloat offsetY = abs((int)_scrollView.mj_offsetY);
     if ( kNavBarHeight<offsetY && offsetY< 150 && self.state == BHRefreshStateIdle)
     {
+        [self.imageView stopAnimating];
         NSInteger imgIndex = (offsetY - kNavBarHeight) / 16;
         if (1<imgIndex && imgIndex< 5)
         {
@@ -163,13 +163,15 @@ const CGFloat herderHeight = 100.f;
         }
         self.imageView.mj_h = offsetY - kNavBarHeight;
     }
-//    if (offsetY >= 150)
-//    {
-//        self.imageView.image = nil;
-//        self.imageView.animationImages =_magesArray;
-//        [self.imageView startAnimating];
-//        self.state = BHRefreshStatePulling;
-//    }
+    else if (offsetY >= 150)
+    {
+        self.imageView.mj_h = 100.f;
+        [self.imageView stopAnimating];
+        self.imageView.animationImages = _magesArray;
+        self.imageView.animationRepeatCount = MAXFLOAT;
+        [self.imageView startAnimating];
+        self.state = BHRefreshStatePulling;
+    }
 }
 
 - (void)scrollViewContentSizeDidChange:(NSDictionary *)change
@@ -183,7 +185,26 @@ const CGFloat herderHeight = 100.f;
     {
         self.state = BHRefreshStateRefreshing;
         _scrollView.contentInset = UIEdgeInsetsMake(herderHeight + kNavBarHeight, 0, 0, 0);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+             self.state = MJRefreshStateIdle;
+            _scrollView.contentInset = UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0);
+            [self.imageView stopAnimating];
+            self.imageView.image = BHIMG(@"icon_pull_animation_1");
+            [self endRefreshing];
+        });
     }
 }
+
+- (void)endRefreshing
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if ([self.refreshingTarget respondsToSelector:self.refreshingAction]) {
+            MJRefreshMsgSend(MJRefreshMsgTarget(self.refreshingTarget), self.refreshingAction, self);
+        }
+    });
+    
+}
+
+
 
 @end

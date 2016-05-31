@@ -48,12 +48,21 @@
     if (!_dataArr)
     {
         _dataArr = [NSMutableArray array];
-        for (NSInteger i = 0; i < 20; i++)
-        {
-            [_dataArr addObject:[NSString stringWithFormat:@"test数据 %ld", i]];
-        }
+
     }
+    [_dataArr removeAllObjects];
+    for (NSInteger i = 0; i < 20; i++)
+    {
+        [_dataArr addObject:[NSString stringWithFormat:@"test随机数据 %d", (int)arc4random() % 100]];
+    }
+    
     [super.tableView reloadData];
+}
+
+-(void)loadNewData
+{
+    BHLog(@"最新数据加载结束");
+    [self dataArr];
 }
 
 @end
