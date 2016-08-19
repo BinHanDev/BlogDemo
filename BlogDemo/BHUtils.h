@@ -88,8 +88,7 @@ FOUNDATION_EXTERN double const kNavBarHeight;
 +(NSString *)randFileName;
 
 /**
- *  获取图片扩展名·
- *
+ *  获取图片扩展名
  *
  *  @return 返回扩展名
  */
