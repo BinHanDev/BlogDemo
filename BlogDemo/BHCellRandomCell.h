@@ -19,6 +19,11 @@
 @property(nonatomic, weak) NSObject<BHCellRandomCellDelegate> *delegate;
 @property(nonatomic, strong) NSArray *dataArr;
 
+/**
+ *  cell的identifier
+ *
+ *  @return 返回identifier
+ */
 +(NSString *)identifier;
 
 @end

@@ -49,6 +49,8 @@
 
 @implementation BHCycleCollectionViewController
 
+#pragma mark -circle
+
 -(instancetype)init
 {
     self = [super initWithCollectionViewLayout:[self flowLayout]];
@@ -85,6 +87,7 @@
     [self collectionViewScrollToPage:0];
 }
 
+#pragma mark -UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
@@ -109,6 +112,7 @@
 //    return UIEdgeInsetsMake(-10, 0, 0, 0);
 //}
 
+#pragma mark -UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {

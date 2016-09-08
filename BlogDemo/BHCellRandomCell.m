@@ -21,6 +21,8 @@ static NSString *CollectionViewIdentifier = @"CollectionViewIdentifier";
 
 @implementation BHCellRandomCell
 
+#pragma mark -init
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(nullable NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -47,6 +49,8 @@ static NSString *CollectionViewIdentifier = @"CollectionViewIdentifier";
     [self.collectionView reloadData];
     self.collectionView.mj_h = self.collectionView.collectionViewLayout.collectionViewContentSize.height;
 }
+
+#pragma mark -UICollectionViewDelegate
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {

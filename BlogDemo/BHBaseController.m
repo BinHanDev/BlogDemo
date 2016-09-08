@@ -8,13 +8,13 @@
 
 @implementation BHBaseController
 
+#pragma mark -circle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
 }
-
-#pragma mark 
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -22,6 +22,8 @@
     [UIApplication sharedApplication].currentController = self;
      NSLog(@"%s ：%@",  __PRETTY_FUNCTION__, [[self class] description]);
 }
+
+#pragma mark -dealloc
 
 - (void)dealloc
 {

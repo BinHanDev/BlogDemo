@@ -15,6 +15,8 @@
 
 @implementation BHViewController4
 
+#pragma mark -circle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

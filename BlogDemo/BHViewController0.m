@@ -16,6 +16,8 @@
 
 @implementation BHViewController0
 
+#pragma mark -circle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -24,6 +26,8 @@
     [self initCircle];
     [self showImage];
 }
+
+#pragma mark -private
 
 -(void)initBtn
 {

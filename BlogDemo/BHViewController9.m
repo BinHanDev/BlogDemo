@@ -18,6 +18,8 @@
 
 @implementation BHViewController9
 
+#pragma mark -cricle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -25,6 +27,8 @@
     [self dataArr];
      super.tableView.bh_header = [BHRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewData)];
 }
+
+#pragma mark -UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

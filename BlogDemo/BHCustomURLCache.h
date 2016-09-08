@@ -8,6 +8,11 @@
 
 @interface BHCustomURLCache : NSURLCache
 
+/**
+ *  获取单例对象
+ *
+ *  @return 返回单利对象
+ */
 + (instancetype)standardURLCache;
 
 @end

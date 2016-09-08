@@ -20,12 +20,16 @@
 
 @implementation BHViewController2
 
+#pragma mark -circle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [super initTableViewWithStyle:UITableViewStylePlain];
     self.dataArray = @[@[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)]];
 }
+
+#pragma mark -UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

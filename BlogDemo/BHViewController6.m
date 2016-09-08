@@ -10,6 +10,8 @@
 
 @implementation BHViewController6
 
+#pragma mark -cricle
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];

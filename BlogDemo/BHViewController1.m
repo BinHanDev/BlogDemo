@@ -18,6 +18,8 @@
 
 @implementation BHViewController1
 
+#pragma mark -circle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -26,6 +28,8 @@
     WXPullView *pullView = [[WXPullView alloc] initWithFrame:CGRectMake((CGRectGetWidth(self.view.frame) / 2) - 25, -kNavBarHeight, 50, 30)];
     [super.tableView addSubview:(self.pullView = pullView)];
 }
+
+#pragma mark -UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -48,6 +52,8 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
+
+#pragma mark -UIScrollViewDelegate
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

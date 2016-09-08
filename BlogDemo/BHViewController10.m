@@ -17,6 +17,7 @@
 
 @implementation BHViewController10
 
+#pragma mark -cricle
 
 -(void)viewDidLoad
 {

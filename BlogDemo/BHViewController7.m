@@ -18,6 +18,8 @@
 
 @end
 
+#pragma mark -cricle
+
 @implementation BHViewController7
 
 - (void)viewDidLoad

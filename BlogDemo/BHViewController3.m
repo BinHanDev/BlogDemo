@@ -34,6 +34,8 @@
 
 @implementation BHViewController3
 
+#pragma mark -circle
+
 -(instancetype)init
 {
     self = [super init];
@@ -87,6 +89,8 @@
     self.middlePosition = 1;
     [self scrollViewOffsetXWithPage:self.middlePosition];
 }
+
+#pragma mark -UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {

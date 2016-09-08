@@ -67,6 +67,8 @@ const CGFloat lableWidth = 100.f;
 
 @implementation BHViewController8
 
+#pragma mark -cricle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -91,6 +93,8 @@ const CGFloat lableWidth = 100.f;
     [self.videoCamera startCameraCapture];
     [self setUpCameraFilterView];
 }
+
+#pragma mark -private
 
 /**
  *  添加展示滤镜的Label及录制视频按钮

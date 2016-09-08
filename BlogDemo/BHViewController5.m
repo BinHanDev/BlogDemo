@@ -26,12 +26,16 @@
 
 @implementation BHViewController5
 
+#pragma mark -cricle
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"AddBlue" style:UIBarButtonItemStylePlain target:self action:@selector(addBlurMask:)];
     [self bgImageView];
 }
+
+#pragma mark -private
 
 -(UIImageView *)bgImageView
 {
