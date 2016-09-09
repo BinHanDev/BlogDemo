@@ -31,6 +31,7 @@
                           @"封装AVPlayer，触摸手势快进调节音量",
                           @"GPUImage实现实时滤镜，需真机测试",
                           @"下拉刷新",
+                          @"链式编程写UILabel和UIButton",
                           @"ReactiveCocoa学习",];
     
 }

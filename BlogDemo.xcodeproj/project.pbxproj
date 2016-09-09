@@ -42,8 +42,11 @@
 		34391CBE1CE4261C00970573 /* BHPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391CBC1CE4261C00970573 /* BHPlayerControlView.m */; };
 		34391CC01CE4262300970573 /* BHPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 34391CBF1CE4262300970573 /* BHPlayer.bundle */; };
 		34391D071CE491E100970573 /* BHNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391D061CE491E100970573 /* BHNavigationController.m */; };
-		34C6BDD31D635B440074C5D3 /* BHViewController10.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C6BDD21D635B440074C5D3 /* BHViewController10.m */; };
-		34C6BDD51D635F760074C5D3 /* BHViewController10.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34C6BDD41D635F760074C5D3 /* BHViewController10.xib */; };
+		34C6BDD31D635B440074C5D3 /* BHViewController11.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C6BDD21D635B440074C5D3 /* BHViewController11.m */; };
+		34C6BDD51D635F760074C5D3 /* BHViewController11.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34C6BDD41D635F760074C5D3 /* BHViewController11.xib */; };
+		34D142251D81A68D00C99B6D /* UILabel+BHLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D142241D81A68D00C99B6D /* UILabel+BHLabel.m */; };
+		34D142291D81AB4B00C99B6D /* BHViewController10.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D142281D81AB4B00C99B6D /* BHViewController10.m */; };
+		34D1422C1D81ADDC00C99B6D /* UIButton+BHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D1422B1D81ADDC00C99B6D /* UIButton+BHButton.m */; };
 		34E2294A1CE76945007B8098 /* BHBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E229491CE76945007B8098 /* BHBaseModel.m */; };
 		FACD4868EBCE1E47EE1F70B8 /* Pods_BlogDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC7DBD5722F93E50B146FF7 /* Pods_BlogDemo.framework */; };
 /* End PBXBuildFile section */
@@ -118,9 +121,15 @@
 		34391CBF1CE4262300970573 /* BHPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = BHPlayer.bundle; sourceTree = "<group>"; };
 		34391D051CE491E100970573 /* BHNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHNavigationController.h; sourceTree = "<group>"; };
 		34391D061CE491E100970573 /* BHNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHNavigationController.m; sourceTree = "<group>"; };
-		34C6BDD11D635B440074C5D3 /* BHViewController10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController10.h; sourceTree = "<group>"; };
-		34C6BDD21D635B440074C5D3 /* BHViewController10.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController10.m; sourceTree = "<group>"; };
-		34C6BDD41D635F760074C5D3 /* BHViewController10.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BHViewController10.xib; sourceTree = "<group>"; };
+		34C6BDD11D635B440074C5D3 /* BHViewController11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController11.h; sourceTree = "<group>"; };
+		34C6BDD21D635B440074C5D3 /* BHViewController11.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController11.m; sourceTree = "<group>"; };
+		34C6BDD41D635F760074C5D3 /* BHViewController11.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BHViewController11.xib; sourceTree = "<group>"; };
+		34D142231D81A68D00C99B6D /* UILabel+BHLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BHLabel.h"; sourceTree = "<group>"; };
+		34D142241D81A68D00C99B6D /* UILabel+BHLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BHLabel.m"; sourceTree = "<group>"; };
+		34D142271D81AB4B00C99B6D /* BHViewController10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController10.h; sourceTree = "<group>"; };
+		34D142281D81AB4B00C99B6D /* BHViewController10.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController10.m; sourceTree = "<group>"; };
+		34D1422A1D81ADDC00C99B6D /* UIButton+BHButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BHButton.h"; sourceTree = "<group>"; };
+		34D1422B1D81ADDC00C99B6D /* UIButton+BHButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BHButton.m"; sourceTree = "<group>"; };
 		34E229481CE76945007B8098 /* BHBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHBaseModel.h; sourceTree = "<group>"; };
 		34E229491CE76945007B8098 /* BHBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHBaseModel.m; sourceTree = "<group>"; };
 		8BB6BFE363B31757E98502EB /* Pods-BlogDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlogDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlogDemo/Pods-BlogDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +225,10 @@
 				34391C6E1CE421E400970573 /* UIApplication+BHApplication.m */,
 				2923803F1D66D76F00A6C355 /* UIImage+BHImage.h */,
 				292380401D66D76F00A6C355 /* UIImage+BHImage.m */,
+				34D142231D81A68D00C99B6D /* UILabel+BHLabel.h */,
+				34D142241D81A68D00C99B6D /* UILabel+BHLabel.m */,
+				34D1422A1D81ADDC00C99B6D /* UIButton+BHButton.h */,
+				34D1422B1D81ADDC00C99B6D /* UIButton+BHButton.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -244,6 +257,7 @@
 				34391CA71CE4235C00970573 /* AVPlayer */,
 				34391CA81CE4236900970573 /* GPUImage */,
 				3410C4EB1CFB2C880046A208 /* Refresh */,
+				34D142261D81A9C700C99B6D /* ChainProgram */,
 				34C6BDD01D635B030074C5D3 /* ReactiveCocoa */,
 				34391CB21CE423DD00970573 /* BHMainViewController.h */,
 				34391CB31CE423DD00970573 /* BHMainViewController.m */,
@@ -372,11 +386,20 @@
 		34C6BDD01D635B030074C5D3 /* ReactiveCocoa */ = {
 			isa = PBXGroup;
 			children = (
-				34C6BDD11D635B440074C5D3 /* BHViewController10.h */,
-				34C6BDD21D635B440074C5D3 /* BHViewController10.m */,
-				34C6BDD41D635F760074C5D3 /* BHViewController10.xib */,
+				34C6BDD11D635B440074C5D3 /* BHViewController11.h */,
+				34C6BDD21D635B440074C5D3 /* BHViewController11.m */,
+				34C6BDD41D635F760074C5D3 /* BHViewController11.xib */,
 			);
 			name = ReactiveCocoa;
+			sourceTree = "<group>";
+		};
+		34D142261D81A9C700C99B6D /* ChainProgram */ = {
+			isa = PBXGroup;
+			children = (
+				34D142271D81AB4B00C99B6D /* BHViewController10.h */,
+				34D142281D81AB4B00C99B6D /* BHViewController10.m */,
+			);
+			name = ChainProgram;
 			sourceTree = "<group>";
 		};
 		34E229471CE76929007B8098 /* Model */ = {
@@ -468,7 +491,7 @@
 			files = (
 				34391C5C1CE4212100970573 /* LaunchScreen.storyboard in Resources */,
 				34391C591CE4212100970573 /* Assets.xcassets in Resources */,
-				34C6BDD51D635F760074C5D3 /* BHViewController10.xib in Resources */,
+				34C6BDD51D635F760074C5D3 /* BHViewController11.xib in Resources */,
 				34391CC01CE4262300970573 /* BHPlayer.bundle in Resources */,
 				34391C641CE4217800970573 /* snow.mp4 in Resources */,
 			);
@@ -546,6 +569,7 @@
 				34391CAE1CE4238500970573 /* GPUImageBeautifyFilter.m in Sources */,
 				34391C961CE422CD00970573 /* BHCellRandomCell.m in Sources */,
 				34391C731CE4220200970573 /* BHNetReqManager.m in Sources */,
+				34D142291D81AB4B00C99B6D /* BHViewController10.m in Sources */,
 				34391C931CE422BF00970573 /* BHViewController2.m in Sources */,
 				34391CB41CE423DD00970573 /* BHMainViewController.m in Sources */,
 				34391C7E1CE4224600970573 /* BHBaseTableController.m in Sources */,
@@ -555,11 +579,13 @@
 				34391C4E1CE4212100970573 /* main.m in Sources */,
 				34391D071CE491E100970573 /* BHNavigationController.m in Sources */,
 				34391C6F1CE421E400970573 /* UIApplication+BHApplication.m in Sources */,
-				34C6BDD31D635B440074C5D3 /* BHViewController10.m in Sources */,
+				34C6BDD31D635B440074C5D3 /* BHViewController11.m in Sources */,
 				34391C851CE4227500970573 /* BHCycleCollectionViewController.m in Sources */,
 				3410C4F11CFB55390046A208 /* UIScrollView+BHRefresh.m in Sources */,
+				34D142251D81A68D00C99B6D /* UILabel+BHLabel.m in Sources */,
 				3410C4EE1CFB2CCA0046A208 /* BHViewController9.m in Sources */,
 				34391CBE1CE4261C00970573 /* BHPlayerControlView.m in Sources */,
+				34D1422C1D81ADDC00C99B6D /* UIButton+BHButton.m in Sources */,
 				34391CB11CE4238F00970573 /* BHViewController7.m in Sources */,
 				34391C9E1CE4231A00970573 /* BHViewController5.m in Sources */,
 			);

@@ -2,16 +2,12 @@
 //  BHViewController10.h
 //  BlogDemo
 //
-//  Created by HanBin on 16/8/16.
+//  Created by HanBin on 16/8/8.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
-
-#import "BHBaseController.h"
+//  Category中的UILabel和UIButton链式编程写法的示例
+//
 
 @interface BHViewController10 : BHBaseController
-
-@property (weak, nonatomic) IBOutlet UITextField *userNameTF;
-@property (weak, nonatomic) IBOutlet UITextField *passWordTF;
-@property (weak, nonatomic) IBOutlet UIButton *loginBT;
 
 @end
