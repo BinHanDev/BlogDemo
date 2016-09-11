@@ -9,4 +9,5 @@ target 'BlogDemo' do
     pod 'Masonry'
     pod 'GPUImage'
     pod 'MJRefresh'
+    pod 'MLeaksFinder'
 end
