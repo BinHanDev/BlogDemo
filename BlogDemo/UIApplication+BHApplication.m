@@ -8,6 +8,8 @@
 
 @implementation UIApplication (BHApplication)
 
+#pragma mark -associated currentController
+
 -(void)setCurrentController:(UIViewController *)currentController
 {
      objc_setAssociatedObject(self, @selector(currentController), currentController, OBJC_ASSOCIATION_RETAIN);
@@ -17,6 +19,8 @@
 {
     return objc_getAssociatedObject(self, _cmd);
 }
+
+#pragma mark -rootViewController
 
 +(UIViewController*)rootViewController
 {

@@ -16,6 +16,8 @@
 
 @implementation BHMainViewController
 
+#pragma mark - circle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -35,6 +37,20 @@
                           @"ReactiveCocoa学习",];
     
 }
+
+/**
+ *  仅仅是跳转AVPlayer页后修改了navigationBar及状态栏状态
+ *
+ *  @param animated
+ */
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
+}
+
+#pragma mark -UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -60,18 +76,6 @@
     UIViewController *controller = [[NSClassFromString([NSString stringWithFormat:@"BHViewController%ld",row]) alloc] init];
     controller.title = _titleArr[row];
     BHPushVC(controller);
-}
-
-/**
- *  仅仅是跳转AVPlayer页后修改了navigationBar及状态栏状态
- *
- *  @param animated
- */
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = NO;
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
 @end
