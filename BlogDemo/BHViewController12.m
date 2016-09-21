@@ -6,16 +6,16 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
-#import "BHViewController11.h"
+#import "BHViewController12.h"
 #import "RACReturnSignal.h"
 
-@interface BHViewController11()
+@interface BHViewController12()
 
 @property (nonatomic, copy) NSString *userName;
 
 @end
 
-@implementation BHViewController11
+@implementation BHViewController12
 
 #pragma mark -cricle
 
