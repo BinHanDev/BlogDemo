@@ -35,6 +35,7 @@
                           @"GPUImage实现实时滤镜，需真机测试",
                           @"下拉刷新",
                           @"链式编程写UILabel和UIButton",
+                          @"自定义Delegate为控制器瘦身",
                           @"ReactiveCocoa学习",];
     
 }

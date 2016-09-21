@@ -5,6 +5,8 @@
 //  Created by HanBin on 16/8/8.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
+//  http://binhan1029.github.io/2016/08/08/%E9%93%BE%E5%BC%8F%E5%88%9B%E5%BB%BAUILabel%E5%92%8CUIButton/
+//
 
 @interface UIButton (BHButton)
 

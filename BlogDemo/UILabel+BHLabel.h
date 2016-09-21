@@ -6,6 +6,7 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 //  使用链式方法创建UILabel  主要添加了几个常用的属性
+//  http://binhan1029.github.io/2016/08/08/%E9%93%BE%E5%BC%8F%E5%88%9B%E5%BB%BAUILabel%E5%92%8CUIButton/
 //
 
 @interface UILabel (BHLabel)
