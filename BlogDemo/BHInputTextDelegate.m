@@ -22,7 +22,7 @@
 
 #pragma mark -creat instance
 
-+(instancetype)creatDelegateViewLimitLength:(NSInteger)limitLength textField:(UITextField *)textField limitBlock:(LimitBlock)limitBlock
++(instancetype)creatDelegateWithLimitLength:(NSInteger)limitLength textField:(UITextField *)textField limitBlock:(LimitBlock)limitBlock
 {
     return [[[self class] alloc] initDelegateViewLimitLength:limitLength textField:textField limitBlock:limitBlock];
 }
