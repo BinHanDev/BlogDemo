@@ -42,6 +42,27 @@
 
 #define iPhone ((int)[[UIScreen mainScreen] bounds].size.width==320)
 
+//一些缩写
+#define kApplication        [UIApplication sharedApplication]
+#define kKeyWindow          [UIApplication sharedApplication].keyWindow
+#define kAppDelegate        [UIApplication sharedApplication].delegate
+#define kUserDefaults       [NSUserDefaults standardUserDefaults]
+#define kNotificationCenter [NSNotificationCenter defaultCenter]
+
+//获取沙盒Document路径
+#define kDocumentPath [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+//获取沙盒temp路径
+#define kTempPath NSTemporaryDirectory()
+//获取沙盒Cache路径
+#define kCachePath [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+
+//随机色值
+#define kRandomColor  KRGBColor(arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0)
+
+// 弱引用 强引用
+#define kWeakSelf(type)   __weak typeof(type) weak##type = type;
+#define kStrongSelf(type) __strong typeof(type) type = weak##type;
+
 /**
  *  navigationBar的高度
  */
