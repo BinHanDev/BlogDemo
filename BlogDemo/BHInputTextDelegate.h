@@ -15,7 +15,7 @@
  */
 typedef void(^LimitBlock)();
 
-@interface BHInputTextDelegate : NSObject<UITextViewDelegate , UITextFieldDelegate>
+@interface BHInputTextDelegate : NSObject<UITextFieldDelegate, UITextViewDelegate>
 
 
 /**
@@ -26,6 +26,6 @@ typedef void(^LimitBlock)();
 
  @return 返回代理对象
  */
-+(instancetype)creatDelegateWithLimitLength:(NSInteger)limitLength limitBlock:(LimitBlock)limitBlock;
++(instancetype)creatDelegateWithLimitLength:(NSInteger)limitLength textField:(UITextField *)textField limitBlock:(LimitBlock)limitBlock;
 
 @end

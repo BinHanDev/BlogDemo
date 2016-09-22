@@ -25,7 +25,7 @@
     //UITextField
     UITextField *textField = [UITextField new];
     textField.borderStyle = UITextBorderStyleRoundedRect;
-    self.inputTextDelegate = [BHInputTextDelegate creatDelegateWithLimitLength:20 limitBlock:^{
+    self.inputTextDelegate = [BHInputTextDelegate creatDelegateWithLimitLength:20 textField:textField limitBlock:^{
         BHLog(@"超过长度限制了");
     }];
     textField.delegate = self.inputTextDelegate;

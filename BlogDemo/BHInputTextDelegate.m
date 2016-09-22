@@ -12,6 +12,8 @@
 
 @property (nonatomic, assign)NSInteger limitLength;
 
+@property (nonatomic, strong) UITextField *textField;
+
 @property (nonatomic, copy)LimitBlock limitBlock;
 
 @end
@@ -20,18 +22,19 @@
 
 #pragma mark -creat instance
 
-+(instancetype)creatDelegateWithLimitLength:(NSInteger)limitLength  limitBlock:(LimitBlock)limitBlock
++(instancetype)creatDelegateViewLimitLength:(NSInteger)limitLength textField:(UITextField *)textField limitBlock:(LimitBlock)limitBlock
 {
-    return [[[self class] alloc] initLimitLength:limitLength limitBlock:limitBlock];
+    return [[[self class] alloc] initDelegateViewLimitLength:limitLength textField:textField limitBlock:limitBlock];
 }
 
--(instancetype)initLimitLength:(NSInteger)limitLength limitBlock:(LimitBlock)limitBlock
-
+-(instancetype)initDelegateViewLimitLength:(NSInteger)limitLength textField:(UITextField *)textField limitBlock:(LimitBlock)limitBlock
 {
     self = [super init];
     if (self)
     {
         self.limitLength = limitLength;
+        self.textField = textField;
+        [self.textField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
         self.limitBlock = limitBlock;
     }
     return self;
@@ -39,7 +42,7 @@
 
 #pragma mark -UITextFieldDelegate
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
+- (void)textFieldDidChange:(UITextField *)textField
 {
     if (textField.text.length > self.limitLength)
     {

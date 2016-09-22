@@ -266,7 +266,7 @@
 				34391CA81CE4236900970573 /* GPUImage */,
 				3410C4EB1CFB2C880046A208 /* Refresh */,
 				34D142261D81A9C700C99B6D /* ChainProgram */,
-				34EEB6541D92C94300F96AD0 /* New Group */,
+				34EEB6541D92C94300F96AD0 /* CustomDelegate */,
 				34C6BDD01D635B030074C5D3 /* ReactiveCocoa */,
 				34391CB21CE423DD00970573 /* BHMainViewController.h */,
 				34391CB31CE423DD00970573 /* BHMainViewController.m */,
@@ -420,13 +420,13 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		34EEB6541D92C94300F96AD0 /* New Group */ = {
+		34EEB6541D92C94300F96AD0 /* CustomDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				34EEB6551D92C9A500F96AD0 /* BHViewController11.h */,
 				34EEB6561D92C9A500F96AD0 /* BHViewController11.m */,
 			);
-			name = "New Group";
+			name = CustomDelegate;
 			sourceTree = "<group>";
 		};
 		5E7AC6EBFE74EE6C36AFB1BF /* Pods */ = {
