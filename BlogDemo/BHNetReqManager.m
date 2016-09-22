@@ -88,6 +88,43 @@
     return sharedManager;
 }
 
++ (NetworkStates)getNetworkStates
+{
+    NSArray *subviews = [[[[UIApplication sharedApplication] valueForKeyPath:@"statusBar"] valueForKeyPath:@"foregroundView"] subviews];
+    NetworkStates states = NetworkStatesNone;
+    for (id child in subviews)
+    {
+        if ([child isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")])
+        {
+            int networkType = [[child valueForKeyPath:@"dataNetworkType"] intValue];
+            switch (networkType)
+            {
+                case 0:
+                    states = NetworkStatesNone;
+                    break;
+                case 1:
+                    states = NetworkStates2G;
+                    break;
+                case 2:
+                    states = NetworkStates3G;
+                    break;
+                case 3:
+                    states = NetworkStates4G;
+                    break;
+                case 5:
+                {
+                    states = NetworkStatesWIFI;
+                }
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    return states;
+}
+
+
 /**
  *  请求方法/consumerKey/请求参数一起参数的加密运算，用于获取mac值
  *
@@ -150,6 +187,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
     manager.requestSerializer.timeoutInterval = 10.f;
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/xml", @"text/plain", nil];
     [manager.requestSerializer setValue:@"iOS" forHTTPHeaderField:@"channel"];
     [manager.requestSerializer setValue:consumerKey forHTTPHeaderField:@"consumerKey"];
     [manager.requestSerializer setValue:[self sign] forHTTPHeaderField:@"sign"];

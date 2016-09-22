@@ -28,9 +28,15 @@ typedef NS_OPTIONS(NSUInteger, ResponseSerializer) {
     XMLParserResponseSerializer,
 };
 
-@interface BHNetReqManager : NSObject
+typedef NS_ENUM(NSUInteger, NetworkStates) {
+    NetworkStatesNone, // 没有网络
+    NetworkStates2G, // 2G
+    NetworkStates3G, // 3G
+    NetworkStates4G, // 4G
+    NetworkStatesWIFI // WIFI
+};
 
-+(instancetype)sharedManager;
+@interface BHNetReqManager : NSObject
 
 /**
  *  请求url
@@ -56,6 +62,18 @@ typedef NS_OPTIONS(NSUInteger, ResponseSerializer) {
  *  请求参数，使用字典NSDictionary *parameters = @{@"foo": @"bar", @"baz": @[@1, @2, @3]};
  */
 - (BHNetReqManager* (^)(id parameters))bh_parameters;
+
+/** 单例对象
+ @return 返回单例对象
+ */
++(instancetype)sharedManager;
+
+
+/** 获取网络状态
+ @return 返回网络状态
+ */
+
++ (NetworkStates)getNetworkStates;
 
 /**
  *  开始请求
