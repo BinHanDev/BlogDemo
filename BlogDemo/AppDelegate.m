@@ -23,6 +23,7 @@
     BHNavigationController *controller = [[BHNavigationController alloc] initWithRootViewController:[[BHMainViewController alloc] init]];
     self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
+    [[UIButton appearance] setExclusiveTouch:YES];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:23/255.0 green:180/255.0 blue:237/255.0 alpha:1]];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
     return YES;
