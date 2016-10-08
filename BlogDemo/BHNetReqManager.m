@@ -25,6 +25,8 @@
 @property (nonatomic, assign)  ResponseSerializer responseSerializer;
 @property (nonatomic, copy)  id parameters;
 
+- (instancetype)init __attribute__((unavailable("Disabled. Use +sharedInstance instead")));
+
 @end
 
 @implementation BHNetReqManager
@@ -79,7 +81,7 @@
     static BHNetReqManager *sharedManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedManager = [[BHNetReqManager alloc] init];
+        sharedManager = [[self alloc] init];
         [sharedManager resetConfigWithManager];
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
         BHCustomURLCache *sharedCache = [BHCustomURLCache standardURLCache];
