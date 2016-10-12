@@ -28,6 +28,8 @@
 // 是否模拟器
 #define isSimulator (NSNotFound != [[[UIDevice currentDevice] model] rangeOfString:@"Simulator"].location)
 
+#define kSystemVersion [[UIDevice currentDevice] systemVersion]
+
 #define SCREEN_SIZE [UIScreen mainScreen].bounds.size
 
 #define SCREEN_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
