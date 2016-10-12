@@ -25,6 +25,8 @@
  *  NSString *path = @"http://pic.rpgsky.net/images/2016/07/26/3508cde5f0d29243c7d2ecbd6b9a30f1.png";
  *  NSData *data = [NSData dataWithContentsOfURL:[NSURL URLWithString:path]];
  *
+ *  SDWebImage NSData+ImageContentType包含了此方法
+ *
  */
 - (NSString *)contentTypeForImageData:(NSData *)data;
 
