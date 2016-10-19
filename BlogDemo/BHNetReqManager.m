@@ -17,6 +17,8 @@
 
 #define consumerKey @"iOS"
 
+static AFHTTPSessionManager *manager;
+
 @interface BHNetReqManager()
 
 @property (nonatomic, copy) NSString *requestUrl;
@@ -83,6 +85,26 @@
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
         [sharedManager resetConfigWithManager];
+        //manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:SERVERS_PREFIX]];
+        manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        manager.requestSerializer.timeoutInterval = 10.f;
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/xml", @"text/plain", nil];
+        NSOperationQueue *operationQueue = manager.operationQueue;
+        [manager.reachabilityManager setReachabilityStatusChangeBlock: ^(AFNetworkReachabilityStatus status) {
+            switch (status)
+            {
+                case AFNetworkReachabilityStatusReachableViaWWAN:
+                case AFNetworkReachabilityStatusReachableViaWiFi:
+                    [operationQueue setSuspended:NO];
+                    break;
+                case AFNetworkReachabilityStatusNotReachable:
+                    [operationQueue setSuspended:YES];
+                    break;
+                default:
+                    break;
+            }
+        }];
+        [manager.reachabilityManager startMonitoring];
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
         BHCustomURLCache *sharedCache = [BHCustomURLCache standardURLCache];
         [NSURLCache setSharedURLCache:sharedCache];
@@ -141,7 +163,7 @@
     return sign;
 }
 
--(AFHTTPSessionManager *)setupRequestSerializerWithManager:(AFHTTPSessionManager *)manager
+-(void)setupRequestSerializerWithManager
 {
     switch (self.requestSerializer)
     {
@@ -157,10 +179,9 @@
         default:
             break;
     }
-    return manager;
 }
 
--(AFHTTPSessionManager *)setupResponseSerializerWithManager:(AFHTTPSessionManager *)manager
+-(void)setupResponseSerializerWithManager
 {
     switch (self.responseSerializer) {
         case HTTPResponseSerializer:
@@ -175,7 +196,6 @@
         default:
             break;
     }
-    return manager;
 }
 
 /**
@@ -183,41 +203,20 @@
  *
  *  @return 返回AFHTTPSessionManager对象
  */
--(AFHTTPSessionManager *)setupAFHTTPSessionManager
+-(void)setupAFHTTPSessionManager
 {
-//    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:SERVERS_PREFIX]];
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithSessionConfiguration:configuration];
-    manager.requestSerializer.timeoutInterval = 10.f;
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/xml", @"text/plain", nil];
-    [manager.requestSerializer setValue:@"iOS" forHTTPHeaderField:@"channel"];
+    [self setupRequestSerializerWithManager];
+    [self setupResponseSerializerWithManager];
     [manager.requestSerializer setValue:consumerKey forHTTPHeaderField:@"consumerKey"];
     [manager.requestSerializer setValue:[self sign] forHTTPHeaderField:@"sign"];
-    NSOperationQueue *operationQueue = manager.operationQueue;
-    [manager.reachabilityManager setReachabilityStatusChangeBlock: ^(AFNetworkReachabilityStatus status) {
-        switch (status)
-        {
-            case AFNetworkReachabilityStatusReachableViaWWAN:
-            case AFNetworkReachabilityStatusReachableViaWiFi:
-                [operationQueue setSuspended:NO];
-                break;
-            case AFNetworkReachabilityStatusNotReachable:
-                [operationQueue setSuspended:YES];
-                break;
-            default:
-                break;
-        }
-    }];
-    [manager.reachabilityManager startMonitoring];
-    return manager;
+    [manager.requestSerializer setValue:@"iOS" forHTTPHeaderField:@"channel"];
 }
 
 -(void)startRequestWithCompleteHandler:(void (^)(id response, NSError *error))handler
 {
-    AFHTTPSessionManager *manager = [self setupAFHTTPSessionManager];
+    
+    [self setupAFHTTPSessionManager];
 
-    [self setupRequestSerializerWithManager:manager];
-    [self setupResponseSerializerWithManager:manager];
     switch (self.requestType)
     {
         case GET:
