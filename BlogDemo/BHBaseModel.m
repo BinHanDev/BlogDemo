@@ -7,9 +7,6 @@
 //
 
 @interface BHBaseModel()
-//{
-//    NSString *_name;
-//}
 
 @property (nonatomic, copy) NSString *name;
 
@@ -17,7 +14,6 @@
 
 @implementation BHBaseModel
 
-//@dynamic name = name;
 
 - (NSString *)description
 {
