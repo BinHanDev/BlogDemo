@@ -70,6 +70,19 @@
  */
 FOUNDATION_EXTERN double const kNavBarHeight;
 
+
+static inline BOOL isBlankText(NSString *str) {
+    if ([str respondsToSelector:@selector(length)]) {
+        return (str.length == 0);
+    } else {
+        return YES;
+    }
+}
+
+static inline BOOL isNotBlankText(NSString *str) {
+    return !(isBlankText(str));
+}
+
 @interface BHUtils : NSObject
 
 /*
