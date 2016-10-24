@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		292380411D66D76F00A6C355 /* UIImage+BHImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 292380401D66D76F00A6C355 /* UIImage+BHImage.m */; };
+		29450BB61DBE656A00249ED6 /* NSArray+BHNSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */; };
 		3410C4EE1CFB2CCA0046A208 /* BHViewController9.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4ED1CFB2CCA0046A208 /* BHViewController9.m */; };
 		3410C4F11CFB55390046A208 /* UIScrollView+BHRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4F01CFB55390046A208 /* UIScrollView+BHRefresh.m */; };
 		3410C4F41CFB55670046A208 /* BHRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4F31CFB55670046A208 /* BHRefreshHeader.m */; };
@@ -57,6 +58,8 @@
 		28590A938192A3402018729B /* Pods-BlogDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlogDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlogDemo/Pods-BlogDemo.release.xcconfig"; sourceTree = "<group>"; };
 		2923803F1D66D76F00A6C355 /* UIImage+BHImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BHImage.h"; sourceTree = "<group>"; };
 		292380401D66D76F00A6C355 /* UIImage+BHImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BHImage.m"; sourceTree = "<group>"; };
+		29450BB41DBE656A00249ED6 /* NSArray+BHNSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BHNSArray.h"; sourceTree = "<group>"; };
+		29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BHNSArray.m"; sourceTree = "<group>"; };
 		3410C4EC1CFB2CCA0046A208 /* BHViewController9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController9.h; sourceTree = "<group>"; };
 		3410C4ED1CFB2CCA0046A208 /* BHViewController9.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController9.m; sourceTree = "<group>"; };
 		3410C4EF1CFB55390046A208 /* UIScrollView+BHRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+BHRefresh.h"; sourceTree = "<group>"; };
@@ -154,6 +157,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29450BB31DBE654500249ED6 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				34391C6D1CE421E400970573 /* UIApplication+BHApplication.h */,
+				34391C6E1CE421E400970573 /* UIApplication+BHApplication.m */,
+				34D142231D81A68D00C99B6D /* UILabel+BHLabel.h */,
+				34D142241D81A68D00C99B6D /* UILabel+BHLabel.m */,
+				34D1422A1D81ADDC00C99B6D /* UIButton+BHButton.h */,
+				34D1422B1D81ADDC00C99B6D /* UIButton+BHButton.m */,
+			);
+			name = UIKit;
+			sourceTree = "<group>";
+		};
+		29450BB71DBE657300249ED6 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				29450BB41DBE656A00249ED6 /* NSArray+BHNSArray.h */,
+				29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */,
+			);
+			name = Foundation;
+			sourceTree = "<group>";
+		};
 		3410C4EB1CFB2C880046A208 /* Refresh */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,14 +254,10 @@
 		34391C6C1CE421D900970573 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				34391C6D1CE421E400970573 /* UIApplication+BHApplication.h */,
-				34391C6E1CE421E400970573 /* UIApplication+BHApplication.m */,
+				29450BB71DBE657300249ED6 /* Foundation */,
+				29450BB31DBE654500249ED6 /* UIKit */,
 				2923803F1D66D76F00A6C355 /* UIImage+BHImage.h */,
 				292380401D66D76F00A6C355 /* UIImage+BHImage.m */,
-				34D142231D81A68D00C99B6D /* UILabel+BHLabel.h */,
-				34D142241D81A68D00C99B6D /* UILabel+BHLabel.m */,
-				34D1422A1D81ADDC00C99B6D /* UIButton+BHButton.h */,
-				34D1422B1D81ADDC00C99B6D /* UIButton+BHButton.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -587,6 +608,7 @@
 				34391CA61CE4235200970573 /* BHViewController6.m in Sources */,
 				34391C821CE4226E00970573 /* BHViewController3.m in Sources */,
 				34391C761CE4221900970573 /* BHCustomURLCache.m in Sources */,
+				29450BB61DBE656A00249ED6 /* NSArray+BHNSArray.m in Sources */,
 				34391CBD1CE4261C00970573 /* BHPlayer.m in Sources */,
 				34391C8F1CE4229F00970573 /* WXPullView.m in Sources */,
 				34391C8B1CE4229600970573 /* BHViewController0.m in Sources */,
