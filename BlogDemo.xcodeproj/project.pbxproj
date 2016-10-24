@@ -189,7 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				34391C6C1CE421D900970573 /* Category */,
-				34391C651CE421B800970573 /* Tools */,
+				34391C651CE421B800970573 /* Utility */,
 				34391D081CE4956A00970573 /* Custom */,
 				34391C701CE421F200970573 /* NetWork */,
 				34E229471CE76929007B8098 /* Model */,
@@ -213,7 +213,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		34391C651CE421B800970573 /* Tools */ = {
+		34391C651CE421B800970573 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				34391C691CE421D100970573 /* BHUtils.h */,
@@ -223,7 +223,7 @@
 				3431BA381D9172810034662C /* BHInputTextDelegate.h */,
 				3431BA391D9172810034662C /* BHInputTextDelegate.m */,
 			);
-			name = Tools;
+			name = Utility;
 			sourceTree = "<group>";
 		};
 		34391C6C1CE421D900970573 /* Category */ = {
