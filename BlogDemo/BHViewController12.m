@@ -25,7 +25,7 @@
     [self.userNameTF.rac_textSignal subscribeNext:^(NSString *text) {
         self.userName = text;
     }];
-    return;
+    
     [[self.userNameTF.rac_textSignal filter:^BOOL(id value) {
         NSString *userName = value;
         return userName.length > 3;

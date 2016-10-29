@@ -7,7 +7,7 @@ target 'BlogDemo' do
     pod 'ReactiveCocoa', '2.5'
     pod 'AFNetworking', '3.0'
     pod 'SDWebImage'
-    pod 'MBProgressHUD'
+    pod 'MBProgressHUD', '0.9.2'
     pod 'Masonry'
     pod 'GPUImage'
     pod 'MJRefresh'
