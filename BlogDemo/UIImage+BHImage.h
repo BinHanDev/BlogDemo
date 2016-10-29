@@ -8,6 +8,17 @@
 
 @interface UIImage (BHImage)
 
+/*
+ *  使用UIColor创建UIImage
+ */
++ (UIImage *)imageWithColor:(UIColor *)color;
+
+/**
+ @param size 压缩大小
+ @return 返回指定大小的UIImage
+ */
+- (UIImage *)scaleToSize:(CGSize)size;
+
 /**
  *  高效设置图片圆角
  *

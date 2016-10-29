@@ -30,5 +30,8 @@
 #import "BHUtils.h"
 #import "BHNetReqManager.h"
 
+#import "UIColor+BHUIColor.h"
+#import "UIImage+BHImage.h"
+#import "NSString+BHNSString.h"
 
 #endif /* PrefixHeader_pch */

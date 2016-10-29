@@ -159,7 +159,8 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     if (state == BHPlayerStatePlaying)
     {
         // 改为黑色的背景，不然站位图会显示
-        UIImage *image = [BHUtils imageWithColor:[UIColor blackColor] size:self.mj_size];
+        UIImage *image = [UIImage imageWithColor:[UIColor blackColor] size:self.mj_size];
+        
         self.layer.contents = (id) image.CGImage;
     }
     // 控制菊花显示、隐藏

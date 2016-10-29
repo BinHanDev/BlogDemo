@@ -53,7 +53,7 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSString *textStr;
-    if ([BHUtils isBlankString:string])
+    if ([string isBlankString])
     {
         if (textField.text.length != 0)
         {
@@ -80,7 +80,7 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)string
 {
     NSString *textStr;
-    if ([BHUtils isBlankString:string])
+    if ([string isBlankString])
     {
         if (textView.text.length != 0)
         {

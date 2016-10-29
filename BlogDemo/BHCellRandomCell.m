@@ -60,7 +60,7 @@ static NSString *CollectionViewIdentifier = @"CollectionViewIdentifier";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:CollectionViewIdentifier forIndexPath:indexPath];
-    cell.contentView.backgroundColor = [BHUtils randomColor];
+    cell.contentView.backgroundColor = [UIColor randomColor];
     return cell;
 }
 

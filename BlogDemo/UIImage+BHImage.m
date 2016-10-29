@@ -11,6 +11,57 @@
 
 @implementation UIImage (BHImage)
 
++ (UIImage *)imageWithColor:(UIColor *)color
+{
+    CGRect rect = CGRectMake(0, 0, 1, 1);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+- (UIImage *)scaleToSize:(CGSize)size
+{
+    CGSize imageSize = self.size;
+    CGFloat width = imageSize.width;
+    CGFloat height = imageSize.height;
+    CGFloat scaleFactor = 0.0;
+    //先得到应该缩放的比例
+    CGFloat widthFactor = size.width / width;
+    CGFloat heightFactor = size.height / height;
+    //如果两个范围一样 就不需要压缩了 否者按比例压缩
+    if (CGSizeEqualToSize(imageSize, size) == NO)
+    {
+        //看高度和宽度是否超出了最大范围 决定是否还需要进一步压缩
+        if (widthFactor > heightFactor)
+            scaleFactor = widthFactor;
+        else
+            scaleFactor = heightFactor;
+    } else {
+        scaleFactor = 1.0;
+    }
+    //得到理论上压缩后的高度和宽度
+    CGFloat scaledWidth= width * scaleFactor;
+    CGFloat scaledHeight = height * scaleFactor;
+    CGSize scaleSize = CGSizeMake(scaledWidth, scaledHeight);
+    UIGraphicsBeginImageContext(scaleSize);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    /**********************************************************/
+    //这3行可以实现批量压缩的时候不至于出现OOM内存溢出，他的作用是把图片同样进行尺寸缩小
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    transform = CGAffineTransformScale(transform,1,1);
+    CGContextConcatCTM(context, transform);
+    /**********************************************************/
+    [self drawInRect:CGRectMake(0, 0, scaleSize.width, scaleSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
 - (UIImage *)cutCircleImage
 {
     UIGraphicsBeginImageContextWithOptions(self.size, NO, 0.0);

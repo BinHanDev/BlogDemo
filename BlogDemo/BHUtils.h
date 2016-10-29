@@ -70,44 +70,7 @@
  */
 FOUNDATION_EXTERN double const kNavBarHeight;
 
-
-static inline BOOL isBlankText(NSString *str) {
-    if ([str respondsToSelector:@selector(length)]) {
-        return (str.length == 0);
-    } else {
-        return YES;
-    }
-}
-
-static inline BOOL isNotBlankText(NSString *str) {
-    return !(isBlankText(str));
-}
-
 @interface BHUtils : NSObject
-
-/*
- * 16进制颜色(html颜色值)字符串转为UIColor
- */
-+ (UIColor *)hexStringToColor:(NSString *)stringToConvert;
-
-/*
- *判断字符串是否为空  建议使用此方法 否则会出现莫名其妙的Bug
- */
-+ (BOOL)isBlankString:(NSString *)string;
-
-/*
- *  使用UIColor创建UIImage
- */
-+ (UIImage *)imageWithColor:(UIColor *)color;
-
-+ (UIImage *)imageWithColor:(UIColor *)color size:(CGSize)size;
-
-/**
- *  随机出一个色值
- *
- *  @return
- */
-+(UIColor *) randomColor;
 
 /**
  *  提醒

@@ -2,8 +2,8 @@
 //  NSData+BHNSData.h
 //  BlogDemo
 //
-//  Created by HanBin on 2016/10/29.
-//  Copyright © 2016年 BinHan. All rights reserved.
+//  Created by HanBin on 2015/10/29.
+//  Copyright © 2015年 BinHan. All rights reserved.
 //
 
 #define SECOND	(1)

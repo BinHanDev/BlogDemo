@@ -112,7 +112,7 @@ const CGFloat lableWidth = 100.f;
         lable.text = self.filterArray[i];
         if( i == 0)
         {
-            lable.textColor = [BHUtils hexStringToColor:@"ffd900"];
+            lable.textColor = [UIColor hexStringToColor:@"ffd900"];
         }
         else
         {
@@ -244,7 +244,7 @@ const CGFloat lableWidth = 100.f;
             self.currentFiterIndex = 0;
         }
     }
-    [self lableTextColor:[BHUtils hexStringToColor:@"ffd900"] tag:self.currentFiterIndex];
+    [self lableTextColor:[UIColor hexStringToColor:@"ffd900"] tag:self.currentFiterIndex];
     self.isAnimating = YES;
     [UIView animateWithDuration:0.25f delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         self.controlFilterView.mj_x= self.view.center.x - lableWidth / 2.f - self.currentFiterIndex * lableWidth;

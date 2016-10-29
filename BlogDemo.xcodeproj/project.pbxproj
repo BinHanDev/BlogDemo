@@ -10,6 +10,8 @@
 		292380411D66D76F00A6C355 /* UIImage+BHImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 292380401D66D76F00A6C355 /* UIImage+BHImage.m */; };
 		29450BB61DBE656A00249ED6 /* NSArray+BHNSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */; };
 		29CA613D1DC47CEA00801F4D /* NSDate+BHNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA613C1DC47CEA00801F4D /* NSDate+BHNSDate.m */; };
+		29CA61401DC47FA800801F4D /* NSString+BHNSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA613F1DC47FA800801F4D /* NSString+BHNSString.m */; };
+		29CA61461DC4831D00801F4D /* UIColor+BHUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA61451DC4831D00801F4D /* UIColor+BHUIColor.m */; };
 		3410C4EE1CFB2CCA0046A208 /* BHViewController9.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4ED1CFB2CCA0046A208 /* BHViewController9.m */; };
 		3410C4F11CFB55390046A208 /* UIScrollView+BHRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4F01CFB55390046A208 /* UIScrollView+BHRefresh.m */; };
 		3410C4F41CFB55670046A208 /* BHRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4F31CFB55670046A208 /* BHRefreshHeader.m */; };
@@ -63,6 +65,10 @@
 		29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BHNSArray.m"; sourceTree = "<group>"; };
 		29CA613B1DC47CEA00801F4D /* NSDate+BHNSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BHNSDate.h"; sourceTree = "<group>"; };
 		29CA613C1DC47CEA00801F4D /* NSDate+BHNSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BHNSDate.m"; sourceTree = "<group>"; };
+		29CA613E1DC47FA800801F4D /* NSString+BHNSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BHNSString.h"; sourceTree = "<group>"; };
+		29CA613F1DC47FA800801F4D /* NSString+BHNSString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BHNSString.m"; sourceTree = "<group>"; };
+		29CA61441DC4831D00801F4D /* UIColor+BHUIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BHUIColor.h"; sourceTree = "<group>"; };
+		29CA61451DC4831D00801F4D /* UIColor+BHUIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BHUIColor.m"; sourceTree = "<group>"; };
 		3410C4EC1CFB2CCA0046A208 /* BHViewController9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController9.h; sourceTree = "<group>"; };
 		3410C4ED1CFB2CCA0046A208 /* BHViewController9.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController9.m; sourceTree = "<group>"; };
 		3410C4EF1CFB55390046A208 /* UIScrollView+BHRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+BHRefresh.h"; sourceTree = "<group>"; };
@@ -169,6 +175,10 @@
 				34D142241D81A68D00C99B6D /* UILabel+BHLabel.m */,
 				34D1422A1D81ADDC00C99B6D /* UIButton+BHButton.h */,
 				34D1422B1D81ADDC00C99B6D /* UIButton+BHButton.m */,
+				29CA61441DC4831D00801F4D /* UIColor+BHUIColor.h */,
+				29CA61451DC4831D00801F4D /* UIColor+BHUIColor.m */,
+				2923803F1D66D76F00A6C355 /* UIImage+BHImage.h */,
+				292380401D66D76F00A6C355 /* UIImage+BHImage.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -180,6 +190,8 @@
 				29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */,
 				29CA613B1DC47CEA00801F4D /* NSDate+BHNSDate.h */,
 				29CA613C1DC47CEA00801F4D /* NSDate+BHNSDate.m */,
+				29CA613E1DC47FA800801F4D /* NSString+BHNSString.h */,
+				29CA613F1DC47FA800801F4D /* NSString+BHNSString.m */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -261,8 +273,6 @@
 			children = (
 				29450BB71DBE657300249ED6 /* Foundation */,
 				29450BB31DBE654500249ED6 /* UIKit */,
-				2923803F1D66D76F00A6C355 /* UIImage+BHImage.h */,
-				292380401D66D76F00A6C355 /* UIImage+BHImage.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -610,6 +620,7 @@
 				34391C9A1CE422EC00970573 /* BHViewController4.m in Sources */,
 				34391C7D1CE4224600970573 /* BHBaseController.m in Sources */,
 				34391C6B1CE421D100970573 /* BHUtils.m in Sources */,
+				29CA61401DC47FA800801F4D /* NSString+BHNSString.m in Sources */,
 				34391CA61CE4235200970573 /* BHViewController6.m in Sources */,
 				34391C821CE4226E00970573 /* BHViewController3.m in Sources */,
 				34391C761CE4221900970573 /* BHCustomURLCache.m in Sources */,
@@ -641,6 +652,7 @@
 				34391CBE1CE4261C00970573 /* BHPlayerControlView.m in Sources */,
 				34EEB6571D92C9A500F96AD0 /* BHViewController11.m in Sources */,
 				34D1422C1D81ADDC00C99B6D /* UIButton+BHButton.m in Sources */,
+				29CA61461DC4831D00801F4D /* UIColor+BHUIColor.m in Sources */,
 				34391CB11CE4238F00970573 /* BHViewController7.m in Sources */,
 				34391C9E1CE4231A00970573 /* BHViewController5.m in Sources */,
 			);
