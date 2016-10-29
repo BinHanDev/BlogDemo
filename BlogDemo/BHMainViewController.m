@@ -8,7 +8,6 @@
 
 #import "BHMainViewController.h"
 
-
 @interface BHMainViewController ()
 {
     NSArray *_titleArr;
@@ -78,6 +77,12 @@
     UIViewController *controller = [[NSClassFromString([NSString stringWithFormat:@"BHViewController%ld",row]) alloc] init];
     controller.title = _titleArr[row];
     BHPushVC(controller);
+
+//    UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    self.view = webView;
+//    NSURL *url = [NSURL URLWithString:@"http://www.jianshu.com/p/ec5d6c204e17"];
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    [webView loadRequest:request];
 }
 
 @end

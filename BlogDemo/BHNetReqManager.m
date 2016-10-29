@@ -7,7 +7,9 @@
 //
 #import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
+#import "BHURLProtocol.h"
 #import "BHCustomURLCache.h"
+
 
 #ifdef DEBUG
     #define SERVERS_PREFIX   @"test_prefix"
@@ -86,7 +88,9 @@ static AFHTTPSessionManager *manager;
         sharedManager = [[self alloc] init];
         [sharedManager resetConfigWithManager];
         //manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:SERVERS_PREFIX]];
-        manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        configuration.protocolClasses = @[[BHURLProtocol class]];
+        manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
         manager.requestSerializer.timeoutInterval = 10.f;
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/xml", @"text/plain", nil];
         NSOperationQueue *operationQueue = manager.operationQueue;

@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import <CoreSpotlight/CoreSpotlight.h>
+#import "BHURLProtocol.h"
 #import "BHMainViewController.h"
+
 
 @interface AppDelegate ()
 
@@ -17,21 +19,26 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [self initWindow];
+    return YES;
+}
+
+
+/**
+ 初始化window及导航控制器样式
+ */
+-(void)initWindow
+{
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     BHNavigationController *controller = [[BHNavigationController alloc] initWithRootViewController:[[BHMainViewController alloc] init]];
     self.window.rootViewController = controller;
     [self.window makeKeyAndVisible];
-    [[UIButton appearance] setExclusiveTouch:YES];
     [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:23/255.0 green:180/255.0 blue:237/255.0 alpha:1]];
     [[UINavigationBar appearance] setBarStyle:UIBarStyleBlack];
-    
-//    [BHNetReqManager sharedManager];
-    
-    return YES;
+    [[UIButton appearance] setExclusiveTouch:YES];
 }
-
 
 /**
  *  点击CSSearchableItem后回调

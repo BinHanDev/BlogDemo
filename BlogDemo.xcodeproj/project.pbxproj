@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		292380411D66D76F00A6C355 /* UIImage+BHImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 292380401D66D76F00A6C355 /* UIImage+BHImage.m */; };
 		29450BB61DBE656A00249ED6 /* NSArray+BHNSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */; };
+		298184C91DC4E2C6008C8811 /* BHURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 298184C81DC4E2C6008C8811 /* BHURLProtocol.m */; };
 		29CA613D1DC47CEA00801F4D /* NSDate+BHNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA613C1DC47CEA00801F4D /* NSDate+BHNSDate.m */; };
 		29CA61401DC47FA800801F4D /* NSString+BHNSString.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA613F1DC47FA800801F4D /* NSString+BHNSString.m */; };
 		29CA61461DC4831D00801F4D /* UIColor+BHUIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA61451DC4831D00801F4D /* UIColor+BHUIColor.m */; };
@@ -63,6 +64,8 @@
 		292380401D66D76F00A6C355 /* UIImage+BHImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BHImage.m"; sourceTree = "<group>"; };
 		29450BB41DBE656A00249ED6 /* NSArray+BHNSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BHNSArray.h"; sourceTree = "<group>"; };
 		29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BHNSArray.m"; sourceTree = "<group>"; };
+		298184C71DC4E2C6008C8811 /* BHURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHURLProtocol.h; sourceTree = "<group>"; };
+		298184C81DC4E2C6008C8811 /* BHURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHURLProtocol.m; sourceTree = "<group>"; };
 		29CA613B1DC47CEA00801F4D /* NSDate+BHNSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BHNSDate.h"; sourceTree = "<group>"; };
 		29CA613C1DC47CEA00801F4D /* NSDate+BHNSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BHNSDate.m"; sourceTree = "<group>"; };
 		29CA613E1DC47FA800801F4D /* NSString+BHNSString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BHNSString.h"; sourceTree = "<group>"; };
@@ -284,6 +287,8 @@
 				34391C721CE4220200970573 /* BHNetReqManager.m */,
 				34391C741CE4221900970573 /* BHCustomURLCache.h */,
 				34391C751CE4221900970573 /* BHCustomURLCache.m */,
+				298184C71DC4E2C6008C8811 /* BHURLProtocol.h */,
+				298184C81DC4E2C6008C8811 /* BHURLProtocol.m */,
 			);
 			name = NetWork;
 			sourceTree = "<group>";
@@ -648,6 +653,7 @@
 				34391C851CE4227500970573 /* BHCycleCollectionViewController.m in Sources */,
 				3410C4F11CFB55390046A208 /* UIScrollView+BHRefresh.m in Sources */,
 				34D142251D81A68D00C99B6D /* UILabel+BHLabel.m in Sources */,
+				298184C91DC4E2C6008C8811 /* BHURLProtocol.m in Sources */,
 				3410C4EE1CFB2CCA0046A208 /* BHViewController9.m in Sources */,
 				34391CBE1CE4261C00970573 /* BHPlayerControlView.m in Sources */,
 				34EEB6571D92C9A500F96AD0 /* BHViewController11.m in Sources */,
