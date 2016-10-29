@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		292380411D66D76F00A6C355 /* UIImage+BHImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 292380401D66D76F00A6C355 /* UIImage+BHImage.m */; };
 		29450BB61DBE656A00249ED6 /* NSArray+BHNSArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */; };
+		29CA613D1DC47CEA00801F4D /* NSDate+BHNSDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA613C1DC47CEA00801F4D /* NSDate+BHNSDate.m */; };
 		3410C4EE1CFB2CCA0046A208 /* BHViewController9.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4ED1CFB2CCA0046A208 /* BHViewController9.m */; };
 		3410C4F11CFB55390046A208 /* UIScrollView+BHRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4F01CFB55390046A208 /* UIScrollView+BHRefresh.m */; };
 		3410C4F41CFB55670046A208 /* BHRefreshHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3410C4F31CFB55670046A208 /* BHRefreshHeader.m */; };
@@ -60,6 +61,8 @@
 		292380401D66D76F00A6C355 /* UIImage+BHImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BHImage.m"; sourceTree = "<group>"; };
 		29450BB41DBE656A00249ED6 /* NSArray+BHNSArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BHNSArray.h"; sourceTree = "<group>"; };
 		29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BHNSArray.m"; sourceTree = "<group>"; };
+		29CA613B1DC47CEA00801F4D /* NSDate+BHNSDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BHNSDate.h"; sourceTree = "<group>"; };
+		29CA613C1DC47CEA00801F4D /* NSDate+BHNSDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BHNSDate.m"; sourceTree = "<group>"; };
 		3410C4EC1CFB2CCA0046A208 /* BHViewController9.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController9.h; sourceTree = "<group>"; };
 		3410C4ED1CFB2CCA0046A208 /* BHViewController9.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController9.m; sourceTree = "<group>"; };
 		3410C4EF1CFB55390046A208 /* UIScrollView+BHRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+BHRefresh.h"; sourceTree = "<group>"; };
@@ -175,6 +178,8 @@
 			children = (
 				29450BB41DBE656A00249ED6 /* NSArray+BHNSArray.h */,
 				29450BB51DBE656A00249ED6 /* NSArray+BHNSArray.m */,
+				29CA613B1DC47CEA00801F4D /* NSDate+BHNSDate.h */,
+				29CA613C1DC47CEA00801F4D /* NSDate+BHNSDate.m */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -621,6 +626,7 @@
 				34391CB41CE423DD00970573 /* BHMainViewController.m in Sources */,
 				34391C7E1CE4224600970573 /* BHBaseTableController.m in Sources */,
 				34391C681CE421CB00970573 /* BHHookUtility.m in Sources */,
+				29CA613D1DC47CEA00801F4D /* NSDate+BHNSDate.m in Sources */,
 				3431BA3A1D9172810034662C /* BHInputTextDelegate.m in Sources */,
 				34391C511CE4212100970573 /* AppDelegate.m in Sources */,
 				292380411D66D76F00A6C355 /* UIImage+BHImage.m in Sources */,
