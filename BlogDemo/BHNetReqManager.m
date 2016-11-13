@@ -19,6 +19,8 @@
 
 #define consumerKey @"iOS"
 
+static BHNetReqManager *sharedManager;
+
 static AFHTTPSessionManager *manager;
 
 @interface BHNetReqManager()
@@ -75,14 +77,8 @@ static AFHTTPSessionManager *manager;
     };
 }
 
-/**
- *  获取BHNetReqManager单例并进行初始化设置
- *
- *  @return 返回BHNetReqManager
- */
-+(instancetype)sharedManager
++(instancetype)allocWithZone:(struct _NSZone *)zone
 {
-    static BHNetReqManager *sharedManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
@@ -113,6 +109,25 @@ static AFHTTPSessionManager *manager;
         BHCustomURLCache *sharedCache = [BHCustomURLCache standardURLCache];
         [NSURLCache setSharedURLCache:sharedCache];
     });
+    return sharedManager;
+}
+
+/**
+ *  获取BHNetReqManager单例并进行初始化设置
+ *
+ *  @return 返回BHNetReqManager
+ */
++(instancetype)sharedManager
+{
+    return [[self alloc] init];
+}
+
+-(id)copyWithZone:(NSZone *)zone
+{
+    return sharedManager;
+}
+-(id)mutableCopyWithZone:(NSZone *)zone
+{
     return sharedManager;
 }
 

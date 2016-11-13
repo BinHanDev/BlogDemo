@@ -11,21 +11,38 @@
 static NSString * const CustomURLCacheExpirationKey = @"CustomURLCacheExpiration";
 static NSTimeInterval const CustomURLCacheExpirationInterval = 600;
 
+static BHCustomURLCache *standardURLCache = nil;
+
 @interface BHCustomURLCache()
 
 @end
 
 @implementation BHCustomURLCache
 
-+ (instancetype)standardURLCache {
-    static BHCustomURLCache *_standardURLCache = nil;
++(instancetype)allocWithZone:(struct _NSZone *)zone
+{
+    
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _standardURLCache = [[BHCustomURLCache alloc] initWithMemoryCapacity:(2 * 1024 * 1024) diskCapacity:(100 * 1024 * 1024) diskPath:nil];
+        standardURLCache = [[BHCustomURLCache alloc] initWithMemoryCapacity:(2 * 1024 * 1024) diskCapacity:(100 * 1024 * 1024) diskPath:nil];
     });
-    return _standardURLCache;
+    return standardURLCache;
 }
-                  
+
++ (instancetype)standardURLCache
+{
+    return [[self alloc] init];
+}
+
+-(id)copyWithZone:(NSZone *)zone
+{
+    return standardURLCache;
+}
+-(id)mutableCopyWithZone:(NSZone *)zone
+{
+    return standardURLCache;
+}
+
 #pragma mark - NSURLCache
                   
 - (NSCachedURLResponse *)cachedResponseForRequest:(NSURLRequest *)request
