@@ -11,7 +11,7 @@
 
 @implementation BHHookUtility
 
-+ (void)swizzlingInClass:(Class)cls originalSelector:(SEL)originalSelector swizzledSelector:(SEL)swizzledSelector
++ (BOOL)swizzlingInClass:(Class)cls originalSelector:(SEL)originalSelector swizzledSelector:(SEL)swizzledSelector
 {
     Class class = cls;
     
@@ -27,6 +27,7 @@
     {
         method_exchangeImplementations(originalMethod, swizzledMethod);
     }
+    return didAddMethod;
 }
 
 

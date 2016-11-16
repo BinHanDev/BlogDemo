@@ -8,6 +8,6 @@
 //  http://binhan1029.github.io/2015/04/27/CoreSpotlight%E5%88%9D%E8%AF%86/
 //
 
-@interface BHViewController4 : BHBaseController
+@interface BHViewController4 : UIViewController
 
 @end

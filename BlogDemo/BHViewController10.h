@@ -8,6 +8,6 @@
 //  Category中的UILabel和UIButton链式编程写法的示例
 //
 
-@interface BHViewController10 : BHBaseController
+@interface BHViewController10 : UIViewController
 
 @end

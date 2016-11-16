@@ -27,8 +27,6 @@
 		34391C6F1CE421E400970573 /* UIApplication+BHApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C6E1CE421E400970573 /* UIApplication+BHApplication.m */; };
 		34391C731CE4220200970573 /* BHNetReqManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C721CE4220200970573 /* BHNetReqManager.m */; };
 		34391C761CE4221900970573 /* BHCustomURLCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C751CE4221900970573 /* BHCustomURLCache.m */; };
-		34391C7D1CE4224600970573 /* BHBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C7A1CE4224600970573 /* BHBaseController.m */; };
-		34391C7E1CE4224600970573 /* BHBaseTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C7C1CE4224600970573 /* BHBaseTableController.m */; };
 		34391C821CE4226E00970573 /* BHViewController3.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C811CE4226E00970573 /* BHViewController3.m */; };
 		34391C851CE4227500970573 /* BHCycleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C841CE4227500970573 /* BHCycleCollectionViewController.m */; };
 		34391C8B1CE4229600970573 /* BHViewController0.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C881CE4229600970573 /* BHViewController0.m */; };
@@ -55,6 +53,8 @@
 		34D1422C1D81ADDC00C99B6D /* UIButton+BHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D1422B1D81ADDC00C99B6D /* UIButton+BHButton.m */; };
 		34E2294A1CE76945007B8098 /* BHBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E229491CE76945007B8098 /* BHBaseModel.m */; };
 		34EEB6571D92C9A500F96AD0 /* BHViewController11.m in Sources */ = {isa = PBXBuildFile; fileRef = 34EEB6561D92C9A500F96AD0 /* BHViewController11.m */; };
+		AD3709171DDC8E6E007753D5 /* UIViewController+BHUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3709161DDC8E6E007753D5 /* UIViewController+BHUIViewController.m */; };
+		AD37091A1DDC9335007753D5 /* UITableView+BHUITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3709191DDC9335007753D5 /* UITableView+BHUITableView.m */; };
 		FACD4868EBCE1E47EE1F70B8 /* Pods_BlogDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC7DBD5722F93E50B146FF7 /* Pods_BlogDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,10 +98,6 @@
 		34391C721CE4220200970573 /* BHNetReqManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHNetReqManager.m; sourceTree = "<group>"; };
 		34391C741CE4221900970573 /* BHCustomURLCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHCustomURLCache.h; sourceTree = "<group>"; };
 		34391C751CE4221900970573 /* BHCustomURLCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHCustomURLCache.m; sourceTree = "<group>"; };
-		34391C791CE4224600970573 /* BHBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHBaseController.h; sourceTree = "<group>"; };
-		34391C7A1CE4224600970573 /* BHBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHBaseController.m; sourceTree = "<group>"; };
-		34391C7B1CE4224600970573 /* BHBaseTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHBaseTableController.h; sourceTree = "<group>"; };
-		34391C7C1CE4224600970573 /* BHBaseTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHBaseTableController.m; sourceTree = "<group>"; };
 		34391C801CE4226E00970573 /* BHViewController3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController3.h; sourceTree = "<group>"; };
 		34391C811CE4226E00970573 /* BHViewController3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController3.m; sourceTree = "<group>"; };
 		34391C831CE4227500970573 /* BHCycleCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHCycleCollectionViewController.h; sourceTree = "<group>"; };
@@ -154,6 +150,10 @@
 		34EEB6551D92C9A500F96AD0 /* BHViewController11.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController11.h; sourceTree = "<group>"; };
 		34EEB6561D92C9A500F96AD0 /* BHViewController11.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController11.m; sourceTree = "<group>"; };
 		8BB6BFE363B31757E98502EB /* Pods-BlogDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlogDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlogDemo/Pods-BlogDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		AD3709151DDC8E6E007753D5 /* UIViewController+BHUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BHUIViewController.h"; sourceTree = "<group>"; };
+		AD3709161DDC8E6E007753D5 /* UIViewController+BHUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BHUIViewController.m"; sourceTree = "<group>"; };
+		AD3709181DDC9335007753D5 /* UITableView+BHUITableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+BHUITableView.h"; sourceTree = "<group>"; };
+		AD3709191DDC9335007753D5 /* UITableView+BHUITableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+BHUITableView.m"; sourceTree = "<group>"; };
 		AFC7DBD5722F93E50B146FF7 /* Pods_BlogDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlogDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,6 +174,8 @@
 			children = (
 				34391C6D1CE421E400970573 /* UIApplication+BHApplication.h */,
 				34391C6E1CE421E400970573 /* UIApplication+BHApplication.m */,
+				AD3709151DDC8E6E007753D5 /* UIViewController+BHUIViewController.h */,
+				AD3709161DDC8E6E007753D5 /* UIViewController+BHUIViewController.m */,
 				34D142231D81A68D00C99B6D /* UILabel+BHLabel.h */,
 				34D142241D81A68D00C99B6D /* UILabel+BHLabel.m */,
 				34D1422A1D81ADDC00C99B6D /* UIButton+BHButton.h */,
@@ -182,6 +184,8 @@
 				29CA61451DC4831D00801F4D /* UIColor+BHUIColor.m */,
 				2923803F1D66D76F00A6C355 /* UIImage+BHImage.h */,
 				292380401D66D76F00A6C355 /* UIImage+BHImage.m */,
+				AD3709181DDC9335007753D5 /* UITableView+BHUITableView.h */,
+				AD3709191DDC9335007753D5 /* UITableView+BHUITableView.m */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -296,7 +300,6 @@
 		34391C771CE4222400970573 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				34391C781CE4223600970573 /* Base */,
 				34391C7F1CE4225200970573 /* CycleUIScrollView */,
 				34391C861CE4227E00970573 /* UIBezierPath */,
 				34391C901CE422A900970573 /* CellRandomSubView */,
@@ -313,17 +316,6 @@
 				34391CB31CE423DD00970573 /* BHMainViewController.m */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		34391C781CE4223600970573 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				34391C791CE4224600970573 /* BHBaseController.h */,
-				34391C7A1CE4224600970573 /* BHBaseController.m */,
-				34391C7B1CE4224600970573 /* BHBaseTableController.h */,
-				34391C7C1CE4224600970573 /* BHBaseTableController.m */,
-			);
-			name = Base;
 			sourceTree = "<group>";
 		};
 		34391C7F1CE4225200970573 /* CycleUIScrollView */ = {
@@ -623,7 +615,7 @@
 				34391CAB1CE4237E00970573 /* BHViewController8.m in Sources */,
 				34E2294A1CE76945007B8098 /* BHBaseModel.m in Sources */,
 				34391C9A1CE422EC00970573 /* BHViewController4.m in Sources */,
-				34391C7D1CE4224600970573 /* BHBaseController.m in Sources */,
+				AD37091A1DDC9335007753D5 /* UITableView+BHUITableView.m in Sources */,
 				34391C6B1CE421D100970573 /* BHUtils.m in Sources */,
 				29CA61401DC47FA800801F4D /* NSString+BHNSString.m in Sources */,
 				34391CA61CE4235200970573 /* BHViewController6.m in Sources */,
@@ -640,7 +632,6 @@
 				34D142291D81AB4B00C99B6D /* BHViewController10.m in Sources */,
 				34391C931CE422BF00970573 /* BHViewController2.m in Sources */,
 				34391CB41CE423DD00970573 /* BHMainViewController.m in Sources */,
-				34391C7E1CE4224600970573 /* BHBaseTableController.m in Sources */,
 				34391C681CE421CB00970573 /* BHHookUtility.m in Sources */,
 				29CA613D1DC47CEA00801F4D /* NSDate+BHNSDate.m in Sources */,
 				3431BA3A1D9172810034662C /* BHInputTextDelegate.m in Sources */,
@@ -657,6 +648,7 @@
 				3410C4EE1CFB2CCA0046A208 /* BHViewController9.m in Sources */,
 				34391CBE1CE4261C00970573 /* BHPlayerControlView.m in Sources */,
 				34EEB6571D92C9A500F96AD0 /* BHViewController11.m in Sources */,
+				AD3709171DDC8E6E007753D5 /* UIViewController+BHUIViewController.m in Sources */,
 				34D1422C1D81ADDC00C99B6D /* UIButton+BHButton.m in Sources */,
 				29CA61461DC4831D00801F4D /* UIColor+BHUIColor.m in Sources */,
 				34391CB11CE4238F00970573 /* BHViewController7.m in Sources */,

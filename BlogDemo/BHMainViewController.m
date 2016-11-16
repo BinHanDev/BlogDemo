@@ -8,11 +8,18 @@
 
 #import "BHMainViewController.h"
 
-@interface BHMainViewController ()
-{
-    NSArray *_titleArr;
-}
+@interface BHMainViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+/**
+ *  数据源
+ **/
+@property (nonatomic, strong) NSArray *dataArray;
+
+
+@property (nonatomic, weak) UITableView *tableView;
+
 @end
+
 
 @implementation BHMainViewController
 
@@ -21,9 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [super initTableViewWithStyle:UITableViewStylePlain];
+    [self tableView];
     self.title      =   @"BlogDemo";
-    _titleArr       =   @[@"UIBezierPath配合CAShapeLayer画一些有趣的图形",
+    self.dataArray  =   @[@"UIBezierPath配合CAShapeLayer画一些有趣的图形",
                           @"微信下拉小视频加载动画",
                           @"Cell中子UIView数量不定的使用UICollectionViewCell的方案",
                           @"无限循环UIScrollView的两种实现方法",
@@ -51,11 +58,19 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:YES];
 }
 
+-(void)updateViewConstraints
+{
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    [super updateViewConstraints];
+}
+
 #pragma mark -UITableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _titleArr.count;
+    return self.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -66,7 +81,7 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    cell.textLabel.text = _titleArr[indexPath.row];
+    cell.textLabel.text = self.dataArray[indexPath.row];
     return cell;
 }
 
@@ -75,14 +90,27 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSInteger row = indexPath.row;
     UIViewController *controller = [[NSClassFromString([NSString stringWithFormat:@"BHViewController%ld",row]) alloc] init];
-    controller.title = _titleArr[row];
+    controller.title = self.dataArray[row];
     BHPushVC(controller);
-
-//    UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    self.view = webView;
-//    NSURL *url = [NSURL URLWithString:@"http://www.jianshu.com/p/ec5d6c204e17"];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    [webView loadRequest:request];
 }
+
+#pragma mark initSubView
+
+-(UITableView *)tableView
+{
+    if (!_tableView)
+    {
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        [self.view addSubview:(_tableView = tableView)];
+        [self.view setNeedsUpdateConstraints];
+    }
+    return _tableView;
+}
+
+
+//添加约束的方法则不论在任何版本都会让视图显示正确的大小
+
 
 @end

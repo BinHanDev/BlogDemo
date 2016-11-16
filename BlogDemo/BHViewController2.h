@@ -7,6 +7,6 @@
 //
 
 
-@interface BHViewController2 : BHBaseTableController
+@interface BHViewController2 : UIViewController
 
 @end

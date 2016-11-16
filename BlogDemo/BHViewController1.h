@@ -6,6 +6,6 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
-@interface BHViewController1 : BHBaseTableController
+@interface BHViewController1 : UIViewController
 
 @end

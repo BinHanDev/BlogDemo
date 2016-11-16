@@ -6,6 +6,6 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
-@interface BHViewController8 : BHBaseController
+@interface BHViewController8 : UIViewController
 
 @end

@@ -9,10 +9,14 @@
 #import "BHViewController1.h"
 #import "WXPullView.h"
 
-@interface BHViewController1 ()
+@interface BHViewController1 ()<UITableViewDataSource, UITableViewDelegate>
+
+/**
+ tableView
+ */
+@property (nonatomic, weak) UITableView *tableView;
 
 @property (nonatomic, weak) WXPullView *pullView;
-@property (nonatomic, weak) UILabel *footerView;
 
 @end
 
@@ -23,10 +27,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [super initTableViewWithStyle:UITableViewStylePlain];
-    super.tableView.backgroundColor = [UIColor blackColor];
     WXPullView *pullView = [[WXPullView alloc] initWithFrame:CGRectMake((CGRectGetWidth(self.view.frame) / 2) - 25, -kNavBarHeight, 50, 30)];
-    [super.tableView addSubview:(self.pullView = pullView)];
+    [self.tableView addSubview:(self.pullView = pullView)];
 }
 
 #pragma mark -UITableViewDelegate
@@ -68,4 +70,21 @@
         BHPushVC(controller);
     }
 }
+
+#pragma mark initSubView
+
+-(UITableView *)tableView
+{
+    if (!_tableView)
+    {
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        [self.view addSubview:(_tableView = tableView)];
+        [self.view setNeedsUpdateConstraints];
+    }
+    return _tableView;
+}
+
+
 @end

@@ -9,12 +9,17 @@
 #import "BHViewController2.h"
 #import "BHCellRandomCell.h"
 
-@interface BHViewController2 ()<BHCellRandomCellDelegate>
+@interface BHViewController2 ()<UITableViewDelegate, UITableViewDataSource>
 
 /**
   *  数据源
  **/
 @property (nonatomic, strong) NSArray *dataArray;
+
+/**
+ tableView
+ */
+@property (nonatomic, weak) UITableView *tableView;
 
 @end
 
@@ -25,8 +30,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [super initTableViewWithStyle:UITableViewStylePlain];
+    [self tableView];
     self.dataArray = @[@[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)]];
+}
+
+-(void)updateViewConstraints
+{
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    [super updateViewConstraints];
 }
 
 #pragma mark -UITableViewDelegate
@@ -111,6 +124,21 @@
 -(void)chickItem:(NSString *)str
 {
     [BHUtils showMessage:str];
+}
+
+#pragma mark initSubView
+
+-(UITableView *)tableView
+{
+    if (!_tableView)
+    {
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        [self.view addSubview:(_tableView = tableView)];
+        [self.view setNeedsUpdateConstraints];
+    }
+    return _tableView;
 }
 
 @end

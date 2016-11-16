@@ -9,6 +9,6 @@
 //
 
 
-@interface BHViewController3 : BHBaseController
+@interface BHViewController3 : UIViewController
 
 @end

@@ -10,8 +10,6 @@
 
 #warning 这个下拉刷新Demo只是思路   并不完善
 
-#import "BHBaseTableController.h"
-
-@interface BHViewController9 : BHBaseTableController
+@interface BHViewController9 : UIViewController
 
 @end
