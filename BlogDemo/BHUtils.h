@@ -44,6 +44,9 @@
 
 #define iPhone ((int)[[UIScreen mainScreen] bounds].size.width==320)
 
+// 获取本地版本号
+#define kLocalVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
 //一些缩写
 #define kApplication        [UIApplication sharedApplication]
 #define kKeyWindow          [UIApplication sharedApplication].keyWindow
