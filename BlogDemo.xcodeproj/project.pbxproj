@@ -208,7 +208,7 @@
 			children = (
 				34391C6C1CE421D900970573 /* Category */,
 				34391C651CE421B800970573 /* Utility */,
-				34391D081CE4956A00970573 /* Custom */,
+				34391D081CE4956A00970573 /* Common */,
 				34391C701CE421F200970573 /* NetWork */,
 				34E229471CE76929007B8098 /* Model */,
 				34391C771CE4222400970573 /* Controller */,
@@ -323,12 +323,12 @@
 			name = Nav;
 			sourceTree = "<group>";
 		};
-		34391D081CE4956A00970573 /* Custom */ = {
+		34391D081CE4956A00970573 /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				34391D041CE491BB00970573 /* Nav */,
 			);
-			name = Custom;
+			name = Common;
 			sourceTree = "<group>";
 		};
 		34C6BDD01D635B030074C5D3 /* ReactiveCocoa */ = {
