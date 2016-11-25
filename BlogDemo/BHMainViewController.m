@@ -31,10 +31,10 @@
     [self tableView];
     self.title      =   @"BlogDemo";
     self.dataArray  =   @[@"UIBezierPath配合CAShapeLayer画一些有趣的图形",
-                          @"AFNetworking链式网络请求封装",
+                          @"链式编程(UILable/UIButton/AFN)",
                           @"封装AVPlayer，触摸手势快进调节音量",
                           @"下拉刷新",
-                          @"ReactiveCocoa学习",];
+                          @"RAC常用法",];
     
 }
 
