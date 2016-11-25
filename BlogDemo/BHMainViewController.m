@@ -31,17 +31,9 @@
     [self tableView];
     self.title      =   @"BlogDemo";
     self.dataArray  =   @[@"UIBezierPath配合CAShapeLayer画一些有趣的图形",
-                          @"微信下拉小视频加载动画",
-                          @"Cell中子UIView数量不定的使用UICollectionViewCell的方案",
-                          @"无限循环UIScrollView的两种实现方法",
-                          @"CoreSpotlight入门",
-                          @"IOS中不同版本模糊效果实现",
                           @"AFNetworking链式网络请求封装",
                           @"封装AVPlayer，触摸手势快进调节音量",
-                          @"GPUImage实现实时滤镜，需真机测试",
                           @"下拉刷新",
-                          @"链式编程写UILabel和UIButton",
-                          @"自定义Delegate为控制器瘦身",
                           @"ReactiveCocoa学习",];
     
 }
@@ -61,7 +53,7 @@
 -(void)updateViewConstraints
 {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.edges.insets(UIEdgeInsetsZero);
     }];
     [super updateViewConstraints];
 }
@@ -108,9 +100,6 @@
     }
     return _tableView;
 }
-
-
-//添加约束的方法则不论在任何版本都会让视图显示正确的大小
 
 
 @end

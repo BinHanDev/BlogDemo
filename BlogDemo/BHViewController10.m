@@ -7,8 +7,8 @@
 //
 
 #import "BHViewController10.h"
-#import "UILabel+BHLabel.h"
-#import "UIButton+BHButton.h"
+#import "UILabel+BH.h"
+#import "UIButton+BH.h"
 
 @implementation BHViewController10
 

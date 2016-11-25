@@ -73,13 +73,6 @@ FOUNDATION_EXTERN double const kNavBarHeight;
 @interface BHUtils : NSObject
 
 /**
- *  提醒
- *
- *  @param message <#message description#>
- */
-+ (void)showMessage:(NSString *)message;
-
-/**
  *  更具系统当前时间生成随机文件名
  *
  *  @return 返回文件名

@@ -75,7 +75,6 @@
     [path addLineToPoint:CGPointMake(SCREEN_WIDTH, SCREEN_HEIGHT - MENU_HEIGHT)];
     [path addQuadCurveToPoint:CGPointMake(0, SCREEN_HEIGHT - MENU_HEIGHT) controlPoint:CGPointMake(SCREEN_WIDTH/2.f, SCREEN_HEIGHT - MENU_HEIGHT * 2.0f)];
     layer.path = path.CGPath;
-    //设置填充色及画笔颜色
     layer.fillColor = [UIColor purpleColor].CGColor;
     layer.strokeColor = [UIColor blueColor].CGColor;
     layer.lineWidth = 1.f;
@@ -94,13 +93,11 @@
     layer.fillColor = [UIColor clearColor].CGColor;
     layer.strokeColor = [UIColor blueColor].CGColor;
     layer.lineWidth = 1.f;
-    //设置stroke起始点
     layer.strokeStart = 0;
     layer.strokeEnd = 0.75;
     layer.frame = CGRectMake(0, 0, 200, 200);
     layer.position = self.view.center;
     [self.view.layer addSublayer:layer];
-    //动画显示了从1到0之间每一个值对这条曲线的影响
     CABasicAnimation *animation = [[CABasicAnimation alloc] init];
     animation.fromValue = [NSNumber numberWithFloat:1.0];
     animation.toValue = [NSNumber numberWithFloat:0.0];
