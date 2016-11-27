@@ -377,7 +377,7 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     if (_playerItem.duration.timescale != 0)
     {
         //当前进度
-        self.controlView.videoSlider.value = CMTimeGetSeconds([_playerItem currentTime]) / (_playerItem.duration.value / _playerItem.duration.timescale);
+        self.controlView.videoSlider.value = CMTimeGetSeconds([_playerItem currentTime]) / (_playerItem.duration.value / _playerItem.duration.timescale );
         //当前时长进度progress
         NSInteger proMin = (NSInteger)CMTimeGetSeconds([_player currentTime]) / 60;//当前秒
         NSInteger proSec = (NSInteger)CMTimeGetSeconds([_player currentTime]) % 60;//当前分钟
