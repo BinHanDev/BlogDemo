@@ -16,7 +16,7 @@
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
     hud.mode = MBProgressHUDModeIndeterminate;
     hud.userInteractionEnabled = userInteractionEnabled;
-    [hud hide:YES afterDelay:1.5f];
+    [hud show:YES];
 }
 
 +(void)showHintMessage:(NSString *)message
@@ -34,7 +34,10 @@
 + (void)hideHUD
 {
     UIWindow *window  = [UIApplication sharedApplication].keyWindow;
-    [[window.subviews lastObject] removeFromSuperview];
+    for (UIView *view in window.subviews)
+    {
+        [view removeFromSuperview];
+    }
 }
 
 @end

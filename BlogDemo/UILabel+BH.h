@@ -2,7 +2,7 @@
 //  UILabel+BHLabel.h
 //  BlogDemo
 //
-//  Created by HanBin on 16/8/8.
+//  Created by HanBin on 16/2/8.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 //  使用链式方法创建UILabel  主要添加了几个常用的属性
@@ -30,5 +30,10 @@
  *  文本居中方式
  */
 -(UILabel *(^)(NSTextAlignment textAlignment))bh_textAlignment;
+
+/**
+ *  文本行数
+ */
+-(UILabel *(^)(NSUInteger numberOfLines))bh_numberOfLines;
 
 @end

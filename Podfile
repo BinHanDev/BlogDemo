@@ -9,7 +9,6 @@ target 'BlogDemo' do
     pod 'SDWebImage'
     pod 'MBProgressHUD', '0.9.2'
     pod 'Masonry'
-    pod 'GPUImage'
     pod 'MJRefresh'
     pod 'MLeaksFinder'
 end

@@ -2,7 +2,7 @@
 //  BHNetReqManager.h
 //  BlogDemo
 //
-//  Created by HanBin on 16/1/26.
+//  Created by HanBin on 15/10/26.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 //  http://binhan1029.github.io/2015/07/11/%E5%AF%B9AFNetworking%E7%9A%84%E9%93%BE%E5%BC%8F%E4%BA%8C%E6%AC%A1%E5%B0%81%E8%A3%85/

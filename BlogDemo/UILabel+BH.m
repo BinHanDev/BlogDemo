@@ -2,7 +2,7 @@
 //  UILabel+BHLabel.m
 //  BlogDemo
 //
-//  Created by HanBin on 16/8/8.
+//  Created by HanBin on 16/2/8.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
@@ -38,6 +38,14 @@
 {
     return ^UILabel *(NSTextAlignment textAlignment) {
         self.textAlignment = textAlignment;
+        return self;
+    };
+}
+
+-(UILabel *(^)(NSUInteger numberOfLines))bh_numberOfLines
+{
+    return ^UILabel *(NSUInteger numberOfLines) {
+        self.numberOfLines = numberOfLines;
         return self;
     };
 }

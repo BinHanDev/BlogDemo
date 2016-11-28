@@ -2,14 +2,13 @@
 //  BHNetReqManager.m
 //  BlogDemo
 //
-//  Created by HanBin on 16/1/26.
+//  Created by HanBin on 15/10/26.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 #import "AFNetworking.h"
 #import "AFNetworkActivityIndicatorManager.h"
 #import "BHURLProtocol.h"
 #import "BHCustomURLCache.h"
-
 
 #ifdef DEBUG
     #define SERVERS_PREFIX   @"test_prefix"
@@ -311,7 +310,7 @@ static AFHTTPSessionManager *manager;
 {
     self.requestUrl = nil;
     self.requestType = GET;
-    self.requestSerializer = HTTPRequestSerializer;
+    self.requestSerializer = JSONRequestSerializer;
     self.responseSerializer = JSONResponseSerializer;
     self.parameters = nil;
 }

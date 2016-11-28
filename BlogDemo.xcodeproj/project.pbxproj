@@ -38,7 +38,6 @@
 		34C6BDD31D635B440074C5D3 /* BHViewController4.m in Sources */ = {isa = PBXBuildFile; fileRef = 34C6BDD21D635B440074C5D3 /* BHViewController4.m */; };
 		34C6BDD51D635F760074C5D3 /* BHViewController4.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34C6BDD41D635F760074C5D3 /* BHViewController4.xib */; };
 		34D142251D81A68D00C99B6D /* UILabel+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D142241D81A68D00C99B6D /* UILabel+BH.m */; };
-		34D142291D81AB4B00C99B6D /* BHViewController10.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D142281D81AB4B00C99B6D /* BHViewController10.m */; };
 		34D1422C1D81ADDC00C99B6D /* UIButton+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 34D1422B1D81ADDC00C99B6D /* UIButton+BH.m */; };
 		34E2294A1CE76945007B8098 /* BHBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E229491CE76945007B8098 /* BHBaseModel.m */; };
 		AD3709171DDC8E6E007753D5 /* UIViewController+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3709161DDC8E6E007753D5 /* UIViewController+BH.m */; };
@@ -108,8 +107,6 @@
 		34C6BDD41D635F760074C5D3 /* BHViewController4.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BHViewController4.xib; sourceTree = "<group>"; };
 		34D142231D81A68D00C99B6D /* UILabel+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BH.h"; sourceTree = "<group>"; };
 		34D142241D81A68D00C99B6D /* UILabel+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BH.m"; sourceTree = "<group>"; };
-		34D142271D81AB4B00C99B6D /* BHViewController10.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController10.h; sourceTree = "<group>"; };
-		34D142281D81AB4B00C99B6D /* BHViewController10.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController10.m; sourceTree = "<group>"; };
 		34D1422A1D81ADDC00C99B6D /* UIButton+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+BH.h"; sourceTree = "<group>"; };
 		34D1422B1D81ADDC00C99B6D /* UIButton+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+BH.m"; sourceTree = "<group>"; };
 		34E229481CE76945007B8098 /* BHBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHBaseModel.h; sourceTree = "<group>"; };
@@ -273,7 +270,6 @@
 				34391CA31CE4233600970573 /* NetTest */,
 				34391CA71CE4235C00970573 /* AVPlayer */,
 				3410C4EB1CFB2C880046A208 /* Refresh */,
-				34D142261D81A9C700C99B6D /* ChainProgram */,
 				34C6BDD01D635B030074C5D3 /* ReactiveCocoa */,
 				34391CB21CE423DD00970573 /* BHMainViewController.h */,
 				34391CB31CE423DD00970573 /* BHMainViewController.m */,
@@ -339,15 +335,6 @@
 				34C6BDD41D635F760074C5D3 /* BHViewController4.xib */,
 			);
 			name = ReactiveCocoa;
-			sourceTree = "<group>";
-		};
-		34D142261D81A9C700C99B6D /* ChainProgram */ = {
-			isa = PBXGroup;
-			children = (
-				34D142271D81AB4B00C99B6D /* BHViewController10.h */,
-				34D142281D81AB4B00C99B6D /* BHViewController10.m */,
-			);
-			name = ChainProgram;
 			sourceTree = "<group>";
 		};
 		34E229471CE76929007B8098 /* Model */ = {
@@ -518,7 +505,6 @@
 				34391CBD1CE4261C00970573 /* BHPlayer.m in Sources */,
 				34391C8B1CE4229600970573 /* BHViewController0.m in Sources */,
 				34391C731CE4220200970573 /* BHNetReqManager.m in Sources */,
-				34D142291D81AB4B00C99B6D /* BHViewController10.m in Sources */,
 				34391CB41CE423DD00970573 /* BHMainViewController.m in Sources */,
 				34391C681CE421CB00970573 /* BHHookUtility.m in Sources */,
 				29CA613D1DC47CEA00801F4D /* NSDate+BH.m in Sources */,
