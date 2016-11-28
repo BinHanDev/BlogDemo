@@ -12,22 +12,6 @@ double const kNavBarHeight = 64.f;
 
 @implementation BHUtils
 
-+ (void)showMessage:(NSString *)message
-{
-    UIWindow *window = ((AppDelegate*)[[UIApplication sharedApplication] delegate]).window;
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
-    hud.mode = MBProgressHUDModeText;
-    hud.margin = 15.f;
-    hud.yOffset = 15.f;
-    //小矩形的背景色
-    hud.color = [[UIColor blackColor] colorWithAlphaComponent:0.8f];//这儿表示无背景
-    //显示的文字
-    hud.labelText = message;
-    hud.dimBackground = NO;
-    hud.userInteractionEnabled = NO;
-    [hud hide:YES afterDelay:1.5f];
-}
-
 +(NSString *)randFileName
 {
     // 获取系统时间

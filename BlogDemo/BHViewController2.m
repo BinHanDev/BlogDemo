@@ -1,144 +1,80 @@
 //
-//  BHCellRandomController.m
+//  BHViewController7.m
 //  BlogDemo
 //
-//  Created by HanBin on 16/3/9.
+//  Created by HanBin on 15/5/9.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
 #import "BHViewController2.h"
-#import "BHCellRandomCell.h"
+#import "BHPlayer.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface BHViewController2 ()<UITableViewDelegate, UITableViewDataSource>
+@interface BHViewController2 ()
 
-/**
-  *  数据源
- **/
-@property (nonatomic, strong) NSArray *dataArray;
-
-/**
- tableView
- */
-@property (nonatomic, weak) UITableView *tableView;
+@property (weak, nonatomic) BHPlayer *playerView;
+@property (strong, nonatomic) AVPlayer *player;
+@property (strong, nonatomic) AVPlayerLayer *playerLayer;
 
 @end
 
-@implementation BHViewController2
+#pragma mark -cricle
 
-#pragma mark -circle
+@implementation BHViewController2
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self tableView];
-    self.dataArray = @[@[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)], @[@(arc4random()%20), @(arc4random()%20)]];
-}
-
--(void)updateViewConstraints
-{
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+    // 初始化添加playerView
+    BHPlayer *playerView = [[BHPlayer alloc] init];
+    [self.view addSubview:(self.playerView = playerView)];
+    //设置视频宽高比例16:9
+    [self.playerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(20.f);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(self.playerView.mas_width).multipliedBy(9.0f/16.0f);
     }];
-    [super updateViewConstraints];
+    __weak typeof(self) weakSelf = self;
+    self.playerView.goBackBlock = ^(){
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    };
+    //网络视频
+//    NSString *videoUrl = [@"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //本地视频
+    NSString *videoUrl = [[NSBundle mainBundle] pathForResource:@"snow" ofType:@"mp4"];
+    self.playerLayer.videoGravity = AVLayerVideoGravityResizeAspect;
+    self.playerView.sourceUrl = videoUrl;
 }
 
-#pragma mark -UITableViewDelegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (void)viewWillAppear:(BOOL)animated
 {
-    return self.dataArray.count;
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:YES];
+    self.navigationController.navigationBarHidden = YES;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)viewWillDisappear:(BOOL)animated
 {
-    return 2;
+    [super viewWillDisappear:animated];
+    [UIApplication sharedApplication].statusBarHidden = NO;
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    BHCellRandomCell *cell = [tableView dequeueReusableCellWithIdentifier:[BHCellRandomCell identifier]];
-    if (!cell)
+    if (toInterfaceOrientation == UIInterfaceOrientationPortrait)
     {
-        cell = [[BHCellRandomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[BHCellRandomCell identifier]];
-        cell.delegate = self;
+        self.view.backgroundColor = [UIColor whiteColor];
+         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
+             make.top.equalTo(self.view).offset(20);
+         }];
     }
-    NSInteger count = [self.dataArray[indexPath.section][indexPath.row] integerValue];
-    NSMutableArray *array = [NSMutableArray array];
-    for (NSInteger i = 0; i < count; i++)
+    else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeRight || toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft)
     {
-        [array addObject:[NSString stringWithFormat:@"当前点击的cell section = %ld row = %ld", indexPath.section, indexPath.row]];
+        self.view.backgroundColor = [UIColor blackColor];
+         [self.playerView mas_updateConstraints:^(MASConstraintMaker *make) {
+             make.top.equalTo(self.view).offset(0);
+         }];
     }
-    cell.dataArr = array;
-    return cell;
-}
-
-
-/**
- *  返回不定cell高度，正常情况下我们可以在cell中计算其高度，然后将其设置在model中，此方法中在model中获取cell高度
- *  可以在明确NSIndexPath的数量下，手动计算出cell中UICollectionView高度
- *
- *  @param tableView tableView
- *  @param indexPath indexPath
- *
- *  @return
- */
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSInteger count = [self.dataArray[indexPath.section][indexPath.row] integerValue];
-    NSInteger rowNum = SCREEN_WIDTH / 50.f;
-    NSInteger row = count / rowNum;
-    if (count % rowNum != 0)
-    {
-        row ++;
-    }
-    return row * 50.f;
-}
-
-/**
- *  IOS7后的预估高度，可防止一开始heightForRowAtIndexPath调用多次，因为heightForRowAtIndexPath中计算高度某些时候是个耗时的操作，会造成卡顿
- *
- *  @param tableView tableView
- *  @param indexPath indexPath
- *
- *  @return 返回cell预估高度，接近值既可以
- */
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100.f;
-}
-
--(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UILabel *headerView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0, 44.F)];
-    headerView.backgroundColor = [UIColor whiteColor];
-    headerView.text = [NSString stringWithFormat:@"第section = %ld标题", section];
-    return headerView;
-}
-
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 44.f;
-}
-
--(void)chickItem:(NSString *)str
-{
-    [BHUtils showMessage:str];
-}
-
-#pragma mark initSubView
-
--(UITableView *)tableView
-{
-    if (!_tableView)
-    {
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        [self.view addSubview:(_tableView = tableView)];
-        [self.view setNeedsUpdateConstraints];
-    }
-    return _tableView;
 }
 
 @end

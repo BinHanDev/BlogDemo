@@ -6,7 +6,7 @@
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
-#import "BHViewController7.h"
+#import "BHViewController2.h"
 
 @interface BHNavigationController ()
 
@@ -25,7 +25,7 @@
  */
 - (BOOL)shouldAutorotate
 {
-    if ([self.topViewController isKindOfClass:[BHViewController7 class]])
+    if ([self.topViewController isKindOfClass:[BHViewController2 class]])
     {
         return YES;
     }
@@ -38,7 +38,7 @@
  */
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
-    if ([self.topViewController isKindOfClass:[BHViewController7 class]])
+    if ([self.topViewController isKindOfClass:[BHViewController2 class]])
     {
         return UIInterfaceOrientationMaskAllButUpsideDown;
     }
