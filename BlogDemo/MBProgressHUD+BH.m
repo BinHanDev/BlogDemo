@@ -36,7 +36,10 @@
     UIWindow *window  = [UIApplication sharedApplication].keyWindow;
     for (UIView *view in window.subviews)
     {
-        [view removeFromSuperview];
+        if ([view isKindOfClass:[self class]])
+        {
+            [view removeFromSuperview];
+        }
     }
 }
 
