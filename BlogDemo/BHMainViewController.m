@@ -37,7 +37,8 @@ static NSString *identifier = @"cell";
                           @"链式编程(UILable/UIButton/AFN封装Demo)",
                           @"封装AVPlayer，触摸手势快进调节音量",
                           @"下拉刷新",
-                          @"RAC常用法",];
+                          @"RAC常用法",
+                          @"PhotoKit框架",];
     
 }
 

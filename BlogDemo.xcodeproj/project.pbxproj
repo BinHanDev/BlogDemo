@@ -43,6 +43,7 @@
 		AD3709171DDC8E6E007753D5 /* UIViewController+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3709161DDC8E6E007753D5 /* UIViewController+BH.m */; };
 		AD37091A1DDC9335007753D5 /* UITableView+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3709191DDC9335007753D5 /* UITableView+BH.m */; };
 		AD6DCA8D1DE8AF13000BEE75 /* MBProgressHUD+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6DCA8C1DE8AF13000BEE75 /* MBProgressHUD+BH.m */; };
+		ADD128B81DFEE2A70080780D /* BHViewController5.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD128B71DFEE2A70080780D /* BHViewController5.m */; };
 		FACD4868EBCE1E47EE1F70B8 /* Pods_BlogDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC7DBD5722F93E50B146FF7 /* Pods_BlogDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +119,8 @@
 		AD3709191DDC9335007753D5 /* UITableView+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+BH.m"; sourceTree = "<group>"; };
 		AD6DCA8B1DE8AF13000BEE75 /* MBProgressHUD+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+BH.h"; sourceTree = "<group>"; };
 		AD6DCA8C1DE8AF13000BEE75 /* MBProgressHUD+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+BH.m"; sourceTree = "<group>"; };
+		ADD128B61DFEE2A70080780D /* BHViewController5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController5.h; sourceTree = "<group>"; };
+		ADD128B71DFEE2A70080780D /* BHViewController5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController5.m; sourceTree = "<group>"; };
 		AFC7DBD5722F93E50B146FF7 /* Pods_BlogDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlogDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -271,6 +274,7 @@
 				34391CA71CE4235C00970573 /* AVPlayer */,
 				3410C4EB1CFB2C880046A208 /* Refresh */,
 				34C6BDD01D635B030074C5D3 /* ReactiveCocoa */,
+				ADD128B51DFEE2950080780D /* PhotoKit */,
 				34391CB21CE423DD00970573 /* BHMainViewController.h */,
 				34391CB31CE423DD00970573 /* BHMainViewController.m */,
 			);
@@ -361,6 +365,15 @@
 				AFC7DBD5722F93E50B146FF7 /* Pods_BlogDemo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ADD128B51DFEE2950080780D /* PhotoKit */ = {
+			isa = PBXGroup;
+			children = (
+				ADD128B61DFEE2A70080780D /* BHViewController5.h */,
+				ADD128B71DFEE2A70080780D /* BHViewController5.m */,
+			);
+			name = PhotoKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -506,6 +519,7 @@
 				34391C8B1CE4229600970573 /* BHViewController0.m in Sources */,
 				34391C731CE4220200970573 /* BHNetReqManager.m in Sources */,
 				34391CB41CE423DD00970573 /* BHMainViewController.m in Sources */,
+				ADD128B81DFEE2A70080780D /* BHViewController5.m in Sources */,
 				34391C681CE421CB00970573 /* BHHookUtility.m in Sources */,
 				29CA613D1DC47CEA00801F4D /* NSDate+BH.m in Sources */,
 				3431BA3A1D9172810034662C /* BHInputTextDelegate.m in Sources */,
