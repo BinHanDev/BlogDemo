@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		292380411D66D76F00A6C355 /* UIImage+BHI.m in Sources */ = {isa = PBXBuildFile; fileRef = 292380401D66D76F00A6C355 /* UIImage+BHI.m */; };
 		29450BB61DBE656A00249ED6 /* NSArray+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 29450BB51DBE656A00249ED6 /* NSArray+BH.m */; };
+		296EB7941DFFE3E00014895D /* BHPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 296EB7931DFFE3E00014895D /* BHPhotosCell.m */; };
 		298184C91DC4E2C6008C8811 /* BHURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 298184C81DC4E2C6008C8811 /* BHURLProtocol.m */; };
 		29CA613D1DC47CEA00801F4D /* NSDate+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA613C1DC47CEA00801F4D /* NSDate+BH.m */; };
 		29CA61401DC47FA800801F4D /* NSString+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA613F1DC47FA800801F4D /* NSString+BH.m */; };
@@ -53,6 +54,8 @@
 		292380401D66D76F00A6C355 /* UIImage+BHI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BHI.m"; sourceTree = "<group>"; };
 		29450BB41DBE656A00249ED6 /* NSArray+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BH.h"; sourceTree = "<group>"; };
 		29450BB51DBE656A00249ED6 /* NSArray+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BH.m"; sourceTree = "<group>"; };
+		296EB7921DFFE3E00014895D /* BHPhotosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHPhotosCell.h; sourceTree = "<group>"; };
+		296EB7931DFFE3E00014895D /* BHPhotosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHPhotosCell.m; sourceTree = "<group>"; };
 		298184C71DC4E2C6008C8811 /* BHURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHURLProtocol.h; sourceTree = "<group>"; };
 		298184C81DC4E2C6008C8811 /* BHURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHURLProtocol.m; sourceTree = "<group>"; };
 		29CA613B1DC47CEA00801F4D /* NSDate+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BH.h"; sourceTree = "<group>"; };
@@ -372,6 +375,8 @@
 			children = (
 				ADD128B61DFEE2A70080780D /* BHViewController5.h */,
 				ADD128B71DFEE2A70080780D /* BHViewController5.m */,
+				296EB7921DFFE3E00014895D /* BHPhotosCell.h */,
+				296EB7931DFFE3E00014895D /* BHPhotosCell.m */,
 			);
 			name = PhotoKit;
 			sourceTree = "<group>";
@@ -411,7 +416,7 @@
 				TargetAttributes = {
 					34391C481CE4212100970573 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 4Q5833984V;
+						DevelopmentTeam = H5XHGCCSHA;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -520,6 +525,7 @@
 				34391C731CE4220200970573 /* BHNetReqManager.m in Sources */,
 				34391CB41CE423DD00970573 /* BHMainViewController.m in Sources */,
 				ADD128B81DFEE2A70080780D /* BHViewController5.m in Sources */,
+				296EB7941DFFE3E00014895D /* BHPhotosCell.m in Sources */,
 				34391C681CE421CB00970573 /* BHHookUtility.m in Sources */,
 				29CA613D1DC47CEA00801F4D /* NSDate+BH.m in Sources */,
 				3431BA3A1D9172810034662C /* BHInputTextDelegate.m in Sources */,
@@ -649,7 +655,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4Q5833984V;
+				DEVELOPMENT_TEAM = H5XHGCCSHA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BlogDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = BlogDemo/Info.plist;
@@ -667,7 +673,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 4Q5833984V;
+				DEVELOPMENT_TEAM = H5XHGCCSHA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BlogDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = BlogDemo/Info.plist;

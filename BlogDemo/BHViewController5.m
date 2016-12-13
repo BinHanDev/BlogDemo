@@ -2,11 +2,12 @@
 //  BHViewController5.m
 //  BlogDemo
 //
-//  Created by BinHan on 2016/12/12.
+//  Created by BinHan on 2016/2/12.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 
 #import "BHViewController5.h"
+#import "BHPhotosCell.h"
 #import <Photos/Photos.h>
 
 @interface BHViewController5 ()<UITableViewDataSource, UITableViewDelegate>
@@ -38,77 +39,46 @@
     
     // 列出所有相册智能相册
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
-    
     [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
-        if (collection.estimatedAssetCount > 0)
+        if (!collection.startDate && ![self filterWithSubtype:collection])
         {
-            NSLog(@"相册名字:%@", collection.localizedTitle);
             [self.dataArray addObject:collection];
         }
-        
     }];
-    
-    // 这时 smartAlbums 中保存的应该是各个智能相册对应的 PHAssetCollection
-    for (NSInteger i = 0; i < smartAlbums.count; i++)
-    {
-        // 获取一个相册（PHAssetCollection）
-        PHCollection *collection = smartAlbums[i];
-        if ([collection isKindOfClass:[PHAssetCollection class]])
-        {
-            PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
-            // 从每一个智能相册中获取到的 PHFetchResult 中包含的才是真正的资源（PHAsset）
-            PHFetchOptions *options = [[PHFetchOptions alloc] init];
-            options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
-            PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:options];
-            BHLog(@"fetchResult count = %ld", fetchResult.count);
-            [self.dataArray addObject:assetCollection];
-        }
-        else
-        {
-            NSAssert(NO, @"Fetch collection not PHCollection: %@", collection);
-        }
-    }
-    
     // 列出所有用户创建的相册
     PHFetchResult *topLevelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
-    for (NSInteger i = 0; i < topLevelUserCollections.count; i++)
-    {
-        // 获取一个相册（PHAssetCollection）
-        PHCollection *collection = topLevelUserCollections[i];
-        if ([collection isKindOfClass:[PHAssetCollection class]])
+    [topLevelUserCollections enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
+        if (collection.estimatedAssetCount > 0)
         {
-            PHAssetCollection *assetCollection = (PHAssetCollection *)collection;
-            // 从每一个智能相册中获取到的 PHFetchResult 中包含的才是真正的资源（PHAsset）
-            PHFetchOptions *options = [[PHFetchOptions alloc] init];
-            options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
-            PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:options];
-            BHLog(@"fetchResult count = %ld", fetchResult.count);
-            [self.dataArray addObject:assetCollection];
+            [self.dataArray addObject:collection];
         }
-        else
-        {
-            NSAssert(NO, @"Fetch collection not PHCollection: %@", collection);
-        }
-    }
+    }];
     [self.tableView reloadData];
-    
-//    // 获取所有资源的集合，并按资源的创建时间排序
-//    PHFetchOptions *options = [[PHFetchOptions alloc] init];
-//    options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:YES]];
-//    PHFetchResult *assetsFetchResults = [PHAsset fetchAssetsWithOptions:options];
-//    
-//    // 在资源的集合中获取第一个集合，并获取其中的图片
-//    PHCachingImageManager *imageManager = [[PHCachingImageManager alloc] init];
-//    PHAsset *asset = assetsFetchResults[0];
-//    [imageManager requestImageForAsset:asset
-//                            targetSize:SomeSize
-//                           contentMode:PHImageContentModeAspectFill
-//                               options:nil
-//                         resultHandler:^(UIImage *result, NSDictionary *info) {
-//                             
-//                             // 得到一张 UIImage，展示到界面上
-//                             
-//                         }];
+}
+
+-(PHFetchResult *)sortWithDate:(PHAssetCollection *)collection
+{
+    PHFetchOptions *options = [[PHFetchOptions alloc] init];
+    options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
+    PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:options];
+    BHLog(@"fetchResult count = %ld", fetchResult.count);
+    return fetchResult;
+}
+
+-(BOOL)filterWithSubtype:(PHAssetCollection *)collection
+{
+    PHAssetCollectionSubtype assetCollectionSubtype = collection.assetCollectionSubtype;
+    if (assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumUserLibrary ||  //用户相册
+        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumVideos ||       //视频
+        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumFavorites ||    //收藏
+        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumScreenshots ||  //截屏
+        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumBursts ||       //连拍
+        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumTimelapses ||   //延时摄影
+        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumSlomoVideos) //慢动作
+    {
+        return NO;
+    }
+    return YES;
 }
 
 
@@ -129,16 +99,44 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (!cell)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-    }
+    BHPhotosCell *cell = [tableView dequeueReusableCellWithIdentifier:[BHPhotosCell identifier]];
     PHAssetCollection *assetCollection = self.dataArray[indexPath.row];
-    cell.textLabel.text = assetCollection.localizedTitle;
+    cell.assetCollection = assetCollection;
     NSLog(@"assetCollection = %ld", assetCollection.estimatedAssetCount);
     return cell;
+}
+
+#pragma mark - UITableViewDelegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+
+}
+
+#pragma mark 分割线顶头显示
+
+-(void)viewDidLayoutSubviews
+{
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)])
+    {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 -(NSMutableArray *)dataArray
@@ -148,12 +146,6 @@
         _dataArray = [NSMutableArray array];
     }
     return  _dataArray;
-//    [self.dataArray removeAllObjects];
-//    for (NSInteger i = 0; i < 20; i++)
-//    {
-//        [self.dataArray addObject:[NSString stringWithFormat:@"test随机数据 %d", (int)arc4random() % 100]];
-//    }
-//    [self.tableView reloadData];
 }
 
 
@@ -166,6 +158,9 @@
         UITableView *tableView = [[UITableView alloc] init];
         tableView.delegate = self;
         tableView.dataSource = self;
+        tableView.rowHeight = rowHeight;
+        tableView.tableFooterView = [UIView new];
+        [tableView registerClass:[BHPhotosCell class] forCellReuseIdentifier:[BHPhotosCell identifier]];
         [self.view addSubview:(_tableView = tableView)];
         [self.view setNeedsUpdateConstraints];
     }
