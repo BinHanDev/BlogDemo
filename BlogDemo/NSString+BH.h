@@ -28,4 +28,14 @@
  */
 - (BOOL)isTelephones;
 
+/**
+ @return 字符串反转
+ */
+- (NSString*)reverseWordsInString;
+
+/**
+ @return 返回字符串拼音
+ */
+- (NSString *)transformToPinYin;
+
 @end

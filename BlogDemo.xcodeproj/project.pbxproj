@@ -43,6 +43,7 @@
 		34E2294A1CE76945007B8098 /* BHBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34E229491CE76945007B8098 /* BHBaseModel.m */; };
 		AD3709171DDC8E6E007753D5 /* UIViewController+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3709161DDC8E6E007753D5 /* UIViewController+BH.m */; };
 		AD37091A1DDC9335007753D5 /* UITableView+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3709191DDC9335007753D5 /* UITableView+BH.m */; };
+		AD6AB5451E0039F20032B4F1 /* NSFileManager+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6AB5441E0039F20032B4F1 /* NSFileManager+BH.m */; };
 		AD6DCA8D1DE8AF13000BEE75 /* MBProgressHUD+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = AD6DCA8C1DE8AF13000BEE75 /* MBProgressHUD+BH.m */; };
 		ADD128B81DFEE2A70080780D /* BHViewController5.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD128B71DFEE2A70080780D /* BHViewController5.m */; };
 		FACD4868EBCE1E47EE1F70B8 /* Pods_BlogDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC7DBD5722F93E50B146FF7 /* Pods_BlogDemo.framework */; };
@@ -120,6 +121,8 @@
 		AD3709161DDC8E6E007753D5 /* UIViewController+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BH.m"; sourceTree = "<group>"; };
 		AD3709181DDC9335007753D5 /* UITableView+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+BH.h"; sourceTree = "<group>"; };
 		AD3709191DDC9335007753D5 /* UITableView+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+BH.m"; sourceTree = "<group>"; };
+		AD6AB5431E0039F20032B4F1 /* NSFileManager+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+BH.h"; sourceTree = "<group>"; };
+		AD6AB5441E0039F20032B4F1 /* NSFileManager+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+BH.m"; sourceTree = "<group>"; };
 		AD6DCA8B1DE8AF13000BEE75 /* MBProgressHUD+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+BH.h"; sourceTree = "<group>"; };
 		AD6DCA8C1DE8AF13000BEE75 /* MBProgressHUD+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+BH.m"; sourceTree = "<group>"; };
 		ADD128B61DFEE2A70080780D /* BHViewController5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController5.h; sourceTree = "<group>"; };
@@ -171,6 +174,8 @@
 				29CA613C1DC47CEA00801F4D /* NSDate+BH.m */,
 				29CA613E1DC47FA800801F4D /* NSString+BH.h */,
 				29CA613F1DC47FA800801F4D /* NSString+BH.m */,
+				AD6AB5431E0039F20032B4F1 /* NSFileManager+BH.h */,
+				AD6AB5441E0039F20032B4F1 /* NSFileManager+BH.m */,
 			);
 			name = Foundation;
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 				AD3709171DDC8E6E007753D5 /* UIViewController+BH.m in Sources */,
 				34D1422C1D81ADDC00C99B6D /* UIButton+BH.m in Sources */,
 				29CA61461DC4831D00801F4D /* UIColor+BH.m in Sources */,
+				AD6AB5451E0039F20032B4F1 /* NSFileManager+BH.m in Sources */,
 				34391CB11CE4238F00970573 /* BHViewController2.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

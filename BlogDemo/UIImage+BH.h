@@ -73,4 +73,11 @@
  */
 + (UIImage *)circleImage:(UIImage *)originImage borderColor:(UIColor *)borderColor borderWidth:(CGFloat)borderWidth;
 
+/**
+ 获取图片占用内存大小
+
+ @return 返回占用内存大小
+ */
+- (NSUInteger)memorySize;
+
 @end

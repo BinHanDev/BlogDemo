@@ -310,7 +310,7 @@ static AFHTTPSessionManager *manager;
 {
     self.requestUrl = nil;
     self.requestType = GET;
-    self.requestSerializer = JSONRequestSerializer;
+    self.requestSerializer = HTTPRequestSerializer;
     self.responseSerializer = JSONResponseSerializer;
     self.parameters = nil;
 }

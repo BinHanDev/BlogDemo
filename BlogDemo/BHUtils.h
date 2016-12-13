@@ -68,6 +68,10 @@
 #define kWeakSelf(type)   __weak typeof(type) weak##type = type;
 #define kStrongSelf(type) __strong typeof(type) type = weak##type;
 
+#define KRATE (SCREEN_WIDTH/320.0)
+
+#define KKRATE(rate) (KRATE > 1 ? KRATE * rate : KRATE)
+
 /**
  *  navigationBar的高度
  */
@@ -81,13 +85,5 @@ FOUNDATION_EXTERN double const kNavBarHeight;
  *  @return 返回文件名
  */
 +(NSString *)randFileName;
-
-/**
- *  获取图片扩展名
- *
- *  @return 返回扩展名
- */
-+ (NSString *)contentTypeForImageData:(NSData *)data ;
-
 
 @end

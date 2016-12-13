@@ -212,4 +212,9 @@
     return resultImage;
 }
 
+- (NSUInteger)memorySize
+{
+    return CGImageGetHeight(self.CGImage) * CGImageGetBytesPerRow(self.CGImage);
+}
+
 @end

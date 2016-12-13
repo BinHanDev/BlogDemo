@@ -31,6 +31,7 @@
     [super viewDidLoad];
     [self.view addSubview:self.label];
     [self.view addSubview:self.button];
+    [self.view setNeedsUpdateConstraints];
 //    RAC(self.label, text) = [RACObserve(self, attrStr) distinctUntilChanged];
     [self.afnCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
         NSLog(@"x = %@", x);
@@ -56,6 +57,10 @@
     {
         _button = [UIButton buttonWithType:UIButtonTypeSystem].bh_title(@"链式创建UlButton").bh_titleColor([UIColor blueColor]);
         [[_button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+            });
 //            [self.afnCommand execute:nil];
         }];
     }
@@ -66,7 +71,7 @@
 {
     if (!_label)
     {
-        _label = [[UILabel alloc] init].bh_textColor([UIColor redColor]).bh_textFont(14.f).bh_numberOfLines(0).bh_text(@"链式创建UlLable");
+        _label = [[UILabel alloc] init].bh_textColor([UIColor redColor]).bh_textFont(14.f).bh_numberOfLines(0).bh_textAlignment(NSTextAlignmentCenter).bh_text(@"链式创建UlLable");
     }
     return _label;
 }

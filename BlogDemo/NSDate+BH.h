@@ -51,6 +51,14 @@
 @property (nonatomic, readonly) NSInteger	weekday;
 
 /**
+ 判断两个日期是否在同一周
+
+ @param date 对比的时间
+ @return 返回结果
+ */
+- (BOOL)isSameDateWithDate:(NSDate *)date;
+
+/**
  获取昨天日期
 
  @return 返回NSDate昨天

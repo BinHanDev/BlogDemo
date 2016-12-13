@@ -28,7 +28,7 @@
     hud.yOffset = 15.f;
     hud.color = [[UIColor blackColor] colorWithAlphaComponent:0.8f];//这儿表示无背景
     hud.detailsLabelText = message;
-    [hud hide:YES afterDelay:1.5f];
+    [hud hide:YES afterDelay:2.0f];
 }
 
 + (void)hideHUD

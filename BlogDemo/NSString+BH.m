@@ -43,6 +43,27 @@
     return  [regextestMobile evaluateWithObject:self];
 }
 
+- (NSString*)reverseWordsInString
+{
+    NSMutableString *reverString = [NSMutableString stringWithCapacity:self.length];
+    [self enumerateSubstringsInRange:NSMakeRange(0, self.length) options:NSStringEnumerationReverse | NSStringEnumerationByComposedCharacterSequences  usingBlock:^(NSString *substring, NSRange substringRange, NSRange enclosingRange, BOOL *stop) {
+        [reverString appendString:substring];
+    }];
+    return reverString;
+}
 
+- (NSString *)transformToPinYin
+{
+    //将NSString装换成NSMutableString
+    NSMutableString *pinyin = [self mutableCopy];
+    //将汉字转换为拼音(带音标)
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformMandarinLatin, NO);
+    NSLog(@"%@", pinyin);
+    //去掉拼音的音标
+    CFStringTransform((__bridge CFMutableStringRef)pinyin, NULL, kCFStringTransformStripCombiningMarks, NO);
+    NSLog(@"%@", pinyin);
+    //返回最近结果
+    return pinyin;
+}
 
 @end
