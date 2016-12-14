@@ -29,14 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    
-    // 获取所有资源的集合，并按资源的创建时间排序
-//    PHFetchOptions *options = [[PHFetchOptions alloc] init];
-//    options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
-//    PHFetchResult *assetsFetchResults = [PHAsset fetchAssetsWithOptions:options];
-//    [self.dataArray addObject:assetsFetchResults];
-    
     // 列出所有相册智能相册
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
     [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {

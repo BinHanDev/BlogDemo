@@ -38,24 +38,30 @@ CGFloat const rowHeight = 58.f;
     if (self)
     {
         [self.contentView addSubview:self.photoImageView];
-         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        [self bindModel];
     }
     return self;
 }
 
--(void)setAssetCollection:(PHAssetCollection *)assetCollection
+-(void)bindModel
 {
-    _assetCollection = assetCollection;
-    self.photosNameLable.text = assetCollection.localizedTitle;
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
-        if (fetchResult.lastObject) {
-            PHAsset *asset = fetchResult.lastObject;
-            [[PHImageManager defaultManager] requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-                self.photoImageView.image = [UIImage imageWithData:imageData];
-            }];
-        }
-    });
+    @weakify(self)
+    [[RACObserve(self, assetCollection) distinctUntilChanged] subscribeNext:^(PHAssetCollection *assetCollection) {
+        @strongify(self)
+        self.photosNameLable.text = assetCollection.localizedTitle;
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+            if (fetchResult.lastObject) {
+                PHAsset *asset = fetchResult.lastObject;
+                [[PHImageManager defaultManager] requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+                    self.photoImageView.image = [UIImage imageWithData:imageData];
+                    self.photosNameLable.text = [assetCollection.localizedTitle stringByAppendingFormat:@"  (%ld)", fetchResult.count];
+                }];
+            }
+        });
+
+    }];
 }
 
 -(UIImageView *)photoImageView
@@ -63,6 +69,7 @@ CGFloat const rowHeight = 58.f;
     if (!_photoImageView)
     {
         UIImageView *imageView = [UIImageView new];
+        imageView.backgroundColor = [UIColor redColor];
         imageView.frame = CGRectMake(0, 0, rowHeight, rowHeight);
         imageView.contentMode = UIViewContentModeScaleAspectFill;
         imageView.layer.masksToBounds = YES;
