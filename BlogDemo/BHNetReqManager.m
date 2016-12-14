@@ -18,8 +18,6 @@
 
 #define consumerKey @"iOS"
 
-static BHNetReqManager *sharedManager;
-
 static AFHTTPSessionManager *manager;
 
 @interface BHNetReqManager()
@@ -76,15 +74,21 @@ static AFHTTPSessionManager *manager;
     };
 }
 
-+(instancetype)allocWithZone:(struct _NSZone *)zone
+/**
+ *  获取BHNetReqManager单例并进行初始化设置
+ *
+ *  @return 返回BHNetReqManager
+ */
++(instancetype)sharedManager
 {
+    static BHNetReqManager *sharedManager;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
         [sharedManager resetConfigWithManager];
         //manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:SERVERS_PREFIX]];
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-        configuration.protocolClasses = @[[BHURLProtocol class]];
+        //        configuration.protocolClasses = @[[BHURLProtocol class]];
         manager = [[AFHTTPSessionManager manager] initWithSessionConfiguration:configuration];
         manager.requestSerializer.timeoutInterval = 10.f;
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html", @"text/xml", @"text/plain", nil];
@@ -105,67 +109,11 @@ static AFHTTPSessionManager *manager;
         }];
         [manager.reachabilityManager startMonitoring];
         [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-        BHCustomURLCache *sharedCache = [BHCustomURLCache standardURLCache];
-        [NSURLCache setSharedURLCache:sharedCache];
+//        BHCustomURLCache *sharedCache = [BHCustomURLCache standardURLCache];
+//        [NSURLCache setSharedURLCache:sharedCache];
     });
     return sharedManager;
 }
-
-/**
- *  获取BHNetReqManager单例并进行初始化设置
- *
- *  @return 返回BHNetReqManager
- */
-+(instancetype)sharedManager
-{
-    return [[self alloc] init];
-}
-
--(id)copyWithZone:(NSZone *)zone
-{
-    return sharedManager;
-}
--(id)mutableCopyWithZone:(NSZone *)zone
-{
-    return sharedManager;
-}
-
-+ (NetworkStates)getNetworkStates
-{
-    NSArray *subviews = [[[[UIApplication sharedApplication] valueForKeyPath:@"statusBar"] valueForKeyPath:@"foregroundView"] subviews];
-    NetworkStates states = NetworkStatesNone;
-    for (id child in subviews)
-    {
-        if ([child isKindOfClass:NSClassFromString(@"UIStatusBarDataNetworkItemView")])
-        {
-            int networkType = [[child valueForKeyPath:@"dataNetworkType"] intValue];
-            switch (networkType)
-            {
-                case 0:
-                    states = NetworkStatesNone;
-                    break;
-                case 1:
-                    states = NetworkStates2G;
-                    break;
-                case 2:
-                    states = NetworkStates3G;
-                    break;
-                case 3:
-                    states = NetworkStates4G;
-                    break;
-                case 5:
-                {
-                    states = NetworkStatesWIFI;
-                }
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-    return states;
-}
-
 
 /**
  *  请求方法/consumerKey/请求参数一起参数的加密运算，用于获取mac值

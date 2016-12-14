@@ -68,13 +68,6 @@ typedef NS_ENUM(NSUInteger, NetworkStates) {
  */
 +(instancetype)sharedManager;
 
-
-/** 获取网络状态
- @return 返回网络状态
- */
-
-+ (NetworkStates)getNetworkStates;
-
 /**
  *  开始请求
  *

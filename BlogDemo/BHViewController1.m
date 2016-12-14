@@ -16,8 +16,6 @@
 
 @property (nonatomic, strong) UILabel *label;
 
-@property (nonatomic, strong) RACCommand *afnCommand;
-
 @property (nonatomic, strong) NSMutableAttributedString * attrStr;
 
 @end
@@ -32,17 +30,15 @@
     [self.view addSubview:self.label];
     [self.view addSubview:self.button];
     [self.view setNeedsUpdateConstraints];
-//    RAC(self.label, text) = [RACObserve(self, attrStr) distinctUntilChanged];
-    [self.afnCommand.executionSignals.switchToLatest subscribeNext:^(id x) {
-        NSLog(@"x = %@", x);
-    }];
+    RAC(self.label, attributedText) = [RACObserve(self, attrStr) distinctUntilChanged];
 }
 
 -(void)updateViewConstraints
 {
     [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view).offset(100.f);
+        make.top.mas_equalTo(self.view).offset(kNavBarHeight + 10.f);
+        make.height.mas_equalTo(45.f);
     }];
     [self.label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.mas_equalTo(self.view);
@@ -55,13 +51,11 @@
 {
     if (!_button)
     {
-        _button = [UIButton buttonWithType:UIButtonTypeSystem].bh_title(@"链式创建UlButton").bh_titleColor([UIColor blueColor]);
-        [[_button rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-            });
-//            [self.afnCommand execute:nil];
+        _button = [UIButton buttonWithType:UIButtonTypeSystem].bh_title(@"链式创建UlButton，点击开始网络请求").bh_titleColor([UIColor blueColor]);
+        @weakify(self);
+        _button.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+            @strongify(self)
+            return [self signInSignal];
         }];
     }
     return  _button;
@@ -76,33 +70,29 @@
     return _label;
 }
 
--(RACCommand *)afnCommand
+- (RACSignal *)signInSignal
 {
-    if (!_afnCommand)
-    {
-        _afnCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
-            @weakify(self);
-            return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                   //直接请求  iOS9下需针对HTTP请求进行适配
-                   [[BHNetReqManager sharedManager].bh_requestUrl(@"http://binhan1029.github.io/").bh_requestType(GET).bh_responseSerializer(HTTPResponseSerializer).bh_parameters(nil) startRequestWithCompleteHandler:^(id response, NSError *error) {
-                       @strongify(self);
-                       if (response)
-                       {
-                           NSString *result = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
-                           NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[result dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
-                           self.attrStr = attrStr;
-                           [subscriber sendCompleted];
-                       }
-                       else if(error)
-                       {
-                           [MBProgressHUD showHintMessage:error.localizedDescription];
-                       }
-                   }];
-               return nil;
-           }];
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        [[BHNetReqManager sharedManager].bh_requestUrl(@"http://binhan1029.github.io/").bh_requestType(GET).bh_responseSerializer(HTTPResponseSerializer).bh_parameters(nil) startRequestWithCompleteHandler:^(id response, NSError *error) {
+            if (response)
+            {
+                NSString *result = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+                NSMutableAttributedString * attrStr = [[NSMutableAttributedString alloc] initWithData:[result dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+                self.attrStr = attrStr;
+            }
+            else if(error)
+            {
+                [MBProgressHUD showHintMessage:error.localizedDescription];
+            }
+            [subscriber sendCompleted];
         }];
-    }
-    return _afnCommand;
+        return nil;
+    }];
+}
+
+-(void)dealloc
+{
+    NSLog(@"开始释放");
 }
 
 
