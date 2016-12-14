@@ -36,9 +36,9 @@ static NSString *identifier = @"cell";
     self.dataArray  =   @[@"UIBezierPath配合CAShapeLayer画一些有趣的图形",
                           @"链式编程(UILable/UIButton/AFN封装Demo)",
                           @"封装AVPlayer，触摸手势快进调节音量",
-                          @"下拉刷新",
+                          @"PhotoKit框架",
                           @"RAC常用法",
-                          @"PhotoKit框架",];
+                          ];
 
     
 }

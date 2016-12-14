@@ -1,14 +1,10 @@
 //
-//  BHViewController9.h
+//  BHViewController5.h
 //  BlogDemo
 //
-//  Created by HanBin on 16/5/29.
+//  Created by BinHan on 2016/2/12.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
-//
-//
-
-#warning 这个下拉刷新Demo只是思路   并不完善
 
 @interface BHViewController3 : UIViewController
 
