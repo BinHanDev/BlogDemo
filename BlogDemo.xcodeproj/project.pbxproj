@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		292380411D66D76F00A6C355 /* UIImage+BHI.m in Sources */ = {isa = PBXBuildFile; fileRef = 292380401D66D76F00A6C355 /* UIImage+BHI.m */; };
 		29450BB61DBE656A00249ED6 /* NSArray+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 29450BB51DBE656A00249ED6 /* NSArray+BH.m */; };
+		295B01B91E07E1F7006E8177 /* ZOAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 295B01B81E07E1F7006E8177 /* ZOAlbumCell.m */; };
 		296EB7941DFFE3E00014895D /* BHPhotosCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 296EB7931DFFE3E00014895D /* BHPhotosCell.m */; };
 		298184C91DC4E2C6008C8811 /* BHURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 298184C81DC4E2C6008C8811 /* BHURLProtocol.m */; };
 		29CA613D1DC47CEA00801F4D /* NSDate+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 29CA613C1DC47CEA00801F4D /* NSDate+BH.m */; };
@@ -52,6 +53,8 @@
 		292380401D66D76F00A6C355 /* UIImage+BHI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BHI.m"; sourceTree = "<group>"; };
 		29450BB41DBE656A00249ED6 /* NSArray+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+BH.h"; sourceTree = "<group>"; };
 		29450BB51DBE656A00249ED6 /* NSArray+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+BH.m"; sourceTree = "<group>"; };
+		295B01B71E07E1F7006E8177 /* ZOAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZOAlbumCell.h; sourceTree = "<group>"; };
+		295B01B81E07E1F7006E8177 /* ZOAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZOAlbumCell.m; sourceTree = "<group>"; };
 		296EB7921DFFE3E00014895D /* BHPhotosCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHPhotosCell.h; sourceTree = "<group>"; };
 		296EB7931DFFE3E00014895D /* BHPhotosCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHPhotosCell.m; sourceTree = "<group>"; };
 		298184C71DC4E2C6008C8811 /* BHURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHURLProtocol.h; sourceTree = "<group>"; };
@@ -359,6 +362,8 @@
 				ADD128B71DFEE2A70080780D /* BHViewController3.m */,
 				296EB7921DFFE3E00014895D /* BHPhotosCell.h */,
 				296EB7931DFFE3E00014895D /* BHPhotosCell.m */,
+				295B01B71E07E1F7006E8177 /* ZOAlbumCell.h */,
+				295B01B81E07E1F7006E8177 /* ZOAlbumCell.m */,
 			);
 			name = PhotoKit;
 			sourceTree = "<group>";
@@ -496,6 +501,7 @@
 			files = (
 				34E2294A1CE76945007B8098 /* BHBaseModel.m in Sources */,
 				AD37091A1DDC9335007753D5 /* UITableView+BH.m in Sources */,
+				295B01B91E07E1F7006E8177 /* ZOAlbumCell.m in Sources */,
 				34391C6B1CE421D100970573 /* BHUtils.m in Sources */,
 				29CA61401DC47FA800801F4D /* NSString+BH.m in Sources */,
 				34391CA61CE4235200970573 /* BHViewController1.m in Sources */,

@@ -166,4 +166,31 @@
 }
 
 
+
+[[PHImageManager defaultManager] cancelImageRequest:self.lastPHImageRequestID];
+PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+options.networkAccessAllowed = YES;
+options.resizeMode = PHImageRequestOptionsResizeModeFast;
+options.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
+options.progressHandler = ^(double progress, NSError *__nullable error, BOOL *stop, NSDictionary *__nullable info) {
+    NSLog(@"progress = %f", progress);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.indicatorView.hidden = NO;
+        self.indicatorView.progress = progress;
+        self.loadAssetEnd = NO;
+        self.rightBarButtonItem.enabled = NO;
+    });
+};
+self.lastPHImageRequestID = [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+    @strongify(self);
+    self.indicatorView.hidden = YES;
+    if (asset == self.currentSelectedAsset && imageData)
+    {
+        self.loadAssetEnd = YES;
+        self.rightBarButtonItem.enabled = YES;
+        self.imgView.image = [UIImage imageWithData:imageData];
+    }
+}];
+
+
 @end
