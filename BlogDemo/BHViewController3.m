@@ -32,31 +32,37 @@
     // 列出所有相册智能相册
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
     [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
-        if (!collection.startDate && ![self filterWithSubtype:collection])
-        {
-            [self.dataArray addObject:collection];
-        }
+        NSLog(@"collection = %ld", collection.assetCollectionSubtype);
+        [self.dataArray addObject:collection];
     }];
     // 列出所有用户创建的相册
     PHFetchResult *topLevelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
     [topLevelUserCollections enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
-        if (collection.estimatedAssetCount > 0)
-        {
-            [self.dataArray addObject:collection];
-        }
+        [self.dataArray addObject:collection];
     }];
     [self.tableView reloadData];
 }
 
--(PHFetchResult *)sortWithDate:(PHAssetCollection *)collection
+
+/**
+ 对相册资源继续排序
+
+ @param collection collection
+ @return 返回按时间倒序后的集合
+ */
+-(PHFetchOptions *)fetchOptions
 {
     PHFetchOptions *options = [[PHFetchOptions alloc] init];
     options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:NO]];
-    PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:collection options:options];
-    BHLog(@"fetchResult count = %ld", fetchResult.count);
-    return fetchResult;
+    return options;
 }
 
+/**
+ 过滤某些相册
+ 
+ @param collection collection
+ @return 是否过滤
+ */
 -(BOOL)filterWithSubtype:(PHAssetCollection *)collection
 {
     PHAssetCollectionSubtype assetCollectionSubtype = collection.assetCollectionSubtype;
