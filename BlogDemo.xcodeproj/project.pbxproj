@@ -403,7 +403,7 @@
 				TargetAttributes = {
 					34391C481CE4212100970573 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 5DX826JE4Z;
+						DevelopmentTeam = H5XHGCCSHA;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -641,7 +641,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5DX826JE4Z;
+				DEVELOPMENT_TEAM = H5XHGCCSHA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BlogDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = BlogDemo/Info.plist;
@@ -659,7 +659,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 5DX826JE4Z;
+				DEVELOPMENT_TEAM = H5XHGCCSHA;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BlogDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = BlogDemo/Info.plist;

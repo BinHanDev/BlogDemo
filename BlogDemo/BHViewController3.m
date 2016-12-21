@@ -33,6 +33,7 @@
     PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
     [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
         NSLog(@"collection = %ld", collection.assetCollectionSubtype);
+        NSLog(@"collection localizedTitle = %@", collection.localizedTitle);
         [self.dataArray addObject:collection];
     }];
     // 列出所有用户创建的相册
@@ -58,27 +59,22 @@
 }
 
 /**
- 过滤某些相册
+ 过滤指定相册
  
- @param collection collection
- @return 是否过滤
+ @param collection 相册  这里过滤全景图片/隐藏/最近删除（1000000201）
+ @return 返回是否过滤
  */
 -(BOOL)filterWithSubtype:(PHAssetCollection *)collection
 {
     PHAssetCollectionSubtype assetCollectionSubtype = collection.assetCollectionSubtype;
-    if (assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumUserLibrary ||  //用户相册
-        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumVideos ||       //视频
-        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumFavorites ||    //收藏
-        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumScreenshots ||  //截屏
-        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumBursts ||       //连拍
-        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumTimelapses ||   //延时摄影
-        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumSlomoVideos) //慢动作
+    if (assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumPanoramas ||
+        assetCollectionSubtype == PHAssetCollectionSubtypeSmartAlbumAllHidden ||
+        assetCollectionSubtype == 1000000201)
     {
-        return NO;
+        return YES;
     }
-    return YES;
+    return NO;
 }
-
 
 -(void)updateViewConstraints
 {
@@ -167,30 +163,30 @@
 
 
 
-[[PHImageManager defaultManager] cancelImageRequest:self.lastPHImageRequestID];
-PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-options.networkAccessAllowed = YES;
-options.resizeMode = PHImageRequestOptionsResizeModeFast;
-options.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
-options.progressHandler = ^(double progress, NSError *__nullable error, BOOL *stop, NSDictionary *__nullable info) {
-    NSLog(@"progress = %f", progress);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.indicatorView.hidden = NO;
-        self.indicatorView.progress = progress;
-        self.loadAssetEnd = NO;
-        self.rightBarButtonItem.enabled = NO;
-    });
-};
-self.lastPHImageRequestID = [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-    @strongify(self);
-    self.indicatorView.hidden = YES;
-    if (asset == self.currentSelectedAsset && imageData)
-    {
-        self.loadAssetEnd = YES;
-        self.rightBarButtonItem.enabled = YES;
-        self.imgView.image = [UIImage imageWithData:imageData];
-    }
-}];
-
+//[[PHImageManager defaultManager] cancelImageRequest:self.lastPHImageRequestID];
+//PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+//options.networkAccessAllowed = YES;
+//options.resizeMode = PHImageRequestOptionsResizeModeFast;
+//options.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
+//options.progressHandler = ^(double progress, NSError *__nullable error, BOOL *stop, NSDictionary *__nullable info) {
+//    NSLog(@"progress = %f", progress);
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        self.indicatorView.hidden = NO;
+//        self.indicatorView.progress = progress;
+//        self.loadAssetEnd = NO;
+//        self.rightBarButtonItem.enabled = NO;
+//    });
+//};
+//self.lastPHImageRequestID = [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+//    @strongify(self);
+//    self.indicatorView.hidden = YES;
+//    if (asset == self.currentSelectedAsset && imageData)
+//    {
+//        self.loadAssetEnd = YES;
+//        self.rightBarButtonItem.enabled = YES;
+//        self.imgView.image = [UIImage imageWithData:imageData];
+//    }
+//}];
+//
 
 @end
