@@ -73,6 +73,14 @@ typedef NS_ENUM(NSUInteger, NetworkStates) {
  *
  *  @param handler 请求完成后的句柄
  */
--(void)startRequestWithCompleteHandler:(void (^)(id response, NSError *error))handler;
+-(NSUInteger)startRequestWithCompleteHandler:(void (^)(id response, NSError *error))handler;
+
+
+/**
+ 取消当前请求
+
+ @param taskIdentifier taskIdentifier
+ */
+- (void)cancelDataTaks:(NSUInteger)taskIdentifier;
 
 @end

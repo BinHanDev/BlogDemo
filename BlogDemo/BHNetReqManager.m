@@ -22,11 +22,36 @@ static AFHTTPSessionManager *manager;
 
 @interface BHNetReqManager()
 
+
+/**
+ 请求的api
+ */
 @property (nonatomic, copy) NSString *requestUrl;
+
+/**
+ 请求类型
+ */
 @property (nonatomic, assign)  RequestType requestType;
+
+/**
+ 请求数据类型
+ */
 @property (nonatomic, assign)  RequestSerializer requestSerializer;
+
+/**
+ 响应数据数据类型
+ */
 @property (nonatomic, assign)  ResponseSerializer responseSerializer;
+
+/**
+ 请求参数
+ */
 @property (nonatomic, copy)  id parameters;
+
+/**
+ 当前所有的请求
+ */
+@property (nonatomic, copy) NSMutableArray *tasks;
 
 - (instancetype)init __attribute__((unavailable("Disabled. Use +sharedInstance instead")));
 
@@ -72,6 +97,15 @@ static AFHTTPSessionManager *manager;
         self.parameters = parameters;
         return self;
     };
+}
+
+- (NSMutableArray *)tasks
+{
+    if (!_tasks)
+    {
+        _tasks = [NSMutableArray array];
+    }
+    return _tasks;
 }
 
 /**
@@ -178,16 +212,15 @@ static AFHTTPSessionManager *manager;
     [manager.requestSerializer setValue:@"iOS" forHTTPHeaderField:@"channel"];
 }
 
--(void)startRequestWithCompleteHandler:(void (^)(id response, NSError *error))handler
+-(NSUInteger)startRequestWithCompleteHandler:(void (^)(id response, NSError *error))handler
 {
-    
     [self setupAFHTTPSessionManager];
-
+    NSURLSessionDataTask *dataTask;
     switch (self.requestType)
     {
         case GET:
         {
-            [manager GET:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            dataTask = [manager GET:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 handler(responseObject, nil);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 handler(nil, error);
@@ -196,7 +229,7 @@ static AFHTTPSessionManager *manager;
         }
         case POST:
         {
-            [manager POST:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            dataTask = [manager POST:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                  handler(responseObject, nil);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 handler(nil, error);
@@ -205,7 +238,7 @@ static AFHTTPSessionManager *manager;
         }
         case PUT:
         {
-            [manager PUT:self.requestUrl parameters:self.parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            dataTask = [manager PUT:self.requestUrl parameters:self.parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 handler(responseObject, nil);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 handler(nil, error);
@@ -214,7 +247,7 @@ static AFHTTPSessionManager *manager;
         }
         case DELETE:
         {
-            [manager DELETE:self.requestUrl parameters:self.parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            dataTask = [manager DELETE:self.requestUrl parameters:self.parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 handler(responseObject, nil);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 handler(nil, error);
@@ -223,7 +256,7 @@ static AFHTTPSessionManager *manager;
         }
         case PATCH:
         {
-            [manager PATCH:self.requestUrl parameters:self.parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            dataTask = [manager PATCH:self.requestUrl parameters:self.parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 handler(responseObject, nil);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                 handler(nil, error);
@@ -234,6 +267,15 @@ static AFHTTPSessionManager *manager;
             break;
     }
     [self resetConfigWithManager];
+    if (dataTask)
+    {
+        [self.tasks addObject:dataTask];
+        return dataTask.taskIdentifier;
+    }
+    else
+    {
+        return -1;
+    }
     //            注释掉的是缓存代码 当然缓存逻辑大部分时候跟业务关联性会强一些
     //            NSURLSessionDataTask *task =  [manager GET:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
     //                handler(responseObject, nil);
@@ -249,6 +291,17 @@ static AFHTTPSessionManager *manager;
     //                handler(reaponse.data, nil);
     //                [task cancel];
     //            }
+}
+
+-(void)cancelDataTaks:(NSUInteger)taskIdentifier
+{
+    [self.tasks enumerateObjectsUsingBlock:^(NSURLSessionTask *task, NSUInteger idx, BOOL *stop) {
+        if (task.taskIdentifier == taskIdentifier)
+        {
+            [task cancel];
+            *stop = YES;
+        }
+    }];
 }
 
 /**

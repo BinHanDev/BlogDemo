@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) NSMutableAttributedString * attrStr;
 
+@property (nonatomic, assign) NSUInteger taskIdentifier;
+
 @end
 
 @implementation BHViewController1
@@ -73,7 +75,7 @@
 - (RACSignal *)signInSignal
 {
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-        [[BHNetReqManager sharedManager].bh_requestUrl(@"http://binhan1029.github.io/").bh_requestType(GET).bh_responseSerializer(HTTPResponseSerializer).bh_parameters(nil) startRequestWithCompleteHandler:^(id response, NSError *error) {
+        self.taskIdentifier = [[BHNetReqManager sharedManager].bh_requestUrl(@"http://binhan1029.github.io/").bh_requestType(GET).bh_responseSerializer(HTTPResponseSerializer).bh_parameters(nil) startRequestWithCompleteHandler:^(id response, NSError *error) {
             if (response)
             {
                 NSString *result = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
@@ -93,6 +95,7 @@
 -(void)dealloc
 {
     NSLog(@"开始释放");
+    [[BHNetReqManager sharedManager] cancelDataTaks:self.taskIdentifier];
 }
 
 
