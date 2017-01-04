@@ -234,7 +234,7 @@ static AFHTTPSessionManager *manager;
             break;
     }
     [self resetConfigWithManager];
-    //            注释掉的是缓存代码
+    //            注释掉的是缓存代码 当然缓存逻辑大部分时候跟业务关联性会强一些
     //            NSURLSessionDataTask *task =  [manager GET:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
     //                handler(responseObject, nil);
     //                NSData *data = [NSJSONSerialization dataWithJSONObject:responseObject options:0 error:nil];
