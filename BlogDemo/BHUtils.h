@@ -86,4 +86,14 @@ FOUNDATION_EXTERN double const kNavBarHeight;
  */
 +(NSString *)randFileName;
 
+
+/**
+ 某类是否包含某个属性
+
+ @param myClass 类名
+ @param varName 属性名称
+ @return 返回结果是否包含
+ */
++(BOOL)getVariableWithClass:(Class)myClass varName:(NSString *)varName;
+
 @end

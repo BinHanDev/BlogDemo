@@ -6,7 +6,7 @@
 //  Copyright (c) 2015年 BinHan. All rights reserved.
 
 #import "AppDelegate.h"
-#import "MBProgressHUD.h"
+#import <objc/runtime.h>
 
 double const kNavBarHeight = 64.f;
 
@@ -31,6 +31,35 @@ double const kNavBarHeight = 64.f;
     // 生成文件名
     NSString *string = [NSString stringWithFormat:@"F%@%@",datestr,randstr];
     return string;
+}
+
++(BOOL)getVariableWithClass:(Class)myClass varName:(NSString *)varName
+{
+    unsigned int outCount, i;
+    Ivar *ivars = class_copyIvarList(myClass, &outCount);
+    if (ivars)
+    {
+        for (i = 0; i < outCount; i++)
+        {
+            Ivar property = ivars[i];
+            if (property)
+            {
+                const char *type = ivar_getTypeEncoding(property);
+                NSString *stringType = [NSString stringWithCString:type encoding:NSUTF8StringEncoding];
+                if (![stringType hasPrefix:@"@"])
+                {
+                    continue;
+                }
+                NSString *keyName = [NSString stringWithCString:ivar_getName(property) encoding:NSUTF8StringEncoding];
+                keyName = [keyName stringByReplacingOccurrencesOfString:@"_" withString:@""];
+                if ([keyName isEqualToString:varName])
+                {
+                    return YES;
+                }
+            }
+        }
+    }
+    return NO;
 }
 
 @end
