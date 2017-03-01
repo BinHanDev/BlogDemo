@@ -6,12 +6,10 @@
 //  Copyright © 2016年 JXMac. All rights reserved.
 //
 
-#import "ZOAlbumCell.h"
+#import "BHAlbumCell.h"
 #import <Photos/Photos.h>
 
-@interface ZOAlbumCell()
-
-@property (nonatomic, strong) UILabel *titleLabel;
+@interface BHAlbumCell()
 
 /**
  图片视图
@@ -20,7 +18,7 @@
 
 @end
 
-@implementation ZOAlbumCell
+@implementation BHAlbumCell
 
 +(NSString *)identifier
 {

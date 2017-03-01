@@ -9,6 +9,7 @@
 #import "BHViewController3.h"
 #import "BHPhotosCell.h"
 #import <Photos/Photos.h>
+#import "BHPhotosVC.h"
 
 @interface BHViewController3 ()<UITableViewDataSource, UITableViewDelegate>
 
@@ -79,7 +80,7 @@
 -(void)updateViewConstraints
 {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.equalTo(self.view);
+        make.edges.insets(UIEdgeInsetsZero);
     }];
     [super updateViewConstraints];
 }
@@ -105,7 +106,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-
+    PHAssetCollection *assetCollection = self.dataArray[indexPath.row];
+    PHFetchResult *fetchResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+    BHPhotosVC *vc = [[BHPhotosVC alloc] init];
+    vc.fetchResult = fetchResult;
+    BHPushVC(vc);
 }
 
 #pragma mark 分割线顶头显示
@@ -160,33 +165,5 @@
     }
     return _tableView;
 }
-
-
-
-//[[PHImageManager defaultManager] cancelImageRequest:self.lastPHImageRequestID];
-//PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-//options.networkAccessAllowed = YES;
-//options.resizeMode = PHImageRequestOptionsResizeModeFast;
-//options.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
-//options.progressHandler = ^(double progress, NSError *__nullable error, BOOL *stop, NSDictionary *__nullable info) {
-//    NSLog(@"progress = %f", progress);
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        self.indicatorView.hidden = NO;
-//        self.indicatorView.progress = progress;
-//        self.loadAssetEnd = NO;
-//        self.rightBarButtonItem.enabled = NO;
-//    });
-//};
-//self.lastPHImageRequestID = [[PHImageManager defaultManager] requestImageDataForAsset:asset options:options resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
-//    @strongify(self);
-//    self.indicatorView.hidden = YES;
-//    if (asset == self.currentSelectedAsset && imageData)
-//    {
-//        self.loadAssetEnd = YES;
-//        self.rightBarButtonItem.enabled = YES;
-//        self.imgView.image = [UIImage imageWithData:imageData];
-//    }
-//}];
-//
 
 @end

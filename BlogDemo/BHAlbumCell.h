@@ -10,7 +10,7 @@
 
 FOUNDATION_EXTERN CGFloat const CellWitdh;
 
-@interface ZOAlbumCell : UICollectionViewCell
+@interface BHAlbumCell : UICollectionViewCell
 
 /**
  当前的ViewModel
