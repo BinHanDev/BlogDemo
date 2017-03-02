@@ -38,6 +38,25 @@
     return self;
 }
 
+#pragma mark - Intial Methods
+
+- (void)addSubviews
+{
+    [self.contentView addSubview:self.albumImgView];
+}
+
+-(void)updateConstraints
+{
+    [self.albumImgView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsMake(2, 2, 2, 2));
+    }];
+    [super updateConstraints];
+}
+
+#pragma mark - Target Methods
+
+#pragma mark - Private Method
+
 /**
  绑定model  判断是视频还是照片  隐藏/显示播放图片及时间Lable
  */
@@ -56,18 +75,7 @@
     }];
 }
 
-- (void)addSubviews
-{
-    [self.contentView addSubview:self.albumImgView];
-}
-
--(void)updateConstraints
-{
-    [self.albumImgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.insets(UIEdgeInsetsMake(2, 2, 2, 2));
-    }];
-   [super updateConstraints];
-}
+#pragma mark - Setter Getter Methods
 
 - (UIImageView *)albumImgView
 {
@@ -80,5 +88,7 @@
     return _albumImgView;
 }
 
+
+#pragma mark - External Delegate
 
 @end

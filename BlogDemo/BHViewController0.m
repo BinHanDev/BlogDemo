@@ -16,27 +16,29 @@
 
 @implementation BHViewController0
 
-#pragma mark -circle
+#pragma mark - LifeCyle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setUp];
+}
+
+- (void)dealloc {
+    NSLog(@"%@-释放了",self.class);
+}
+
+#pragma mark - Intial Methods
+
+-(void)setUp
+{
     [self initBtn];
     [self initLayer];
     [self initCircle];
     [self showImage];
 }
 
-#pragma mark -private
-
--(void)initBtn
-{
-    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-60, 100, 40, 20)];
-    [btn setTitle:@"点我" forState:UIControlStateNormal];
-    btn.backgroundColor = [UIColor blueColor];
-    [btn addTarget:self action:@selector(loopCircle:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
-}
+#pragma mark - Target Methods
 
 /**
  *  无限循环放大的圆  这种动画在按home键跳出用后，再次进入应用动画会没有效果，因为跳出应用后，
@@ -56,9 +58,20 @@
     animation.fromValue = (__bridge id _Nullable)(originPath.CGPath);
     animation.toValue = (__bridge id _Nullable)(finalPath.CGPath);
     animation.duration = 2.f;
-//    animation.autoreverses = YES;
+    //    animation.autoreverses = YES;
     animation.repeatCount = MAXFLOAT;
     [layer addAnimation:animation forKey:@"path"];
+}
+
+#pragma mark - Private Method
+
+-(void)initBtn
+{
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH-60, 100, 40, 20)];
+    [btn setTitle:@"点我" forState:UIControlStateNormal];
+    btn.backgroundColor = [UIColor blueColor];
+    [btn addTarget:self action:@selector(loopCircle:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
 }
 
 /**
@@ -80,7 +93,6 @@
     layer.lineWidth = 1.f;
     [self.view.layer addSublayer:layer];
 }
-
 
 /**
  *  绘制一个圆形，可以设置其起始位置及终止位置
@@ -130,5 +142,12 @@
     animation.duration = 2.f;
     [layer addAnimation:animation forKey:@"path"];
 }
+
+
+#pragma mark - Setter Getter Methods
+
+#pragma mark - External Delegate
+
+
 
 @end

@@ -20,9 +20,14 @@
 
 @implementation BHPhotosVC
 
-- (void)viewDidLoad {
+#pragma mark -cricle
+
+- (void)viewDidLoad
+{
     [super viewDidLoad];
 }
+
+#pragma mark - Intial Methods
 
 -(void)viewWillLayoutSubviews
 {
@@ -31,6 +36,10 @@
     }];
     [super viewWillLayoutSubviews];
 }
+
+#pragma mark - Target Methods
+
+#pragma mark - Private Method
 
 #pragma mark - Setter Getter Methods
 
@@ -51,7 +60,6 @@
     }
     return _collectionView;
 }
-
 
 #pragma mark - External Delegate
 

@@ -19,7 +19,7 @@
 
 @implementation BHViewController4
 
-#pragma mark -cricle
+#pragma mark - LifeCyle
 
 -(void)viewDidLoad
 {
@@ -194,15 +194,16 @@
     
 }
 
--(UIImageView *)imageView
-{
-    if (!_imageView)
-    {
-        _imageView = [[UIImageView alloc] init];
-        [self.view addSubview:_imageView];
-    }
-    return _imageView;
+- (void)dealloc {
+    NSLog(@"%@-释放了",self.class);
 }
+
+#pragma mark - Intial Methods
+
+#pragma mark - Target Methods
+
+#pragma mark - Private Method
+
 
 
 - (void)test
@@ -231,6 +232,18 @@
     NSLog(@"A:%@ and B:%@", A, B);
 }
 
+#pragma mark - Setter Getter Methods
 
+-(UIImageView *)imageView
+{
+    if (!_imageView)
+    {
+        _imageView = [[UIImageView alloc] init];
+        [self.view addSubview:_imageView];
+    }
+    return _imageView;
+}
+
+#pragma mark - External Delegate
 
 @end

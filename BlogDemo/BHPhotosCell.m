@@ -44,6 +44,12 @@ CGFloat const rowHeight = 58.f;
     return self;
 }
 
+#pragma mark - Intial Methods
+
+#pragma mark - Target Methods
+
+#pragma mark - Private Method
+
 -(void)bindModel
 {
     @weakify(self)
@@ -60,9 +66,12 @@ CGFloat const rowHeight = 58.f;
                 }];
             }
         });
-
+        
     }];
 }
+
+
+#pragma mark - Setter Getter Methods
 
 -(UIImageView *)photoImageView
 {
@@ -88,5 +97,9 @@ CGFloat const rowHeight = 58.f;
     }
     return _photosNameLable;
 }
+
+#pragma mark - External Delegate
+
+
 
 @end

@@ -25,7 +25,7 @@ static NSString *identifier = @"cell";
 
 @implementation BHMainViewController
 
-#pragma mark - circle
+#pragma mark - LifeCyle
 
 - (void)viewDidLoad
 {
@@ -43,6 +43,12 @@ static NSString *identifier = @"cell";
     
 }
 
+- (void)dealloc {
+    NSLog(@"%@-释放了",self.class);
+}
+
+#pragma mark - Intial Methods
+
 -(void)updateViewConstraints
 {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -50,6 +56,26 @@ static NSString *identifier = @"cell";
     }];
     [super updateViewConstraints];
 }
+
+#pragma mark - Target Methods
+
+#pragma mark - Private Method
+
+#pragma mark - Setter Getter Methods
+
+-(UITableView *)tableView
+{
+    if (!_tableView)
+    {
+        _tableView = [[UITableView alloc] init];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
+    }
+    return _tableView;
+}
+
+#pragma mark - External Delegate
 
 #pragma mark -UITableViewDataSource
 
@@ -74,20 +100,6 @@ static NSString *identifier = @"cell";
     UIViewController *controller = [[NSClassFromString([NSString stringWithFormat:@"BHViewController%ld",row]) alloc] init];
     controller.title = self.dataArray[row];
     BHPushVC(controller);
-}
-
-#pragma mark initSubView
-
--(UITableView *)tableView
-{
-    if (!_tableView)
-    {
-        _tableView = [[UITableView alloc] init];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
-    }
-    return _tableView;
 }
 
 

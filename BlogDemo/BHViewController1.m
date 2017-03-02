@@ -29,6 +29,19 @@
 -(void)viewDidLoad
 {
     [super viewDidLoad];
+    [self setUp];
+}
+
+- (void)dealloc
+{
+    NSLog(@"%@-释放了",self.class);
+    [[BHNetReqManager sharedManager] cancelDataTaks:self.taskIdentifier];
+}
+
+#pragma mark - Intial Methods
+
+-(void)setUp
+{
     [self.view addSubview:self.label];
     [self.view addSubview:self.button];
     [self.view setNeedsUpdateConstraints];
@@ -48,6 +61,11 @@
     }];
     [super updateViewConstraints];
 }
+
+
+#pragma mark - Target Methods
+
+#pragma mark - Private Method
 
 -(UIButton *)button
 {
@@ -92,11 +110,9 @@
     }];
 }
 
--(void)dealloc
-{
-    NSLog(@"开始释放");
-    [[BHNetReqManager sharedManager] cancelDataTaks:self.taskIdentifier];
-}
+#pragma mark - Setter Getter Methods
+
+#pragma mark - External Delegate
 
 
 @end

@@ -27,28 +27,59 @@
 
 @implementation BHViewController3
 
+#pragma mark -cricle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // 列出所有相册智能相册
-    PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
-    [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
-        NSLog(@"collection = %ld", collection.assetCollectionSubtype);
-        NSLog(@"collection localizedTitle = %@", collection.localizedTitle);
-        [self.dataArray addObject:collection];
-    }];
-    // 列出所有用户创建的相册
-    PHFetchResult *topLevelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
-    [topLevelUserCollections enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
-        [self.dataArray addObject:collection];
-    }];
-    [self.tableView reloadData];
+    [self loadFetchResult];
 }
 
+- (void)dealloc {
+    NSLog(@"%@-释放了",self.class);
+}
+
+#pragma mark - Intial Methods
+
+/**
+ 加载相册资源
+ */
+-(void)loadFetchResult
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // 列出所有相册智能相册
+        PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+        [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
+            NSLog(@"collection = %ld", collection.assetCollectionSubtype);
+            NSLog(@"collection localizedTitle = %@", collection.localizedTitle);
+            [self.dataArray addObject:collection];
+        }];
+        // 列出所有用户创建的相册
+        PHFetchResult *topLevelUserCollections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+        [topLevelUserCollections enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
+            [self.dataArray addObject:collection];
+        }];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [self.tableView reloadData];
+        });
+    });
+}
+
+-(void)updateViewConstraints
+{
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsZero);
+    }];
+    [super updateViewConstraints];
+}
+
+#pragma mark - Target Methods
+
+#pragma mark - Private Method
 
 /**
  对相册资源继续排序
-
+ 
  @param collection collection
  @return 返回按时间倒序后的集合
  */
@@ -77,13 +108,35 @@
     return NO;
 }
 
--(void)updateViewConstraints
+
+#pragma mark - Setter Getter Methods
+
+-(NSMutableArray *)dataArray
 {
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.insets(UIEdgeInsetsZero);
-    }];
-    [super updateViewConstraints];
+    if (!_dataArray)
+    {
+        _dataArray = [NSMutableArray array];
+    }
+    return  _dataArray;
 }
+
+-(UITableView *)tableView
+{
+    if (!_tableView)
+    {
+        UITableView *tableView = [[UITableView alloc] init];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.rowHeight = rowHeight;
+        tableView.tableFooterView = [UIView new];
+        [tableView registerClass:[BHPhotosCell class] forCellReuseIdentifier:[BHPhotosCell identifier]];
+        [self.view addSubview:(_tableView = tableView)];
+        [self.view setNeedsUpdateConstraints];
+    }
+    return _tableView;
+}
+
+#pragma mark - External Delegate
 
 #pragma mark -UITableViewDelegate
 
@@ -111,59 +164,6 @@
     BHPhotosVC *vc = [[BHPhotosVC alloc] init];
     vc.fetchResult = fetchResult;
     BHPushVC(vc);
-}
-
-#pragma mark 分割线顶头显示
-
--(void)viewDidLayoutSubviews
-{
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)])
-    {
-        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
-
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
-        [cell setSeparatorInset:UIEdgeInsetsZero];
-    }
-    
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-}
-
--(NSMutableArray *)dataArray
-{
-    if (!_dataArray)
-    {
-        _dataArray = [NSMutableArray array];
-    }
-    return  _dataArray;
-}
-
-
-#pragma mark initSubView
-
--(UITableView *)tableView
-{
-    if (!_tableView)
-    {
-        UITableView *tableView = [[UITableView alloc] init];
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        tableView.rowHeight = rowHeight;
-        tableView.tableFooterView = [UIView new];
-        [tableView registerClass:[BHPhotosCell class] forCellReuseIdentifier:[BHPhotosCell identifier]];
-        [self.view addSubview:(_tableView = tableView)];
-        [self.view setNeedsUpdateConstraints];
-    }
-    return _tableView;
 }
 
 @end
