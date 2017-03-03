@@ -109,9 +109,18 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     self = [super initWithFrame:frame];
     if (self)
     {
-        [self controlView];
+        [self setNeedsUpdateConstraints];
+        [self updateConstraints];
     }
     return self;
+}
+
+-(void)updateConstraints
+{
+    [self.controlView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self).insets(UIEdgeInsetsZero);
+    }];
+    [super updateConstraints];
 }
 
 -(BHPlayerControlView *)controlView
@@ -120,11 +129,32 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     {
         BHPlayerControlView *controlView = [[BHPlayerControlView alloc] init];
         [self addSubview:(_controlView=controlView)];
-        [_controlView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.equalTo(self).insets(UIEdgeInsetsZero);
-        }];
     }
     return _controlView;
+}
+
+/**
+ *  重置player
+ */
+- (void)resetPlayer
+{
+    // 改为为播放完
+    self.playDidEnd         = NO;
+    self.playerItem         = nil;
+    self.didEnterBackground = NO;
+    // 视频跳转秒数置0
+    self.seekTime           = 0;
+    // 移除通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    // 暂停
+    [self pause];
+    // 移除原来的layer
+    [self.playerLayer removeFromSuperlayer];
+    // 替换PlayerItem为nil
+    [self.player replaceCurrentItemWithPlayerItem:nil];
+    self.player         = nil;
+    self.controlView   = nil;
+    if (!self.repeatToPlay) { [self removeFromSuperview]; }
 }
 
 -(void)setPlayerLayerGravity:(NSString *)playerLayerGravity
@@ -786,17 +816,11 @@ typedef NS_ENUM(NSInteger, BHPlayerState) {
     }
 }
 
-/**
- *  播放
- */
 - (void)play
 {
     [_player play];
 }
 
-/**
- * 暂停
- */
 - (void)pause
 {
     [_player pause];

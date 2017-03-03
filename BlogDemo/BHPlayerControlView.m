@@ -28,24 +28,9 @@
     self = [super initWithFrame:frame];
     if (self)
     {
-        //顶部topImageView, 将返回按钮添加到topImageView
-        [self topImageView];
-        [self backBtn];
-        //底部bottomImageView 将开始/时间/进度条/全屏添加在bottomImageView
-        [self bottomImageView];
-        [self startBtn];
-        [self repeatBtn];
-        [self currentTimeLabel];
-        [self totalTimeLabel];
-        [self progressView];
-        [self videoSlider];
-        [self fullScreenBtn];
-        [self progressIndicatorLabel];
-        [self activity];
-        //由于进度条及拖动slider与时间lable未知有关，所以注意先后顺序
-        [self makeSubViewsConstraints];
+        [self setNeedsUpdateConstraints];
+        [self updateConstraints];
         [self.activity stopAnimating];
-        // 初始化时重置controlView
         [self resetControlView];
     }
     return self;
@@ -54,7 +39,7 @@
 /**
  *  设置子空间约束，采用Masonry设置约束，不需要重写layoutSubviews方法
  */
-- (void)makeSubViewsConstraints
+- (void)updateConstraints
 {
     [self.topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.top.equalTo(self);
@@ -111,6 +96,7 @@
     [self.repeatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.equalTo(self);
     }];
+    [super updateConstraints];
 }
 
 - (UIImageView *)topImageView
@@ -130,7 +116,7 @@
 {
     if (!_backBtn) {
         UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [backBtn setImage:BHIMG(BHPlayerSrcName(@"play_back_full")) forState:UIControlStateNormal];
+        [backBtn setImage:BHIMG(BHPlayerSrcName(@"BHPlayer_back_full")) forState:UIControlStateNormal];
         [self.topImageView addSubview:(_backBtn = backBtn)];
     }
     return _backBtn;
@@ -154,8 +140,8 @@
     if (!_startBtn)
     {
         UIButton *startBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [startBtn setImage:BHIMG(BHPlayerSrcName(@"video-player-play")) forState:UIControlStateNormal];
-        [startBtn setImage:BHIMG(BHPlayerSrcName(@"video-player-pause")) forState:UIControlStateSelected];
+        [startBtn setImage:BHIMG(BHPlayerSrcName(@"BHPlayer_play")) forState:UIControlStateNormal];
+        [startBtn setImage:BHIMG(BHPlayerSrcName(@"BHPlayer_pause")) forState:UIControlStateSelected];
         [self.bottomImageView addSubview:(_startBtn = startBtn)];
     }
     return _startBtn;
@@ -204,7 +190,6 @@
     if (!_videoSlider)
     {
         UISlider *videoSlider = [[UISlider alloc] init];
-        // 设置slider
         [videoSlider setThumbImage:BHIMG(BHPlayerSrcName(@"slider")) forState:UIControlStateNormal];
         videoSlider.maximumValue = 1;
         videoSlider.minimumTrackTintColor = [UIColor whiteColor];
@@ -219,8 +204,8 @@
     if (!_fullScreenBtn)
     {
         UIButton *fullScreenBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [fullScreenBtn setImage:BHIMG(BHPlayerSrcName(@"video-player-fullscreen")) forState:UIControlStateNormal];
-        [fullScreenBtn setImage:BHIMG(BHPlayerSrcName(@"video-player-shrinkscreen")) forState:UIControlStateSelected];
+        [fullScreenBtn setImage:BHIMG(BHPlayerSrcName(@"BHPlayer_fullscreen")) forState:UIControlStateNormal];
+        [fullScreenBtn setImage:BHIMG(BHPlayerSrcName(@"BHPlayer_shrinkscreen")) forState:UIControlStateSelected];
         [self.bottomImageView addSubview:(_fullScreenBtn = fullScreenBtn)];
     }
     return _fullScreenBtn;
@@ -254,7 +239,7 @@
     if (!_repeatBtn)
     {
         UIButton *repeatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [repeatBtn setImage:BHIMG(BHPlayerSrcName(@"repeat_video")) forState:UIControlStateNormal];
+        [repeatBtn setImage:BHIMG(BHPlayerSrcName(@"BHPlayer_repeat_video")) forState:UIControlStateNormal];
         [self addSubview:(_repeatBtn = repeatBtn)];
     }
     return _repeatBtn;

@@ -22,7 +22,6 @@ static AFHTTPSessionManager *manager;
 
 @interface BHNetReqManager()
 
-
 /**
  请求的api
  */

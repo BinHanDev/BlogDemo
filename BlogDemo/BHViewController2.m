@@ -14,7 +14,7 @@
 /**
  播放器视图
  */
-@property (strong, nonatomic) BHPlayer *player;
+@property (weak, nonatomic) BHPlayer *player;
 
 @end
 
@@ -25,12 +25,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view addSubview:self.player];
     //网络视频
 //    NSString *videoUrl = [@"http://v.jxvdy.com/sendfile/w5bgP3A8JgiQQo5l0hvoNGE2H16WbN09X-ONHPq3P3C1BISgf7C-qVs6_c8oaw3zKScO78I--b0BGFBRxlpw13sf2e54QA" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     //本地视频
     NSString *videoUrl = [[NSBundle mainBundle] pathForResource:@"snow" ofType:@"mp4"];
     self.player.sourceUrl = videoUrl;
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self.player resetPlayer];
+}
+
+- (void)dealloc {
+    NSLog(@"%@-释放了",self.class);
 }
 
 -(void)updateViewConstraints
@@ -68,9 +77,10 @@
 {
     if (!_player)
     {
-        _player = [BHPlayer new];
+        BHPlayer *player = [BHPlayer new];
+        [self.view addSubview:(_player = player)];
         @weakify(self);
-        _player.goBackBlock = ^(){
+        player.goBackBlock = ^(){
             @strongify(self);
             [self.navigationController popViewControllerAnimated:YES];
         };

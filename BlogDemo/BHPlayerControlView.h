@@ -8,8 +8,6 @@
 
 #define BHPlayerSrcName(file) [@"BHPlayer.bundle" stringByAppendingPathComponent:file]
 
-typedef void(^BHSliderTapBlock)(CGFloat value);
-
 @interface BHPlayerControlView : UIView
 
 /** 
@@ -39,21 +37,19 @@ typedef void(^BHSliderTapBlock)(CGFloat value);
 /**
  * 快进快退指示器label 
  */
-@property (nonatomic, strong) UILabel *progressIndicatorLabel;
+@property (nonatomic, weak) UILabel *progressIndicatorLabel;
 /**
  * 返回按钮
  */
-@property (nonatomic, strong) UIButton *backBtn;
+@property (nonatomic, weak) UIButton *backBtn;
 /**
  * 系统菊花 
  */
-@property (nonatomic, strong) UIActivityIndicatorView *activity;
+@property (nonatomic, weak) UIActivityIndicatorView *activity;
 /**
  * 重播按钮
  */
 @property (nonatomic, weak) UIButton *repeatBtn;
-
-@property (nonatomic, copy) BHSliderTapBlock sliderTapBlock;
 
 /**
  *  显示控制器
