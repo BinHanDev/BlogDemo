@@ -18,6 +18,9 @@ static NSString *identifier = @"cell";
 @property (nonatomic, strong) NSArray *dataArray;
 
 
+/**
+ tableView 视图
+ */
 @property (nonatomic, strong) UITableView *tableView;
 
 @end

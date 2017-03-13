@@ -12,12 +12,24 @@
 
 @interface BHViewController1()
 
+/**
+ 开始按钮
+ */
 @property (nonatomic, strong) UIButton *button;
 
+/**
+ response 结果视图
+ */
 @property (nonatomic, strong) UILabel *label;
 
+/**
+ 解析 repsonse 数据
+ */
 @property (nonatomic, strong) NSMutableAttributedString * attrStr;
 
+/**
+ AFN 请求标识
+ */
 @property (nonatomic, assign) NSUInteger taskIdentifier;
 
 @end
