@@ -207,8 +207,8 @@
 				2970C03D1E8375F000C30C62 /* UIBezierPath */,
 				2970C02D1E8375F000C30C62 /* NetWork */,
 				2970C0241E8375F000C30C62 /* BHPlayer */,
-				2970C0391E8375F000C30C62 /* RACTest */,
 				2970C0301E8375F000C30C62 /* PhotoKit */,
+				2970C0391E8375F000C30C62 /* RACTest */,
 			);
 			path = Business;
 			sourceTree = "<group>";
