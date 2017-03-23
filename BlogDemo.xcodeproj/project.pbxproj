@@ -216,13 +216,13 @@
 		2970C0241E8375F000C30C62 /* BHPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				2970C0251E8375F000C30C62 /* BHPlayer.bundle */,
+				2970C02A1E8375F000C30C62 /* BHViewController2.h */,
+				2970C02B1E8375F000C30C62 /* BHViewController2.m */,
 				2970C0261E8375F000C30C62 /* BHPlayer.h */,
 				2970C0271E8375F000C30C62 /* BHPlayer.m */,
 				2970C0281E8375F000C30C62 /* BHPlayerControlView.h */,
 				2970C0291E8375F000C30C62 /* BHPlayerControlView.m */,
-				2970C02A1E8375F000C30C62 /* BHViewController2.h */,
-				2970C02B1E8375F000C30C62 /* BHViewController2.m */,
+				2970C0251E8375F000C30C62 /* BHPlayer.bundle */,
 				2970C02C1E8375F000C30C62 /* snow.mp4 */,
 			);
 			path = BHPlayer;
