@@ -14,7 +14,7 @@
 /**
  图片视图
  */
-@property (nonatomic, strong) UIImageView *albumImgView;
+@property (nonatomic, weak) UIImageView *albumImgView;
 
 @end
 
@@ -25,23 +25,22 @@
     return [NSString stringWithUTF8String:object_getClassName([self class])];
 }
 
++ (BOOL)requiresConstraintBasedLayout
+{
+    return YES;
+}
+
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self=[super initWithFrame:frame];
     if (self)
     {
         [self bindViewModel];
-        [self addSubviews];
     }
     return self;
 }
 
 #pragma mark - Intial Methods
-
-- (void)addSubviews
-{
-    [self.contentView addSubview:self.albumImgView];
-}
 
 -(void)updateConstraints
 {
@@ -61,16 +60,34 @@
 - (void)bindViewModel
 {
     @weakify(self)
-    [RACObserve(self, assetModel) subscribeNext:^(PHAsset *asset) {
+    [[RACObserve(self, assetModel) distinctUntilChanged] subscribeNext:^(PHAsset *asset) {
         @strongify(self)
-        PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-        options.networkAccessAllowed = YES;
-        options.resizeMode = PHImageRequestOptionsResizeModeFast;
-        options.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
-        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-            self.albumImgView.image = result;
-        }];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+            options.networkAccessAllowed = YES;
+            options.resizeMode = PHImageRequestOptionsResizeModeFast;
+            options.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
+            [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:CGSizeMake(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.albumImgView.image = result;
+                });
+            }];
+        });
     }];
+}
+
+-(void)setAssetModel:(PHAsset *)assetModel
+{
+    _assetModel = assetModel;
+    
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+    options.networkAccessAllowed = YES;
+    options.resizeMode = PHImageRequestOptionsResizeModeFast;
+    options.deliveryMode = PHImageRequestOptionsDeliveryModeOpportunistic;
+    [[PHImageManager defaultManager] requestImageForAsset:_assetModel targetSize:CGSizeMake(SCREEN_WIDTH / 2.0f, SCREEN_HEIGHT / 2.0f) contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        self.albumImgView.image = result;
+    }];
+    
 }
 
 #pragma mark - Setter Getter Methods
@@ -79,9 +96,10 @@
 {
     if (!_albumImgView)
     {
-        _albumImgView = [[UIImageView alloc] init];
-        _albumImgView.contentMode = UIViewContentModeScaleAspectFill;
-        _albumImgView.layer.masksToBounds = YES;
+        UIImageView *albumImgView = [[UIImageView alloc] init];
+        albumImgView.contentMode = UIViewContentModeScaleAspectFill;
+        albumImgView.layer.masksToBounds = YES;
+        [self.contentView addSubview:(_albumImgView = albumImgView)];
     }
     return _albumImgView;
 }

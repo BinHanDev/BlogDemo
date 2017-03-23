@@ -242,12 +242,12 @@
 			children = (
 				2970C0371E8375F000C30C62 /* BHViewController3.h */,
 				2970C0381E8375F000C30C62 /* BHViewController3.m */,
-				2970C0311E8375F000C30C62 /* BHAlbumCell.h */,
-				2970C0321E8375F000C30C62 /* BHAlbumCell.m */,
-				2970C0351E8375F000C30C62 /* BHPhotosVC.h */,
-				2970C0361E8375F000C30C62 /* BHPhotosVC.m */,
 				2970C0331E8375F000C30C62 /* BHPhotosCell.h */,
 				2970C0341E8375F000C30C62 /* BHPhotosCell.m */,
+				2970C0351E8375F000C30C62 /* BHPhotosVC.h */,
+				2970C0361E8375F000C30C62 /* BHPhotosVC.m */,
+				2970C0311E8375F000C30C62 /* BHAlbumCell.h */,
+				2970C0321E8375F000C30C62 /* BHAlbumCell.m */,
 			);
 			path = PhotoKit;
 			sourceTree = "<group>";

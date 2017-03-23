@@ -15,12 +15,12 @@
 /**
  开始按钮
  */
-@property (nonatomic, strong) UIButton *button;
+@property (nonatomic, weak) UIButton *button;
 
 /**
  response 结果视图
  */
-@property (nonatomic, strong) UILabel *label;
+@property (nonatomic, weak) UILabel *label;
 
 /**
  解析 repsonse 数据
@@ -54,8 +54,7 @@
 
 -(void)setUp
 {
-    [self.view addSubview:self.label];
-    [self.view addSubview:self.button];
+   
     [self.view setNeedsUpdateConstraints];
     RAC(self.label, attributedText) = [RACObserve(self, attrStr) distinctUntilChanged];
 }
@@ -83,12 +82,13 @@
 {
     if (!_button)
     {
-        _button = [UIButton buttonWithType:UIButtonTypeSystem].bh_title(@"链式创建UlButton，点击开始网络请求").bh_titleColor([UIColor blueColor]);
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem].bh_title(@"链式创建UlButton，点击开始网络请求").bh_titleColor([UIColor blueColor]);
         @weakify(self);
-        _button.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+        button.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
             @strongify(self)
             return [self signInSignal];
         }];
+        [self.view addSubview:(_button = button)];
     }
     return  _button;
 }
@@ -97,7 +97,8 @@
 {
     if (!_label)
     {
-        _label = [[UILabel alloc] init].bh_textColor([UIColor redColor]).bh_textFont(14.f).bh_numberOfLines(0).bh_textAlignment(NSTextAlignmentCenter).bh_text(@"链式创建UlLable");
+        UILabel *label = [[UILabel alloc] init].bh_textColor([UIColor redColor]).bh_textFont(14.f).bh_numberOfLines(0).bh_textAlignment(NSTextAlignmentCenter).bh_text(@"链式创建UlLable");
+        [self.view addSubview:(_label = label)];
     }
     return _label;
 }

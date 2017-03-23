@@ -28,12 +28,17 @@
     [self.view setNeedsUpdateConstraints];
 }
 
+- (void)dealloc
+{
+    NSLog(@"%@-dealloc",self.class);
+}
+
 #pragma mark - Intial Methods
 
 -(void)updateViewConstraints
 {
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.insets(UIEdgeInsetsZero);
+        make.edges.insets(UIEdgeInsetsMake(kNavBarHeight, 0, 0, 0));
     }];
     [super updateViewConstraints];
 }

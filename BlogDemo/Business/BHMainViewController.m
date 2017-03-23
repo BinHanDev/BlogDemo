@@ -20,7 +20,7 @@ static NSString *identifier = @"identifier";
 /**
  tableView 视图
  */
-@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, weak) UITableView *tableView;
 
 @end
 
@@ -76,11 +76,11 @@ static NSString *identifier = @"identifier";
 {
     if (!_tableView)
     {
-        _tableView = [[UITableView alloc] init];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
-        [self.view addSubview:_tableView];
+        UITableView *tableView = [[UITableView alloc] init];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
+        [self.view addSubview:(_tableView = tableView)];
     }
     return _tableView;
 }

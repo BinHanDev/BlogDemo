@@ -43,12 +43,12 @@
 {
     [self.topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.top.equalTo(self);
-        make.height.mas_equalTo(80);
+        make.height.mas_equalTo(45);
     }];
     [self.backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.equalTo(self.mas_leading).offset(15);
         make.top.equalTo(self.mas_top).offset(5);
-        make.width.height.mas_equalTo(30);
+        make.width.height.mas_equalTo(45);
     }];
     [self.bottomImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.leading.trailing.bottom.equalTo(self);
