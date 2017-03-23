@@ -195,7 +195,7 @@
 }
 
 - (void)dealloc {
-    NSLog(@"%@-释放了",self.class);
+    NSLog(@"%@-dealloc",self.class);
 }
 
 #pragma mark - Intial Methods

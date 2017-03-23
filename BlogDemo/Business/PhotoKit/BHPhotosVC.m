@@ -25,16 +25,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.view setNeedsUpdateConstraints];
 }
 
 #pragma mark - Intial Methods
 
--(void)viewWillLayoutSubviews
+-(void)updateViewConstraints
 {
     [self.collectionView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.insets(UIEdgeInsetsZero);
     }];
-    [super viewWillLayoutSubviews];
+    [super updateViewConstraints];
 }
 
 #pragma mark - Target Methods

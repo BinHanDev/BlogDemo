@@ -36,10 +36,22 @@
 }
 
 - (void)dealloc {
-    NSLog(@"%@-释放了",self.class);
+    NSLog(@"%@-dealloc",self.class);
 }
 
 #pragma mark - Intial Methods
+
+-(void)updateViewConstraints
+{
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.insets(UIEdgeInsetsZero);
+    }];
+    [super updateViewConstraints];
+}
+
+#pragma mark - Target Methods
+
+#pragma mark - Private Method
 
 /**
  加载相册资源
@@ -64,18 +76,6 @@
         });
     });
 }
-
--(void)updateViewConstraints
-{
-    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.insets(UIEdgeInsetsZero);
-    }];
-    [super updateViewConstraints];
-}
-
-#pragma mark - Target Methods
-
-#pragma mark - Private Method
 
 /**
  对相册资源继续排序

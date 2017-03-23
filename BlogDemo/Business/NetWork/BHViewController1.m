@@ -46,7 +46,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"%@-释放了",self.class);
+    NSLog(@"%@-dealloc",self.class);
     [[BHNetReqManager sharedManager] cancelDataTask:self.taskIdentifier];
 }
 

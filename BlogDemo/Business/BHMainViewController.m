@@ -32,14 +32,13 @@ static NSString *identifier = @"identifier";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self.view addSubview:self.tableView];
-//    [self.view setNeedsUpdateConstraints];
     self.title = @"BlogDemo";
+    [self.view setNeedsUpdateConstraints];
 }
 
 - (void)dealloc
 {
-    NSLog(@"%@-释放了",self.class);
+    NSLog(@"%@-dealloc",self.class);
 }
 
 #pragma mark - Intial Methods

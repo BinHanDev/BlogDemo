@@ -32,8 +32,6 @@
     {
         [self bindViewModel];
         [self addSubviews];
-        [self setNeedsUpdateConstraints];
-        [self updateConstraints];
     }
     return self;
 }

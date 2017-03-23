@@ -39,14 +39,12 @@
 }
 
 - (void)dealloc {
-    NSLog(@"%@-释放了",self.class);
+    NSLog(@"%@-dealloc",self.class);
 }
 
 -(void)updateViewConstraints
 {
-    @weakify(self);
     [self.player mas_makeConstraints:^(MASConstraintMaker *make) {
-        @strongify(self);
         make.top.equalTo(self.view).offset(kNavBarHeight);
         make.left.right.equalTo(self.view);
         make.height.equalTo(self.player.mas_width).multipliedBy(9.0f/16.0f);
