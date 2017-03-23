@@ -32,9 +32,16 @@
     self.player.sourceUrl = videoUrl;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = YES;
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    self.navigationController.navigationBar.hidden = NO;
     [self.player resetPlayer];
 }
 
@@ -45,8 +52,7 @@
 -(void)updateViewConstraints
 {
     [self.player mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.view).offset(kNavBarHeight);
-        make.left.right.equalTo(self.view);
+        make.top.left.right.equalTo(self.view);
         make.height.equalTo(self.player.mas_width).multipliedBy(9.0f/16.0f);
     }];
     [super updateViewConstraints];
@@ -69,7 +75,6 @@
          }];
     }
 }
-
 
 -(BHPlayer *)player
 {
