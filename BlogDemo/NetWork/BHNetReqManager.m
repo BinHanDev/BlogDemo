@@ -275,7 +275,7 @@ static AFHTTPSessionManager *manager;
     {
         return -1;
     }
-    //            注释掉的是缓存代码 当然缓存逻辑大部分时候跟业务关联性会强一些
+    //            注释掉的是缓存代码 当然缓存逻辑大部分时候跟业务关联性会强一些 不建议在这里处理
     //            NSURLSessionDataTask *task =  [manager GET:self.requestUrl parameters:self.parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
     //                handler(responseObject, nil);
     //                NSData *data = [NSJSONSerialization dataWithJSONObject:responseObject options:0 error:nil];
@@ -292,7 +292,7 @@ static AFHTTPSessionManager *manager;
     //            }
 }
 
--(void)cancelDataTaks:(NSUInteger)taskIdentifier
+- (void)cancelDataTask:(NSUInteger)taskIdentifier
 {
     [self.tasks enumerateObjectsUsingBlock:^(NSURLSessionTask *task, NSUInteger idx, BOOL *stop) {
         if (task.taskIdentifier == taskIdentifier)

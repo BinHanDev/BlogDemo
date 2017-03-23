@@ -47,7 +47,7 @@
 - (void)dealloc
 {
     NSLog(@"%@-释放了",self.class);
-    [[BHNetReqManager sharedManager] cancelDataTaks:self.taskIdentifier];
+    [[BHNetReqManager sharedManager] cancelDataTask:self.taskIdentifier];
 }
 
 #pragma mark - Intial Methods

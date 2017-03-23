@@ -17,7 +17,6 @@
 		2970C0081E83744800C30C62 /* UIColor+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 2970BFF81E83744800C30C62 /* UIColor+BH.m */; };
 		2970C0091E83744800C30C62 /* UIImage+BHI.m in Sources */ = {isa = PBXBuildFile; fileRef = 2970BFFA1E83744800C30C62 /* UIImage+BHI.m */; };
 		2970C00A1E83744800C30C62 /* UILabel+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 2970BFFC1E83744800C30C62 /* UILabel+BH.m */; };
-		2970C00B1E83744800C30C62 /* UITableView+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 2970BFFE1E83744800C30C62 /* UITableView+BH.m */; };
 		2970C00C1E83744800C30C62 /* UIViewController+BH.m in Sources */ = {isa = PBXBuildFile; fileRef = 2970C0001E83744800C30C62 /* UIViewController+BH.m */; };
 		2970C0141E83748400C30C62 /* BHHookUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 2970C00F1E83748400C30C62 /* BHHookUtility.m */; };
 		2970C0161E83748400C30C62 /* BHUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2970C0131E83748400C30C62 /* BHUtils.m */; };
@@ -68,8 +67,6 @@
 		2970BFFA1E83744800C30C62 /* UIImage+BHI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BHI.m"; sourceTree = "<group>"; };
 		2970BFFB1E83744800C30C62 /* UILabel+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BH.h"; sourceTree = "<group>"; };
 		2970BFFC1E83744800C30C62 /* UILabel+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BH.m"; sourceTree = "<group>"; };
-		2970BFFD1E83744800C30C62 /* UITableView+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+BH.h"; sourceTree = "<group>"; };
-		2970BFFE1E83744800C30C62 /* UITableView+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+BH.m"; sourceTree = "<group>"; };
 		2970BFFF1E83744800C30C62 /* UIViewController+BH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+BH.h"; sourceTree = "<group>"; };
 		2970C0001E83744800C30C62 /* UIViewController+BH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+BH.m"; sourceTree = "<group>"; };
 		2970C00E1E83748400C30C62 /* BHHookUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHHookUtility.h; sourceTree = "<group>"; };
@@ -172,8 +169,6 @@
 				2970BFFA1E83744800C30C62 /* UIImage+BHI.m */,
 				2970BFFB1E83744800C30C62 /* UILabel+BH.h */,
 				2970BFFC1E83744800C30C62 /* UILabel+BH.m */,
-				2970BFFD1E83744800C30C62 /* UITableView+BH.h */,
-				2970BFFE1E83744800C30C62 /* UITableView+BH.m */,
 				2970BFFF1E83744800C30C62 /* UIViewController+BH.h */,
 				2970C0001E83744800C30C62 /* UIViewController+BH.m */,
 			);
@@ -209,11 +204,11 @@
 			children = (
 				2970C0221E8375F000C30C62 /* BHMainViewController.h */,
 				2970C0231E8375F000C30C62 /* BHMainViewController.m */,
-				2970C0241E8375F000C30C62 /* BHPlayer */,
-				2970C02D1E8375F000C30C62 /* NetWork */,
-				2970C0301E8375F000C30C62 /* PhotoKit */,
-				2970C0391E8375F000C30C62 /* RACTest */,
 				2970C03D1E8375F000C30C62 /* UIBezierPath */,
+				2970C02D1E8375F000C30C62 /* NetWork */,
+				2970C0241E8375F000C30C62 /* BHPlayer */,
+				2970C0391E8375F000C30C62 /* RACTest */,
+				2970C0301E8375F000C30C62 /* PhotoKit */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -314,13 +309,13 @@
 		34391C4B1CE4212100970573 /* BlogDemo */ = {
 			isa = PBXGroup;
 			children = (
+				34391C4F1CE4212100970573 /* AppDelegate.h */,
+				34391C501CE4212100970573 /* AppDelegate.m */,
 				2970C0211E8375F000C30C62 /* Business */,
 				2970C04E1E83760400C30C62 /* Custom */,
 				2970C0171E83751100C30C62 /* NetWork */,
 				2970C00D1E83748400C30C62 /* Utils */,
 				2970BFE61E83744800C30C62 /* Category */,
-				34391C4F1CE4212100970573 /* AppDelegate.h */,
-				34391C501CE4212100970573 /* AppDelegate.m */,
 				34391C581CE4212100970573 /* Assets.xcassets */,
 				34391C5A1CE4212100970573 /* LaunchScreen.storyboard */,
 				34391C5D1CE4212100970573 /* Info.plist */,
@@ -486,7 +481,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2970C00B1E83744800C30C62 /* UITableView+BH.m in Sources */,
 				2970C00C1E83744800C30C62 /* UIViewController+BH.m in Sources */,
 				2970C0061E83744800C30C62 /* UIApplication+BH.m in Sources */,
 				2970C0431E8375F000C30C62 /* BHPlayerControlView.m in Sources */,

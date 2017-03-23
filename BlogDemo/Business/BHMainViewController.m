@@ -8,15 +8,14 @@
 
 #import "BHMainViewController.h"
 
-static NSString *identifier = @"cell";
+static NSString *identifier = @"identifier";
 
 @interface BHMainViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 /**
- *  数据源
+ *  标题源
  **/
-@property (nonatomic, strong) NSArray *dataArray;
-
+@property (nonatomic, strong) NSArray *titleArray;
 
 /**
  tableView 视图
@@ -33,20 +32,13 @@ static NSString *identifier = @"cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.view addSubview:self.tableView];
-    [self.view setNeedsUpdateConstraints];
-    self.title      =   @"BlogDemo";
-    self.dataArray  =   @[@"UIBezierPath配合CAShapeLayer画一些有趣的图形",
-                          @"链式编程(UILable/UIButton/AFN封装Demo)",
-                          @"封装AVPlayer，触摸手势快进调节音量",
-                          @"PhotoKit框架",
-                          @"RAC常用法",
-                          ];
-
-    
+//    [self.view addSubview:self.tableView];
+//    [self.view setNeedsUpdateConstraints];
+    self.title = @"BlogDemo";
 }
 
-- (void)dealloc {
+- (void)dealloc
+{
     NSLog(@"%@-释放了",self.class);
 }
 
@@ -66,6 +58,21 @@ static NSString *identifier = @"cell";
 
 #pragma mark - Setter Getter Methods
 
+-(NSArray *)titleArray
+{
+    if (!_titleArray)
+    {
+        _titleArray = @[@"UIBezierPath 配合 CAShapeLayer 画一些有趣的图形",
+                        @"链式编程 UILable/UIButton/AFN 封装 Demo)",
+                        @"封装 AVPlayer，触摸手势快进调节音量",
+                        @"PhotoKit 框架",
+                        @"RAC 常用法",
+                        ];
+    }
+    return _titleArray;
+}
+
+
 -(UITableView *)tableView
 {
     if (!_tableView)
@@ -74,6 +81,7 @@ static NSString *identifier = @"cell";
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier];
+        [self.view addSubview:_tableView];
     }
     return _tableView;
 }
@@ -84,13 +92,13 @@ static NSString *identifier = @"cell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArray.count;
+    return self.titleArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    cell.textLabel.text = self.dataArray[indexPath.row];
+    cell.textLabel.text = self.titleArray[indexPath.row];
     return cell;
 }
 
@@ -101,7 +109,7 @@ static NSString *identifier = @"cell";
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSInteger row = indexPath.row;
     UIViewController *controller = [[NSClassFromString([NSString stringWithFormat:@"BHViewController%ld",row]) alloc] init];
-    controller.title = self.dataArray[row];
+    controller.title = self.titleArray[row];
     BHPushVC(controller);
 }
 

@@ -24,7 +24,7 @@ static BHCustomURLCache *standardURLCache = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        standardURLCache = [[BHCustomURLCache alloc] initWithMemoryCapacity:(2 * 1024 * 1024) diskCapacity:(100 * 1024 * 1024) diskPath:nil];
+        standardURLCache = [[BHCustomURLCache alloc] initWithMemoryCapacity:(2 * 1024 * 1024) diskCapacity:(20 * 1024 * 1024) diskPath:nil];
     });
     return standardURLCache;
 }

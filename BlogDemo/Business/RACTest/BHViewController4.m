@@ -5,6 +5,8 @@
 //  Created by HanBin on 16/8/16.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
+//  主要为自己测试的 RAC 用法
+//
 
 #import "BHViewController4.h"
 #import "RACReturnSignal.h"
@@ -69,6 +71,7 @@
             NSLog(@"signal dispose");
         }];
     }];
+    
     RACDisposable *disposable = [signal1 subscribeNext:^(id x) {
         NSLog(@"subscribe value = %@", x);
     } error:^(NSError *error) {
@@ -155,9 +158,6 @@
         NSLog(@"%@ %@", key, value);
     }];
     
-    
-    
-    
     // 1.创建信号
     RACSignal *siganl = [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         // block调用时刻：每当有订阅者订阅信号，就会调用block。
@@ -203,8 +203,6 @@
 #pragma mark - Target Methods
 
 #pragma mark - Private Method
-
-
 
 - (void)test
 {

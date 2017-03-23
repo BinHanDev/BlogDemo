@@ -81,6 +81,6 @@ typedef NS_ENUM(NSUInteger, NetworkStates) {
 
  @param taskIdentifier taskIdentifier
  */
-- (void)cancelDataTaks:(NSUInteger)taskIdentifier;
+- (void)cancelDataTask:(NSUInteger)taskIdentifier;
 
 @end

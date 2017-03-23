@@ -21,7 +21,7 @@
 }
 
 /**
- *  当前controller是否支持自动旋转
+ *  当前controller是否支持自动旋转 demo 里面 BHViewController2 在视频全屏下是横屏的
  *
  */
 - (BOOL)shouldAutorotate
