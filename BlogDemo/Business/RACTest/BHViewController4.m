@@ -2,7 +2,7 @@
 //  BHViewController10.m
 //  BlogDemo
 //
-//  Created by HanBin on 16/8/16.
+//  Created by HanBin on 16/3/16.
 //  Copyright © 2016年 BinHan. All rights reserved.
 //
 //  主要为自己测试的 RAC 用法
@@ -88,7 +88,7 @@
      *
      */
     RACSubject *signalOfsignals = [RACSubject subject];
-    RACSubject *signal = [RACSubject subject];
+    RACSubject *signal2 = [RACSubject subject];
     [[signalOfsignals flattenMap:^RACStream *(id value) {
         // 当signalOfsignals的signals发出信号才会调用
         return value;
@@ -98,8 +98,8 @@
         NSLog(@"%@aaa",x);
     }];
     // 信号的信号发送信号  内部信号发送内容
-    [signalOfsignals sendNext:signal];
-    [signal sendNext:@1];
+    [signalOfsignals sendNext:signal2];
+    [signal2 sendNext:@1];
     
     
     /**
@@ -165,15 +165,10 @@
         [subscriber sendNext:@1];
         // 如果不在发送数据，最好发送信号完成，内部会自动调用[RACDisposable disposable]取消订阅信号。
         [subscriber sendCompleted];
-        
         return [RACDisposable disposableWithBlock:^{
-            
             // block调用时刻：当信号发送完成或者发送错误，就会自动执行这个block,取消订阅信号。
-            
             // 执行完Block后，当前信号就不在被订阅了。
-            
             NSLog(@"信号被销毁");
-            
         }];
     }];
     
@@ -183,14 +178,12 @@
         NSLog(@"接收到数据:%@",x);
     }];
     
-    RAC(self.imageView, image) = [[[RACObserve(self, userName)
-                                    deliverOn:[RACScheduler scheduler]]
-                                   map:^(id user) {
-                                       // 下载头像(这在后台执行.)
-                                       return  [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: @"http://ios122.bj.bcebos.com/IMG_1785.PNG"]]];
-                                   }]
-                                  // 现在赋值在主线程完成.
-                                  deliverOn:RACScheduler.mainThreadScheduler];
+    RAC(self.imageView, image) = [[[RACObserve(self, userName) deliverOn:[RACScheduler scheduler]] map:^(id user) {
+        // 下载头像(这在后台执行.) // 现在赋值在主线程完成.
+        return  [UIImage imageWithData: [NSData dataWithContentsOfURL: [NSURL URLWithString: @"http://ios122.bj.bcebos.com/IMG_1785.PNG"]]];
+    }] deliverOn:RACScheduler.mainThreadScheduler];
+    
+                                  
     
 }
 
@@ -223,6 +216,7 @@
     }];
     
     [self rac_liftSelector:@selector(doA:withB:) withSignals:signalA, signalB, nil];
+//    [self rac_liftSelector:@selector(doA:withB:) withSignalsFromArray:@[signalA,signalB]];
 }
 
 - (void)doA:(NSString *)A withB:(NSString *)B
