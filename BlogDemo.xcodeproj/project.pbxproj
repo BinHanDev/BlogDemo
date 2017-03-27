@@ -42,6 +42,11 @@
 		34391C511CE4212100970573 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34391C501CE4212100970573 /* AppDelegate.m */; };
 		34391C591CE4212100970573 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34391C581CE4212100970573 /* Assets.xcassets */; };
 		34391C5C1CE4212100970573 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34391C5A1CE4212100970573 /* LaunchScreen.storyboard */; };
+		AD7B3DF31E8943B9002C94A3 /* BHViewController5.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7B3DF21E8943B9002C94A3 /* BHViewController5.m */; };
+		AD7B3DF61E89494B002C94A3 /* BHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7B3DF51E89494B002C94A3 /* BHTableView.m */; };
+		AD7B3DF91E894984002C94A3 /* BHTableViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7B3DF81E894984002C94A3 /* BHTableViewModel.m */; };
+		AD7B3DFC1E8949AF002C94A3 /* BHListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7B3DFB1E8949AF002C94A3 /* BHListCell.m */; };
+		AD7B3DFF1E8949D8002C94A3 /* BHVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7B3DFE1E8949D8002C94A3 /* BHVideoModel.m */; };
 		FACD4868EBCE1E47EE1F70B8 /* Pods_BlogDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFC7DBD5722F93E50B146FF7 /* Pods_BlogDemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +120,16 @@
 		34391C5D1CE4212100970573 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34391CB61CE4245700970573 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8BB6BFE363B31757E98502EB /* Pods-BlogDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlogDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlogDemo/Pods-BlogDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		AD7B3DF11E8943B9002C94A3 /* BHViewController5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHViewController5.h; sourceTree = "<group>"; };
+		AD7B3DF21E8943B9002C94A3 /* BHViewController5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHViewController5.m; sourceTree = "<group>"; };
+		AD7B3DF41E89494B002C94A3 /* BHTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHTableView.h; sourceTree = "<group>"; };
+		AD7B3DF51E89494B002C94A3 /* BHTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHTableView.m; sourceTree = "<group>"; };
+		AD7B3DF71E894984002C94A3 /* BHTableViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHTableViewModel.h; sourceTree = "<group>"; };
+		AD7B3DF81E894984002C94A3 /* BHTableViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHTableViewModel.m; sourceTree = "<group>"; };
+		AD7B3DFA1E8949AF002C94A3 /* BHListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHListCell.h; sourceTree = "<group>"; };
+		AD7B3DFB1E8949AF002C94A3 /* BHListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHListCell.m; sourceTree = "<group>"; };
+		AD7B3DFD1E8949D8002C94A3 /* BHVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BHVideoModel.h; sourceTree = "<group>"; };
+		AD7B3DFE1E8949D8002C94A3 /* BHVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BHVideoModel.m; sourceTree = "<group>"; };
 		AFC7DBD5722F93E50B146FF7 /* Pods_BlogDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlogDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -209,6 +224,7 @@
 				2970C0241E8375F000C30C62 /* BHPlayer */,
 				2970C0301E8375F000C30C62 /* PhotoKit */,
 				2970C0391E8375F000C30C62 /* RACTest */,
+				AD7B3DED1E8942FA002C94A3 /* MVVM */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -350,6 +366,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AD7B3DED1E8942FA002C94A3 /* MVVM */ = {
+			isa = PBXGroup;
+			children = (
+				AD7B3DF11E8943B9002C94A3 /* BHViewController5.h */,
+				AD7B3DF21E8943B9002C94A3 /* BHViewController5.m */,
+				AD7B3DF41E89494B002C94A3 /* BHTableView.h */,
+				AD7B3DF51E89494B002C94A3 /* BHTableView.m */,
+				AD7B3DF71E894984002C94A3 /* BHTableViewModel.h */,
+				AD7B3DF81E894984002C94A3 /* BHTableViewModel.m */,
+				AD7B3DFA1E8949AF002C94A3 /* BHListCell.h */,
+				AD7B3DFB1E8949AF002C94A3 /* BHListCell.m */,
+				AD7B3DFD1E8949D8002C94A3 /* BHVideoModel.h */,
+				AD7B3DFE1E8949D8002C94A3 /* BHVideoModel.m */,
+			);
+			path = MVVM;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -471,7 +504,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -490,20 +523,25 @@
 				2970C0071E83744800C30C62 /* UIButton+BH.m in Sources */,
 				2970C0091E83744800C30C62 /* UIImage+BHI.m in Sources */,
 				2970C0031E83744800C30C62 /* NSFileManager+BH.m in Sources */,
+				AD7B3DFC1E8949AF002C94A3 /* BHListCell.m in Sources */,
+				AD7B3DF61E89494B002C94A3 /* BHTableView.m in Sources */,
 				2970C04A1E8375F000C30C62 /* BHViewController3.m in Sources */,
 				2970C04B1E8375F000C30C62 /* BHViewController4.m in Sources */,
 				2970C00A1E83744800C30C62 /* UILabel+BH.m in Sources */,
 				34391C511CE4212100970573 /* AppDelegate.m in Sources */,
 				34391C4E1CE4212100970573 /* main.m in Sources */,
+				AD7B3DFF1E8949D8002C94A3 /* BHVideoModel.m in Sources */,
 				2970C0491E8375F000C30C62 /* BHPhotosVC.m in Sources */,
 				2970C01F1E83751100C30C62 /* BHNetReqManager.m in Sources */,
 				2970C0041E83744800C30C62 /* NSString+BH.m in Sources */,
 				2970C0201E83751100C30C62 /* BHURLProtocol.m in Sources */,
 				2970C0471E8375F000C30C62 /* BHAlbumCell.m in Sources */,
 				2970C0461E8375F000C30C62 /* BHViewController1.m in Sources */,
+				AD7B3DF91E894984002C94A3 /* BHTableViewModel.m in Sources */,
 				2970C0481E8375F000C30C62 /* BHPhotosCell.m in Sources */,
 				2970C0081E83744800C30C62 /* UIColor+BH.m in Sources */,
 				2970C0141E83748400C30C62 /* BHHookUtility.m in Sources */,
+				AD7B3DF31E8943B9002C94A3 /* BHViewController5.m in Sources */,
 				2970C0161E83748400C30C62 /* BHUtils.m in Sources */,
 				2970C04D1E8375F000C30C62 /* BHViewController0.m in Sources */,
 				2970C0441E8375F000C30C62 /* BHViewController2.m in Sources */,

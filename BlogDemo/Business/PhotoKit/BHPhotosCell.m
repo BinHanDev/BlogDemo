@@ -32,6 +32,13 @@ CGFloat const rowHeight = 58.f;
     return [NSString stringWithUTF8String:object_getClassName([self class])];
 }
 
++ (BOOL)requiresConstraintBasedLayout
+{
+    return YES;
+}
+
+#pragma mark - Intial Methods
+
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -43,8 +50,6 @@ CGFloat const rowHeight = 58.f;
     }
     return self;
 }
-
-#pragma mark - Intial Methods
 
 #pragma mark - Target Methods
 

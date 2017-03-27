@@ -11,5 +11,6 @@ target 'BlogDemo' do
     pod 'MBProgressHUD', '0.9.2'
     pod 'Masonry'
     pod 'MJRefresh'
+    pod 'MJExtension'
     pod 'MLeaksFinder'
 end

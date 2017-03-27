@@ -66,7 +66,7 @@ static NSString *identifier = @"identifier";
                         @"封装 AVPlayer，触摸手势快进调节音量",
                         @"PhotoKit 框架",
                         @"RAC 常用法",
-                        ];
+                        @"MVVM + RAC 示例",];
     }
     return _titleArray;
 }

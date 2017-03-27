@@ -30,6 +30,8 @@
     return YES;
 }
 
+#pragma mark - Intial Methods
+
 -(instancetype)initWithFrame:(CGRect)frame
 {
     self=[super initWithFrame:frame];
@@ -39,8 +41,6 @@
     }
     return self;
 }
-
-#pragma mark - Intial Methods
 
 -(void)updateConstraints
 {
