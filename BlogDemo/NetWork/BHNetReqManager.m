@@ -47,11 +47,6 @@ static AFHTTPSessionManager *manager;
  */
 @property (nonatomic, copy)  id parameters;
 
-/**
- 当前所有的请求
- */
-@property (nonatomic, copy) NSMutableArray *tasks;
-
 - (instancetype)init __attribute__((unavailable("Disabled. Use +sharedInstance instead")));
 
 @end
@@ -96,15 +91,6 @@ static AFHTTPSessionManager *manager;
         self.parameters = parameters;
         return self;
     };
-}
-
-- (NSMutableArray *)tasks
-{
-    if (!_tasks)
-    {
-        _tasks = [NSMutableArray array];
-    }
-    return _tasks;
 }
 
 /**
@@ -268,7 +254,6 @@ static AFHTTPSessionManager *manager;
     [self resetConfigWithManager];
     if (dataTask)
     {
-        [self.tasks addObject:dataTask];
         return dataTask.taskIdentifier;
     }
     else
@@ -294,9 +279,10 @@ static AFHTTPSessionManager *manager;
 
 - (void)cancelDataTask:(NSUInteger)taskIdentifier
 {
-    [self.tasks enumerateObjectsUsingBlock:^(NSURLSessionTask *task, NSUInteger idx, BOOL *stop) {
+    [manager.dataTasks enumerateObjectsUsingBlock:^(NSURLSessionTask * task, NSUInteger idx, BOOL *stop) {
         if (task.taskIdentifier == taskIdentifier)
         {
+            NSLog(@"取消loa数据 = %lu", (unsigned long)taskIdentifier);
             [task cancel];
             *stop = YES;
         }
