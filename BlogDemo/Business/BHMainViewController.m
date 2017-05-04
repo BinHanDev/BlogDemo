@@ -107,7 +107,7 @@ static NSString *identifier = @"identifier";
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     NSInteger row = indexPath.row;
-    UIViewController *controller = [[NSClassFromString([NSString stringWithFormat:@"BHViewController%ld",row]) alloc] init];
+    UIViewController *controller = [[NSClassFromString([NSString stringWithFormat:@"BHViewController%ld",(long)row]) alloc] init];
     controller.title = self.titleArray[row];
     BHPushVC(controller);
 }

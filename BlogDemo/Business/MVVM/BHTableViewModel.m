@@ -41,7 +41,7 @@
     {
         _searchCommand = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(NSNumber *pageNum) {
             return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
-                NSString *url = [NSString stringWithFormat:@"http://cache.video.iqiyi.com/jp/avlist/202861101/%ld/", [pageNum integerValue]];
+                NSString *url = [NSString stringWithFormat:@"http://cache.video.iqiyi.com/jp/avlist/202861101/%ld/", (long)[pageNum integerValue]];
                 [[BHNetReqManager sharedManager].bh_requestUrl(url).bh_responseSerializer(HTTPResponseSerializer) startRequestWithCompleteHandler:^(id response, NSError *error) {
                     if (!error && response)
                     {

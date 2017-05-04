@@ -67,7 +67,7 @@ CGFloat const rowHeight = 58.f;
                 PHAsset *asset = fetchResult.lastObject;
                 [[PHImageManager defaultManager] requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
                     self.photoImageView.image = [UIImage imageWithData:imageData];
-                    self.photosNameLable.text = [assetCollection.localizedTitle stringByAppendingFormat:@"  (%ld)", fetchResult.count];
+                    self.photosNameLable.text = [assetCollection.localizedTitle stringByAppendingFormat:@"  (%ld)", (unsigned long)fetchResult.count];
                 }];
             }
         });

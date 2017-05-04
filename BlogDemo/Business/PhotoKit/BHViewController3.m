@@ -62,7 +62,7 @@
         // 列出所有相册智能相册
         PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
         [smartAlbums enumerateObjectsUsingBlock:^(PHAssetCollection * _Nonnull collection, NSUInteger idx, BOOL *stop) {
-            NSLog(@"collection = %ld", collection.assetCollectionSubtype);
+            NSLog(@"collection = %ld", (long)collection.assetCollectionSubtype);
             NSLog(@"collection localizedTitle = %@", collection.localizedTitle);
             [self.dataArray addObject:collection];
         }];
@@ -150,7 +150,7 @@
     BHPhotosCell *cell = [tableView dequeueReusableCellWithIdentifier:[BHPhotosCell identifier]];
     PHAssetCollection *assetCollection = self.dataArray[indexPath.row];
     cell.assetCollection = assetCollection;
-    NSLog(@"assetCollection = %ld", assetCollection.estimatedAssetCount);
+    NSLog(@"assetCollection = %ld", (unsigned long)assetCollection.estimatedAssetCount);
     return cell;
 }
 
