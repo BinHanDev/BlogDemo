@@ -78,6 +78,8 @@
 
 #pragma mark - Private Method
 
+#pragma mark - Setter Getter Methods
+
 -(UIButton *)button
 {
     if (!_button)
@@ -122,8 +124,6 @@
         return nil;
     }];
 }
-
-#pragma mark - Setter Getter Methods
 
 #pragma mark - External Delegate
 
