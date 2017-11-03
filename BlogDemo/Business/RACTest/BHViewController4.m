@@ -26,6 +26,10 @@
 -(void)viewDidLoad
 {
     
+    [[self rac_signalForSelector:@selector(viewWillAppear:)] subscribeNext:^(id x) {
+        NSLog(@"dasdas");
+    }];
+    
     [self.userNameTF.rac_textSignal subscribeNext:^(NSString *text) {
         NSLog(@"text = %@", text);
     }];
@@ -61,6 +65,10 @@
         return @(usernameValid.length > 5 && passwordValid.length > 5);
     }];
     
+    // throttle 功能
+    [[self.userNameTF.rac_textSignal throttle:2.3] subscribeNext:^(NSString * text) {
+        NSLog(@"request--- %@", text);
+    }];
     
     RACSignal *signal1 = [RACSignal createSignal: ^RACDisposable *(id<RACSubscriber> subscriber) {
         [subscriber sendNext:@1];
